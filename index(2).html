@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30 лет Digital-рекламы</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ══ RESET ══ */
+:root{--ink:#0a0a0a;--paper:#f4f0e8;--accent:#e8412a;--dim:#7a7060;--mid:#c8c0b0}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);overflow-x:hidden}
+
+/* ══ CURSOR ══ */
+.cur,.cur-t{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+.cur{width:8px;height:8px;background:var(--accent);transition:width .18s,height .18s}
+.cur.big{width:44px;height:44px;background:transparent;border:1.5px solid var(--accent)}
+.cur-t{width:26px;height:26px;border:1px solid rgba(232,65,42,.22);transition:left .09s,top .09s}
+
+/* ══ REVEAL ══ */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* ══ SHARED ══ */
+.kicker{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.35em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;font-weight:500}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(46px,7vw,86px);line-height:.9;color:var(--paper)}
+.sec-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;padding-bottom:28px;border-bottom:1px solid #1e1e1e}
+.sec-num{font-family:'Bebas Neue',sans-serif;font-size:100px;color:#191919;line-height:1}
+.body-t{font-size:14px;font-weight:300;line-height:1.8;color:var(--dim)}
+.mono{font-family:'Montserrat',sans-serif;font-weight:400}
+
+/* ══ HERO ══ */
+.hero{min-height:100vh;display:flex;flex-direction:column}
+.hero-bar{display:flex;justify-content:space-between;align-items:center;padding:26px 60px;border-bottom:1px solid #1e1e1e}
+.hero-lbl{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.25em;color:var(--dim);text-transform:uppercase;font-weight:400}
+.hero-lbl span{color:var(--accent)}
+.hero-main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:60px}
+.hero-kick{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.25em;color:var(--accent);text-transform:uppercase;margin-bottom:22px;opacity:0;animation:fu .8s .2s forwards;font-weight:500}
+.hero-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,14vw,198px);line-height:.87;letter-spacing:-.02em;color:var(--paper);opacity:0;animation:fu .9s .4s forwards}
+.hero-h em{color:var(--accent);font-style:normal}
+.hero-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1e1e1e;opacity:0;animation:fu .8s .7s forwards}
+.hero-cell{background:var(--ink);padding:24px 28px}
+.hero-cell-n{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--accent);line-height:1}
+.hero-cell-l{font-size:11px;font-weight:300;color:var(--dim);margin-top:4px;line-height:1.5}
+.hero-foot{padding:26px 60px;border-top:1px solid #1e1e1e;display:flex;justify-content:space-between;align-items:center;opacity:0;animation:fu .6s 1s forwards}
+.scroll-hint{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.25em;color:var(--dim);text-transform:uppercase;display:flex;align-items:center;gap:12px;font-weight:500}
+.s-line{width:40px;height:1px;background:var(--dim);animation:sl 2s 1.5s infinite}
+@keyframes sl{0%,100%{width:40px;opacity:1}50%{width:80px;opacity:.4}}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* ══ INTRO SPLIT ══ */
+.intro{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #1e1e1e}
+.intro-l{padding:100px 60px;border-right:1px solid #1e1e1e}
+.intro-r{padding:100px 60px;display:flex;flex-direction:column;justify-content:flex-end;gap:20px}
+.big-q{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,9vw,120px);line-height:.88;margin-bottom:28px}
+.big-q em{color:var(--accent);font-style:normal}
+.pull{font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,2.8vw,34px);line-height:1.1;color:var(--accent);border-left:3px solid var(--accent);padding-left:18px;margin:20px 0}
+
+/* ══ TIMELINE ══ */
+.tl-sec{padding:120px 60px}
+.tl-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:2px}
+.tl-c{background:#111;padding:28px 22px;cursor:none;transition:background .3s;border-top:2px solid transparent}
+.tl-c:hover{border-top-color:var(--accent);background:#181818}
+.tl-y{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--accent);line-height:1;margin-bottom:12px}
+.tl-e{font-size:13px;font-weight:500;color:var(--paper);margin-bottom:8px}
+.tl-d{font-size:11px;font-weight:300;color:var(--dim);line-height:1.6}
+
+/* TL Popup */
+.tlp{position:fixed;background:var(--paper);color:var(--ink);padding:30px;width:310px;z-index:500;display:none;box-shadow:0 20px 60px rgba(0,0,0,.6);pointer-events:none}
+.tlp.on{display:block}
+.tlp-y{font-family:'Bebas Neue',sans-serif;font-size:50px;color:var(--accent);line-height:1}
+.tlp-t{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--ink);margin-bottom:10px}
+.tlp-b{font-size:12px;font-weight:300;line-height:1.7;color:#3a3530}
+.tlp-tag{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-top:14px;font-weight:500}
+
+/* ══ STATS BAND ══ */
+.sband{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(0,0,0,.2)}
+.sc{background:var(--accent);padding:52px 44px;cursor:none;transition:background .3s}
+.sc:hover{background:#d03020}
+.sc-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,6vw,70px);color:var(--ink);line-height:1}
+.sc-l{font-family:'Montserrat',sans-serif;font-size:8px;color:rgba(0,0,0,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:8px;line-height:1.5;font-weight:400}
+
+/* ══ AGENCIES ══ */
+.ag-sec{padding:120px 60px;background:var(--paper);color:var(--ink)}
+.ag-sec .sec-title{color:var(--ink)}
+.ag-sec .sec-num{color:rgba(0,0,0,.05)}
+.ag-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--mid)}
+.ag-c{background:var(--paper);padding:34px 26px;cursor:none;border-bottom:3px solid transparent;transition:all .3s}
+.ag-c:hover{background:var(--ink);border-bottom-color:var(--accent)}
+.ag-c:hover .ag-name{color:var(--paper)}
+.ag-c:hover .ag-desc{color:rgba(244,240,232,.55)}
+.ag-c:hover .ag-year{color:var(--dim)}
+.ag-num{font-family:'Montserrat',sans-serif;font-size:8px;color:var(--mid);letter-spacing:.2em;margin-bottom:14px;font-weight:500}
+.ag-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,2.8vw,34px);line-height:1;color:var(--ink);margin-bottom:5px;transition:color .3s}
+.ag-year{font-family:'Montserrat',sans-serif;font-size:9px;color:var(--dim);letter-spacing:.1em;margin-bottom:12px;transition:color .3s;font-weight:400}
+.ag-desc{font-size:12px;font-weight:300;line-height:1.65;color:#3a3530;transition:color .3s}
+.ag-tag{display:inline-block;margin-top:12px;font-family:'Montserrat',sans-serif;font-size:8px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+
+/* ══ CASES ══ */
+.cases-sec{padding:120px 60px}
+.c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#1a1a1a}
+.cc{background:#111;padding:38px 34px;cursor:none;position:relative;overflow:hidden;min-height:290px}
+.cc-rev{position:absolute;inset:0;background:var(--accent);color:var(--ink);padding:34px;transform:translateY(100%);transition:transform .44s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;justify-content:space-between}
+.cc:hover .cc-rev,.cc.op .cc-rev{transform:none}
+.cc-bgn{font-family:'Bebas Neue',sans-serif;font-size:80px;color:rgba(244,240,232,.04);line-height:1;position:absolute;bottom:14px;right:18px}
+.cc-tag{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.15em;color:var(--accent);text-transform:uppercase;margin-bottom:11px;font-weight:500}
+.cc-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,2.4vw,30px);line-height:.95;margin-bottom:13px;color:var(--paper)}
+.cc-teaser{font-size:12px;font-weight:300;line-height:1.65;color:var(--dim)}
+.cc-rev-tag{font-family:'Montserrat',sans-serif;font-size:8px;color:rgba(0,0,0,.45);letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;font-weight:500}
+.cc-rev-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,2.8vw,36px);line-height:.9;color:var(--ink);margin-bottom:12px}
+.cc-rev-body{font-size:12px;font-weight:300;line-height:1.7;color:rgba(0,0,0,.65)}
+.cc-mets{display:flex;gap:18px;padding-top:14px;border-top:1px solid rgba(0,0,0,.18)}
+.cc-m-n{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--ink);line-height:1}
+.cc-m-l{font-family:'Montserrat',sans-serif;font-size:8px;color:rgba(0,0,0,.45);text-transform:uppercase;margin-top:2px;font-weight:500}
+
+/* ══ QUOTE BREAK ══ */
+.quote-break{padding:100px 60px;display:grid;grid-template-columns:80px 1fr;gap:40px;align-items:start;border-top:1px solid #1e1e1e;border-bottom:1px solid #1e1e1e}
+.qb-line{width:2px;height:100%;background:var(--accent);margin-top:8px}
+.qb-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,70px);line-height:1;color:var(--paper)}
+.qb-text em{color:var(--accent);font-style:normal}
+.qb-src{font-family:'Montserrat',sans-serif;font-size:9px;color:var(--dim);letter-spacing:.18em;text-transform:uppercase;margin-top:18px;font-weight:400}
+
+/* ══ PLATFORMS ══ */
+.plat-sec{padding:120px 60px}
+.plat-list{display:flex;flex-direction:column}
+.plat-row{display:grid;grid-template-columns:180px 1fr auto;align-items:center;padding:18px 0;border-bottom:1px solid #1e1e1e;gap:36px;cursor:none;transition:padding-left .3s}
+.plat-row:hover{padding-left:10px}
+.plat-row:hover .p-name{color:var(--accent)}
+.p-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,2.8vw,34px);color:var(--paper);line-height:1;transition:color .3s}
+.p-sub{font-size:11px;font-weight:300;color:var(--dim);line-height:1.5;font-family:'Montserrat',sans-serif}
+.p-rev{font-family:'Bebas Neue',sans-serif;font-size:clamp(18px,2.6vw,32px);color:var(--accent);white-space:nowrap}
+
+/* ══════════════════════════════════════
+   POPUP GAME
+══════════════════════════════════════ */
+.game-sec{padding:120px 60px;background:var(--paper);color:var(--ink)}
+.game-sec .sec-title{color:var(--ink)}
+.game-sec .sec-num{color:rgba(0,0,0,.05)}
+.game-intro{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-bottom:56px;align-items:end}
+.game-desc{font-size:14px;font-weight:300;line-height:1.8;color:#3a3530}
+.game-rules{display:flex;flex-direction:column;gap:10px}
+.g-rule{display:flex;gap:14px;align-items:flex-start;font-size:12px;font-weight:300;color:#3a3530}
+.g-rnum{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--accent);line-height:1;min-width:22px}
+
+/* Arena */
+.arena{position:relative;background:var(--ink);height:560px;overflow:hidden;border:2px solid var(--ink)}
+.arena-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(244,240,232,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(244,240,232,.018) 1px,transparent 1px);background-size:44px 44px}
+.hud{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:rgba(10,10,10,.96);border-bottom:1px solid #1e1e1e;z-index:10}
+.hud-item{display:flex;flex-direction:column;align-items:center;gap:2px}
+.hud-lbl{font-family:'Montserrat',sans-serif;font-size:7px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;font-weight:500}
+.hud-val{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--paper);line-height:1}
+.hud-val.red{color:var(--accent)}
+.g-btn{font-family:'Montserrat',sans-serif;font-size:13px;background:var(--accent);color:var(--ink);border:none;padding:10px 26px;cursor:pointer;letter-spacing:.06em;font-weight:600;transition:background .2s;text-transform:uppercase}
+.g-btn:hover{background:#c52e1a}
+.g-btn.out{background:transparent;color:var(--paper);border:1px solid #2a2a2a}
+.g-btn.out:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Fake popups */
+.fp{position:absolute;background:var(--paper);color:var(--ink);padding:14px;width:206px;box-shadow:4px 4px 0 rgba(0,0,0,.55);cursor:default;animation:pIn .18s ease;z-index:5;user-select:none}
+@keyframes pIn{from{transform:scale(.55);opacity:0}to{transform:scale(1);opacity:1}}
+.fp-bar{display:flex;justify-content:space-between;align-items:center;background:var(--ink);padding:5px 8px;margin:-14px -14px 11px}
+.fp-bar-t{font-family:'Montserrat',sans-serif;font-size:7px;color:var(--dim);letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.fp-x{width:16px;height:16px;background:var(--accent);color:var(--ink);font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:transform .12s}
+.fp-x:hover{transform:scale(1.2)}
+.fp-body{font-size:11px;line-height:1.5;color:#3a3530;margin-bottom:9px}
+.fp-cta{width:100%;background:var(--accent);color:var(--ink);border:none;padding:7px;font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s;font-weight:600}
+.fp-cta:hover{background:#c52e1a}
+.fp.shake{animation:shk .28s ease}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.fp.dying{animation:pOut .2s ease forwards;pointer-events:none}
+@keyframes pOut{to{transform:scale(.35) rotate(6deg);opacity:0}}
+
+/* Overlays */
+.g-ov{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(10,10,10,.93);gap:14px}
+.g-ov-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(46px,7vw,76px);line-height:.9;text-align:center}
+.g-ov-title em{color:var(--accent);font-style:normal;display:block}
+.g-ov-body{font-size:13px;font-weight:300;color:var(--dim);text-align:center;max-width:330px;line-height:1.7}
+.g-scores{display:flex;gap:44px;margin:10px 0}
+.g-si{text-align:center}
+.g-si-n{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--accent);line-height:1}
+.g-si-l{font-family:'Montserrat',sans-serif;font-size:8px;color:var(--dim);letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+.g-grade{font-size:12px;font-weight:300;color:rgba(244,240,232,.55);text-align:center;max-width:320px;font-style:italic;font-family:'Montserrat',sans-serif;line-height:1.6}
+.miss-fl{position:absolute;inset:0;background:rgba(232,65,42,.1);pointer-events:none;z-index:15;opacity:0;transition:opacity .08s}
+.miss-fl.on{opacity:1}
+.t-wrap{position:absolute;bottom:0;left:0;right:0;height:3px;background:#1a1a1a;z-index:10}
+.t-bar{height:100%;background:var(--accent);transition:width .1s linear}
+.s-pop{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--accent);pointer-events:none;z-index:20;animation:sFly .65s ease forwards}
+@keyframes sFly{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-42px)}}
+
+/* ══ DATA SCROLLTEXT ══ */
+.scroll-ticker{overflow:hidden;border-top:1px solid #1e1e1e;border-bottom:1px solid #1e1e1e;padding:16px 0;background:var(--ink)}
+.ticker-inner{display:flex;gap:60px;white-space:nowrap;animation:tick 22s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.t-item{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--dim);letter-spacing:.08em}
+.t-item em{color:var(--accent);font-style:normal}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══ FUTURE ══ */
+.future-sec{display:grid;grid-template-columns:1fr 1fr;min-height:80vh}
+.fut-l{padding:100px 60px;background:var(--accent);color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid rgba(0,0,0,.12)}
+.fut-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,8vw,98px);line-height:.9;color:var(--ink)}
+.fut-items{display:flex;flex-direction:column;margin-top:24px}
+.fi{display:flex;gap:15px;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.1);cursor:none;transition:padding-left .3s}
+.fi:hover{padding-left:8px}
+.fi:last-child{border-bottom:none}
+.fi-n{font-family:'Bebas Neue',sans-serif;font-size:30px;color:rgba(0,0,0,.18);line-height:1;min-width:34px}
+.fi-name{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.fi-desc{font-size:12px;font-weight:300;color:rgba(0,0,0,.5);line-height:1.5}
+.fut-r{padding:100px 60px;background:var(--ink);display:flex;flex-direction:column;justify-content:space-between}
+.credits-t{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,9vw,108px);line-height:.88;color:var(--paper);margin-bottom:30px}
+.cr-line{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(244,240,232,.07);font-size:12px;font-weight:300;color:rgba(244,240,232,.4)}
+.cr-line span{font-family:'Montserrat',sans-serif;font-size:9px;color:#2a2a2a;font-weight:400}
+.ticker-inner:hover{animation-play-state:paused}
+.t-item{font-family:'Montserrat',sans-serif;font-size:11px;color:var(--dim);letter-spacing:.05em;font-weight:400}
+.t-item em{color:var(--accent);font-style:normal;font-weight:600}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* FUTURE */
+.future-sec{display:grid;grid-template-columns:1fr 1fr;min-height:80vh}
+.fut-l{padding:100px 60px;background:var(--accent);color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid rgba(0,0,0,.12)}
+.fut-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,8vw,98px);line-height:.9;color:var(--ink)}
+.fut-items{display:flex;flex-direction:column;margin-top:24px}
+.fi{display:flex;gap:15px;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.1);cursor:none;transition:padding-left .3s}
+.fi:hover{padding-left:8px}
+.fi:last-child{border-bottom:none}
+.fi-n{font-family:'Bebas Neue',sans-serif;font-size:30px;color:rgba(0,0,0,.18);line-height:1;min-width:34px}
+.fi-name{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.fi-desc{font-size:12px;font-weight:300;color:rgba(0,0,0,.5);line-height:1.5}
+.fut-r{padding:100px 60px;background:var(--ink);display:flex;flex-direction:column;justify-content:space-between}
+.credits-t{font-family:'Bebas Neue',sans-serif;font-size:clamp(50px,9vw,108px);line-height:.88;color:var(--paper);margin-bottom:30px}
+.cr-line{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(244,240,232,.07);font-size:12px;font-weight:300;color:rgba(244,240,232,.4)}
+.footer-bar{padding:22px 60px;border-top:1px solid #1e1e1e;display:flex;justify-content:space-between}
+.footer-bar p{font-family:'Montserrat',sans-serif;font-size:8px;color:#222;letter-spacing:.18em;text-transform:uppercase;font-weight:400}
+
+/* ══ TABLET ══ */
+/* ══════════════════════════════
+   TABLET — iPad (768px – 1024px)
+══════════════════════════════ */
+@media(max-width:1024px){
+  /* Hero */
+  .hero-bar{padding:22px 40px}
+  .hero-main{padding:48px 40px}
+  .hero-foot{padding:22px 40px}
+  .hero-h{font-size:clamp(64px,12vw,120px)}
+  .hero-grid{grid-template-columns:repeat(3,1fr)}
+
+  /* Intro split → одна колонка */
+  .intro{grid-template-columns:1fr}
+  .intro-l{padding:80px 40px;border-right:none;border-bottom:1px solid #1e1e1e}
+  .intro-r{padding:60px 40px}
+  .big-q{font-size:clamp(52px,9vw,88px)}
+
+  /* Секции — меньше отступ */
+  .tl-sec,.cases-sec,.ag-sec,.plat-sec,.game-sec{padding:80px 40px}
+  .quote-break{padding:80px 40px}
+
+  /* Timeline → 3 колонки */
+  .tl-grid{grid-template-columns:repeat(3,1fr)}
+
+  /* Stats → 2 колонки */
+  .sband{grid-template-columns:1fr 1fr}
+  .sc{padding:44px 36px}
+
+  /* Agencies → 2 колонки */
+  .ag-grid{grid-template-columns:1fr 1fr}
+
+  /* Cases → 2 колонки */
+  .c-grid{grid-template-columns:1fr 1fr}
+  .cc{min-height:270px}
+
+  /* Game */
+  .game-intro{grid-template-columns:1fr;gap:28px}
+  .arena{height:500px}
+
+  /* Platforms */
+  .plat-row{grid-template-columns:150px 1fr auto;gap:20px}
+
+  /* Future → одна колонка */
+  .future-sec{grid-template-columns:1fr}
+  .fut-l{padding:80px 40px;border-right:none;border-bottom:1px solid rgba(0,0,0,.12)}
+  .fut-r{padding:80px 40px}
+
+  /* Footer */
+  .footer-bar{padding:20px 40px}
+
+  /* Sec header — убираем большой номер */
+  .sec-num{font-size:72px}
+}
+
+/* ══════════════════════════════
+   MOBILE — iPhone (≤ 767px)
+══════════════════════════════ */
+@media(max-width:767px){
+  /* Cursor off */
+  .cur,.cur-t{display:none}
+  body{cursor:auto}
+
+  /* Hero */
+  .hero-bar{padding:14px 20px;flex-wrap:wrap;gap:6px}
+  .hero-main{padding:36px 20px}
+  .hero-h{font-size:clamp(60px,18vw,96px);line-height:.88}
+  .hero-grid{grid-template-columns:1fr 1fr}
+  .hero-cell{padding:18px 16px}
+  .hero-cell-n{font-size:32px}
+  .hero-foot{padding:14px 20px;flex-direction:column;align-items:flex-start;gap:8px}
+
+  /* Intro */
+  .intro-l,.intro-r{padding:52px 20px}
+  .big-q{font-size:clamp(44px,14vw,72px)}
+  .pull{font-size:clamp(18px,5vw,24px)}
+
+  /* Ticker */
+  .t-item{font-size:10px}
+
+  /* Секции */
+  .tl-sec,.cases-sec,.ag-sec,.plat-sec,.game-sec{padding:52px 20px}
+  .quote-break{padding:52px 20px;grid-template-columns:28px 1fr;gap:16px}
+  .qb-text{font-size:clamp(26px,7vw,42px)}
+
+  /* Section header */
+  .sec-hdr{flex-direction:column;align-items:flex-start;gap:4px;margin-bottom:40px}
+  .sec-num{font-size:56px;line-height:1}
+  .sec-title{font-size:clamp(38px,10vw,60px)}
+
+  /* Timeline → 1 колонка */
+  .tl-grid{grid-template-columns:1fr}
+  .tl-c{padding:20px 16px;display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:start}
+  .tl-y{font-size:26px;margin-bottom:0}
+  .tlp{width:calc(100vw - 24px);left:12px!important}
+
+  /* Stats → 2 колонки */
+  .sband{grid-template-columns:1fr 1fr}
+  .sc{padding:28px 16px}
+  .sc-n{font-size:clamp(36px,10vw,52px)}
+
+  /* Agencies → 1 колонка */
+  .ag-grid{grid-template-columns:1fr}
+  .ag-c{padding:28px 20px}
+
+  /* Cases → 1 колонка */
+  .c-grid{grid-template-columns:1fr}
+  .cc{min-height:240px;padding:28px 20px}
+  /* На мобиле раскрытие по тапу */
+  .cc-rev{transition:transform .35s ease}
+
+  /* Game */
+  .game-intro{grid-template-columns:1fr;gap:24px}
+  .arena{height:420px}
+  .hud{padding:10px 16px}
+  .hud-val{font-size:22px}
+  .g-btn{font-size:12px;padding:9px 20px}
+  .fp{width:180px}
+
+  /* Platforms */
+  .plat-row{grid-template-columns:1fr auto;gap:12px;padding:14px 0}
+  .p-sub{display:none}
+  .p-name{font-size:clamp(18px,5vw,26px)}
+  .p-rev{font-size:clamp(16px,5vw,24px)}
+
+  /* Future */
+  .future-sec{grid-template-columns:1fr}
+  .fut-l{padding:52px 20px;border-right:none;border-bottom:1px solid rgba(0,0,0,.12)}
+  .fut-r{padding:52px 20px}
+  .credits-t{font-size:clamp(44px,12vw,72px)}
+
+  /* Footer */
+  .footer-bar{flex-direction:column;gap:6px;padding:14px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cur" id="cur"></div>
+<div class="cur-t" id="curT"></div>
+
+<!-- TL Popup -->
+<div class="tlp" id="tlp">
+  <div class="tlp-y" id="tlp-y"></div>
+  <div class="tlp-t" id="tlp-t"></div>
+  <div class="tlp-b" id="tlp-b"></div>
+  <div class="tlp-tag" id="tlp-tag"></div>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-bar">
+    <div class="hero-lbl">Digital Agency — <span>Issue 001</span></div>
+    <div class="hero-lbl">1994 — 2025 · <span>30 лет истории</span></div>
+  </div>
+  <div class="hero-main">
+    <div class="hero-kick">История индустрии цифровой рекламы</div>
+    <div class="hero-h">30 ЛЕТ<br><em>DIGITAL</em><br>РЕКЛАМЫ</div>
+    <div class="hero-grid">
+      <div class="hero-cell"><div class="hero-cell-n">$725B</div><div class="hero-cell-l">объём рынка digital в 2024</div></div>
+      <div class="hero-cell"><div class="hero-cell-n">44%</div><div class="hero-cell-l">CTR первого баннера AT&T</div></div>
+      <div class="hero-cell"><div class="hero-cell-n">100мс</div><div class="hero-cell-l">длится RTB-аукцион за показ</div></div>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="scroll-hint"><div class="s-line"></div>Скролл — читать дальше</div>
+    <div class="hero-lbl">Hover на карточки · игра внутри</div>
+  </div>
+</section>
+
+<!-- ═══════════ TICKER ═══════════ -->
+<div class="scroll-ticker">
+  <div class="ticker-inner">
+    <span class="t-item"><em>1994</em> — Первый баннер</span>
+    <span class="t-item"><em>CTR 44%</em> — AT&T на HotWired</span>
+    <span class="t-item"><em>2000</em> — Google AdWords</span>
+    <span class="t-item"><em>PPC</em> — pay per click</span>
+    <span class="t-item"><em>2007</em> — Facebook Ads</span>
+    <span class="t-item"><em>$134B</em> — Meta 2023</span>
+    <span class="t-item"><em>2012</em> — Programmatic RTB</span>
+    <span class="t-item"><em>100мс</em> — один аукцион</span>
+    <span class="t-item"><em>90%</em> — display через programmatic</span>
+    <span class="t-item"><em>2024</em> — AI-генерация</span>
+    <span class="t-item"><em>Cookieless</em> — новая эпоха</span>
+    <span class="t-item"><em>$725B</em> — рынок 2024</span>
+    <!-- repeat for seamless loop -->
+    <span class="t-item"><em>1994</em> — Первый баннер</span>
+    <span class="t-item"><em>CTR 44%</em> — AT&T на HotWired</span>
+    <span class="t-item"><em>2000</em> — Google AdWords</span>
+    <span class="t-item"><em>PPC</em> — pay per click</span>
+    <span class="t-item"><em>2007</em> — Facebook Ads</span>
+    <span class="t-item"><em>$134B</em> — Meta 2023</span>
+    <span class="t-item"><em>2012</em> — Programmatic RTB</span>
+    <span class="t-item"><em>100мс</em> — один аукцион</span>
+    <span class="t-item"><em>90%</em> — display через programmatic</span>
+    <span class="t-item"><em>2024</em> — AI-генерация</span>
+    <span class="t-item"><em>Cookieless</em> — новая эпоха</span>
+    <span class="t-item"><em>$725B</em> — рынок 2024</span>
+  </div>
+</div>
+
+<!-- ═══════════ INTRO SPLIT ═══════════ -->
+<div class="intro">
+  <div class="intro-l">
+    <div class="big-q rv"><em>С ЧЕГО</em><br>ВСЁ<br>НАЧАЛОСЬ</div>
+    <p class="body-t rv d1">До 1994 года реклама жила на бумаге, радио и телеэкранах. Интернет был уделом учёных и энтузиастов. Всё изменилось 27 октября, когда на сайте HotWired вышел первый рекламный баннер.</p>
+    <div class="pull rv d2">«Вы когда-нибудь кликали правой кнопкой мыши?»</div>
+    <p class="body-t rv d3">Заказчик — AT&T. Слоган: «Вы когда-нибудь кликали правой кнопкой?». CTR составил 44%. Сегодня средний CTR баннера — 0.1%. Мир не понял, что произошло. Но агентства почуяли деньги.</p>
+  </div>
+  <div class="intro-r">
+    <p class="body-t rv">Razorfish, AGENCY.COM, Organic — первые digital-агентства придумывали правила на ходу. Клиенты платили за сайты, а не за результат. Никакой аналитики, никаких KPI. Но рынок рос в 20 раз за 4 года.</p>
+    <p class="body-t rv d1">Dot-com пузырь 2001 года убил половину агентств. Выжили те, кто научился считать ROI. Именно тогда родилась профессия digital-стратега.</p>
+    <div class="mono rv d2" style="font-size:10px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-top:16px">1994 → Начало эпохи</div>
+  </div>
+</div>
+
+<!-- ═══════════ TIMELINE ═══════════ -->
+<section class="tl-sec">
+  <div class="sec-hdr rv">
+    <div><div class="kicker">Хронология · hover = детали</div><div class="sec-title">КАК ВСЁ<br>МЕНЯЛОСЬ</div></div>
+    <div class="sec-num">01</div>
+  </div>
+  <div class="tl-grid">
+    <div class="tl-c rv" data-y="1994" data-e="Первый баннер" data-b="27 октября AT&T разместил баннер 468×60 пикселей на HotWired. CTR — 44%. Этан Цукерман придумал pop-up рекламу и позже публично извинился за это." data-t="Display · HotWired · AT&T">
+      <div class="tl-y">1994</div><div class="tl-e">Первый баннер</div><div class="tl-d">AT&T. CTR 44%. Всё началось.</div>
+    </div>
+    <div class="tl-c rv d1" data-y="1995" data-e="DoubleClick" data-b="Первая централизованная ad-сеть. Агентства получили инструмент для управления кампаниями сразу на многих площадках. Начало эпохи ad tech." data-t="Ad Network · Display · Ad Tech">
+      <div class="tl-y">1995</div><div class="tl-e">DoubleClick</div><div class="tl-d">Первая ad-сеть. Централизованная закупка.</div>
+    </div>
+    <div class="tl-c rv d2" data-y="2000" data-e="Google AdWords" data-b="Pay-per-click перевернул логику рекламы. Платишь только за результат. Реклама впервые стала по-настоящему измеримой. Агентства срочно переучивали команды." data-t="PPC · Search · Google">
+      <div class="tl-y">2000</div><div class="tl-e">Google AdWords</div><div class="tl-d">PPC. Платишь только за клик.</div>
+    </div>
+    <div class="tl-c rv d3" data-y="2007" data-e="Facebook Ads" data-b="Таргетинг по интересам, демографии и поведению. Впервые бренд мог выбрать: женщины 25–34, Москва, йога. Революция персонализации. Агентства спешно нанимали SMM-специалистов." data-t="Social · Targeting · Meta">
+      <div class="tl-y">2007</div><div class="tl-e">Facebook Ads</div><div class="tl-d">Таргетинг по интересам. Революция.</div>
+    </div>
+    <div class="tl-c rv d4" data-y="2012" data-e="Programmatic RTB" data-b="Real-Time Bidding — аукцион за 100 миллисекунд. Пока страница грузится, десятки систем оценивают пользователя и делают ставки. Data Scientist стал важнее арт-директора." data-t="RTB · Programmatic · Data">
+      <div class="tl-y">2012</div><div class="tl-e">Programmatic RTB</div><div class="tl-d">100 мс аукцион за каждый показ.</div>
+    </div>
+    <div class="tl-c rv d5" data-y="2024" data-e="AI-реклама" data-b="Генеративный AI создаёт тысячи вариантов за секунды. Конец third-party cookies. Нейросети замещают копирайтеров и дизайнеров в A/B тестах. Начало новой эпохи." data-t="AI · Cookieless · Generative">
+      <div class="tl-y">2024</div><div class="tl-e">AI-реклама</div><div class="tl-d">Генеративный AI. Конец куков.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ STATS BAND ═══════════ -->
+<div class="sband">
+  <div class="sc rv"><div class="sc-n">$200B</div><div class="sc-l">выручка Google от рекламы 2023</div></div>
+  <div class="sc rv d1"><div class="sc-n">98%</div><div class="sc-l">выручки Meta приходит от рекламы</div></div>
+  <div class="sc rv d2"><div class="sc-n">42%</div><div class="sc-l">трафика блокирует adblock в Европе</div></div>
+  <div class="sc rv d3"><div class="sc-n">90%</div><div class="sc-l">display-закупок через programmatic</div></div>
+</div>
+
+<!-- ═══════════ AGENCIES ═══════════ -->
+<section class="ag-sec">
+  <div class="sec-hdr rv">
+    <div><div class="kicker">Пионеры индустрии · hover</div><div class="sec-title">АГЕНТСТВА<br>ИЗМЕНИВШИЕ<br>ВСЁ</div></div>
+    <div class="sec-num">02</div>
+  </div>
+  <div class="ag-grid">
+    <div class="ag-c rv">
+      <div class="ag-num">001</div>
+      <div class="ag-name">Razorfish</div>
+      <div class="ag-year">Осн. 1995 · Нью-Йорк</div>
+      <div class="ag-desc">Первое агентство, объединившее дизайн, код и стратегию под одной крышей. Манифест «Everything is Digital».</div>
+      <div class="ag-tag">Full-service · Pioneer</div>
+    </div>
+    <div class="ag-c rv d1">
+      <div class="ag-num">002</div>
+      <div class="ag-name">Wieden+Kennedy</div>
+      <div class="ag-year">Осн. 1982 · Портленд</div>
+      <div class="ag-desc">Nike Dream Crazy, Old Spice, Honda. Создали модель «агентство как творческая лаборатория».</div>
+      <div class="ag-tag">Creative · Culture</div>
+    </div>
+    <div class="ag-c rv d2">
+      <div class="ag-num">003</div>
+      <div class="ag-name">R/GA</div>
+      <div class="ag-year">Осн. 1977 · Нью-Йорк</div>
+      <div class="ag-desc">Nike+, Beats by Dre. Первыми придумали понятие «connected brand» — бренд как платформа.</div>
+      <div class="ag-tag">Tech-first · Platform</div>
+    </div>
+    <div class="ag-c rv d3">
+      <div class="ag-num">004</div>
+      <div class="ag-name">AKQA</div>
+      <div class="ag-year">Осн. 2001 · Лондон</div>
+      <div class="ag-desc">Jordan AR-дроп, Nike FuelBand app. Специализация — будущее взаимодействия бренда с аудиторией.</div>
+      <div class="ag-tag">Innovation · UX</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CASES ═══════════ -->
+<section class="cases-sec">
+  <div class="sec-hdr rv">
+    <div><div class="kicker">Hover — открыть кейс</div><div class="sec-title">КАМПАНИИ<br>ДЕСЯТИЛЕТИЯ</div></div>
+    <div class="sec-num">03</div>
+  </div>
+  <div class="c-grid">
+    <div class="cc rv">
+      <div class="cc-tag">W+K · Nike · 2018</div>
+      <div class="cc-title">Dream Crazy</div>
+      <div class="cc-teaser">Бренд поставил на поляризацию. Провокация как стратегия роста.</div>
+      <div class="cc-bgn">01</div>
+      <div class="cc-rev">
+        <div><div class="cc-rev-tag">W+K · Nike · 2018</div><div class="cc-rev-title">Dream Crazy</div><div class="cc-rev-body">«Верь во что-то. Даже если это значит пожертвовать всем». Каперник. Критики сжигали кроссовки — но продажи выросли на 31% за выходные после запуска кампании.</div></div>
+        <div class="cc-mets"><div><div class="cc-m-n">+31%</div><div class="cc-m-l">продажи</div></div><div><div class="cc-m-n">$6B</div><div class="cc-m-l">рост бренда</div></div><div><div class="cc-m-n">163M</div><div class="cc-m-l">упоминаний</div></div></div>
+      </div>
+    </div>
+    <div class="cc rv d1">
+      <div class="cc-tag">R/GA · Beats · 2014</div>
+      <div class="cc-title">The Game Before The Game</div>
+      <div class="cc-teaser">Вирусный фильм к ЧМ. Apple купила Beats за $3B.</div>
+      <div class="cc-bgn">02</div>
+      <div class="cc-rev">
+        <div><div class="cc-rev-tag">R/GA · Beats by Dre · 2014</div><div class="cc-rev-title">The Game Before The Game</div><div class="cc-rev-body">Эмоциональный фильм о ритуалах перед матчем. Звёзды футбола, музыка, настроение. 33 млн просмотров за 10 дней без единого доллара на медиа.</div></div>
+        <div class="cc-mets"><div><div class="cc-m-n">33M</div><div class="cc-m-l">просмотров</div></div><div><div class="cc-m-n">Gold</div><div class="cc-m-l">Cannes Lions</div></div></div>
+      </div>
+    </div>
+    <div class="cc rv d2">
+      <div class="cc-tag">AKQA · Jordan · 2019</div>
+      <div class="cc-title">AR-дроп в Instagram</div>
+      <div class="cc-teaser">Первая AR-примерка кроссовок в Stories.</div>
+      <div class="cc-bgn">03</div>
+      <div class="cc-rev">
+        <div><div class="cc-rev-tag">AKQA · Jordan Brand · 2019</div><div class="cc-rev-title">AR Drop</div><div class="cc-rev-body">Пользователи «примеряли» Air Jordan прямо в Instagram Stories. Первый дроп такого формата. Конверсия в 2.4 раза выше обычного баннера.</div></div>
+        <div class="cc-mets"><div><div class="cc-m-n">×2.4</div><div class="cc-m-l">конверсия</div></div><div><div class="cc-m-n">AR</div><div class="cc-m-l">первый дроп Nike</div></div></div>
+      </div>
+    </div>
+    <div class="cc rv d3">
+      <div class="cc-tag">W+K · Nike · 2012</div>
+      <div class="cc-title">Nike+ Fuelband</div>
+      <div class="cc-teaser">Трекер стал медиаплатформой. 18 млн человек.</div>
+      <div class="cc-bgn">04</div>
+      <div class="cc-rev">
+        <div><div class="cc-rev-tag">W+K · Nike · 2012</div><div class="cc-rev-title">Nike+ Fuelband</div><div class="cc-rev-body">Спортивный трекер превратился в глобальное сообщество. Данные, приложение, соцсети — единая экосистема. Nike перестал быть производителем и стал медиа.</div></div>
+        <div class="cc-mets"><div><div class="cc-m-n">+30%</div><div class="cc-m-l">продажи Running</div></div><div><div class="cc-m-n">18M</div><div class="cc-m-l">участников</div></div></div>
+      </div>
+    </div>
+    <div class="cc rv d4">
+      <div class="cc-tag">AGENCY.COM · BA · 1999</div>
+      <div class="cc-title">Сайт вместо колл-центра</div>
+      <div class="cc-teaser">40% бронирований онлайн. $60M экономии.</div>
+      <div class="cc-bgn">05</div>
+      <div class="cc-rev">
+        <div><div class="cc-rev-tag">AGENCY.COM · BA · 1999</div><div class="cc-rev-title">Digital vs Офлайн</div><div class="cc-rev-body">AGENCY.COM перевели 40% бронирований BA в онлайн. Первый крупный доказанный ROI digital против офлайна. До этого никто не умел считать эффективность сайта.</div></div>
+        <div class="cc-mets"><div><div class="cc-m-n">$60M</div><div class="cc-m-l">экономии/год</div></div><div><div class="cc-m-n">40%</div><div class="cc-m-l">бронирований онлайн</div></div></div>
+      </div>
+    </div>
+    <div class="cc rv d5">
+      <div class="cc-tag">Crispin · Burger King · 2004</div>
+      <div class="cc-title">Subservient Chicken</div>
+      <div class="cc-teaser">Персонаж делал всё что напишешь. Вирус до соцсетей.</div>
+      <div class="cc-bgn">06</div>
+      <div class="cc-rev">
+        <div><div class="cc-rev-tag">Crispin Porter · BK · 2004</div><div class="cc-rev-title">Subservient Chicken</div><div class="cc-rev-body">Сайт с человеком в костюме курицы, выполнявшим любые команды. 400+ действий по сценарию. Первый вирусный интерактивный бренд-опыт. Появился за 2 года до YouTube.</div></div>
+        <div class="cc-mets"><div><div class="cc-m-n">1B</div><div class="cc-m-l">визитов за год</div></div><div><div class="cc-m-n">+9%</div><div class="cc-m-l">продажи BK</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ QUOTE BREAK ═══════════ -->
+<div class="quote-break">
+  <div class="qb-line rv"></div>
+  <div>
+    <div class="qb-text rv d1">«В 2000-х ИНТЕРНЕТ-<em>РЕКЛАМА</em> БЫЛА ДИКОСТЬЮ.<br>В 2025-М — ОНА КОРМИТ ПОЛОВИНУ МЕДИА.»</div>
+    <div class="qb-src rv d2">— Digital Agency Zine · Issue 001 · 2025</div>
+  </div>
+</div>
+
+<!-- ═══════════ PLATFORMS ═══════════ -->
+<section class="plat-sec">
+  <div class="sec-hdr rv">
+    <div><div class="kicker">Выручка от рекламы · 2023</div><div class="sec-title">ПЛАТФОРМЫ<br>ЗАХВАТИЛИ<br>РЫНОК</div></div>
+    <div class="sec-num">04</div>
+  </div>
+  <div class="plat-list">
+    <div class="plat-row rv">
+      <div class="p-name">Google Ads</div>
+      <div class="p-sub">Search, Display, YouTube — доминирует с 2000. Изобрели PPC.</div>
+      <div class="p-rev">$237B</div>
+    </div>
+    <div class="plat-row rv d1">
+      <div class="p-name">Meta Ads</div>
+      <div class="p-sub">Facebook + Instagram. 98% выручки компании — реклама.</div>
+      <div class="p-rev">$134B</div>
+    </div>
+    <div class="plat-row rv d2">
+      <div class="p-name">Amazon Ads</div>
+      <div class="p-sub">Retail Media Network. Реклама внутри e-commerce.</div>
+      <div class="p-rev">$47B</div>
+    </div>
+    <div class="plat-row rv d3">
+      <div class="p-name">TikTok Ads</div>
+      <div class="p-sub">Быстрейший рост в истории. С нуля до $18B за 4 года.</div>
+      <div class="p-rev">$18B</div>
+    </div>
+    <div class="plat-row rv d4">
+      <div class="p-name">Twitter / X</div>
+      <div class="p-sub">Кризис с 2022. Бренды массово уходят после сделки Маска.</div>
+      <div class="p-rev" style="color:rgba(244,240,232,.2)">↓ $2.5B</div>
+    </div>
+    <div class="plat-row rv d5">
+      <div class="p-name">Spotify Ads</div>
+      <div class="p-sub">Audio + подкасты. Новый формат для брендов в эпоху streaming.</div>
+      <div class="p-rev">$1.7B</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     POPUP GAME
+═══════════════════════════════════ -->
+<section class="game-sec">
+  <div class="sec-hdr rv">
+    <div><div class="kicker">Мини-игра · закрывай поп-апы</div><div class="sec-title">INTERNET<br>NIGHTMARE<br>2003</div></div>
+    <div class="sec-num">05</div>
+  </div>
+
+  <div class="game-intro">
+    <div>
+      <p class="game-desc">Помнишь 2003 год? Открываешь сайт — и тебя атакуют десятки поп-апов. Каждый обещает миллион долларов, бесплатный iPhone или лечение облысения. Твоя задача — закрыть их все, пока не кончилось время.</p>
+    </div>
+    <div class="game-rules">
+      <div class="g-rule"><span class="g-rnum">1</span><span>Нажимай на красный <strong>✕</strong> чтобы закрыть поп-ап и получить очко</span></div>
+      <div class="g-rule"><span class="g-rnum">2</span><span>Нажимай на кнопки внутри — проигрываешь ход (ты нажал на рекламу!)</span></div>
+      <div class="g-rule"><span class="g-rnum">3</span><span>Не успел — поп-ап закроется сам, но время продолжает идти</span></div>
+      <div class="g-rule"><span class="g-rnum">4</span><span>30 секунд. Чем позже — тем быстрее появляются новые</span></div>
+    </div>
+  </div>
+
+  <!-- ARENA -->
+  <div class="arena" id="arena">
+    <div class="arena-bg"></div>
+    <div class="miss-fl" id="missFlash"></div>
+    <div class="t-wrap"><div class="t-bar" id="tBar" style="width:100%"></div></div>
+
+    <!-- HUD -->
+    <div class="hud">
+      <div class="hud-item"><div class="hud-lbl">Очки</div><div class="hud-val" id="hScore">0</div></div>
+      <div class="hud-item"><div class="hud-lbl">Промахи</div><div class="hud-val" id="hMiss">0</div></div>
+      <div class="hud-item"><div class="hud-lbl">Время</div><div class="hud-val" id="hTime">30</div></div>
+      <button class="g-btn out" id="btnPause" style="display:none" onclick="pauseGame()">Пауза</button>
+    </div>
+
+    <!-- Start overlay -->
+    <div class="g-ov" id="ovStart">
+      <div class="g-ov-title">INTERNET<br><em>NIGHTMARE</em><br>2003</div>
+      <div class="g-ov-body">Закрывай поп-апы нажатием на ✕.<br>Не нажимай на кнопки внутри — это ловушки!</div>
+      <button class="g-btn" id="btnStart">Начать игру</button>
+    </div>
+
+    <!-- Game over overlay -->
+    <div class="g-ov" id="ovOver" style="display:none">
+      <div class="g-ov-title">ВРЕМЯ<br><em>ВЫШЛО!</em></div>
+      <div class="g-scores">
+        <div class="g-si"><div class="g-si-n" id="gFinalScore">0</div><div class="g-si-l">Закрыто</div></div>
+        <div class="g-si"><div class="g-si-n" id="gFinalMiss">0</div><div class="g-si-l">Промахов</div></div>
+        <div class="g-si"><div class="g-si-n" id="gBest">0</div><div class="g-si-l">Рекорд</div></div>
+      </div>
+      <div class="g-grade" id="gGrade"></div>
+      <div style="display:flex;gap:12px">
+        <button class="g-btn" id="btnRestart">Ещё раз</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FUTURE ═══════════ -->
+<section class="future-sec">
+  <div class="fut-l">
+    <div>
+      <div class="kicker rv" style="color:rgba(0,0,0,.4)">Что дальше</div>
+      <div class="fut-title rv d1">БУДУЩЕЕ<br>DIGITAL-<br>АГЕНТСТВ</div>
+    </div>
+    <div class="fut-items">
+      <div class="fi rv d1"><div class="fi-n">01</div><div><div class="fi-name">AI-генерация креатива</div><div class="fi-desc">LLM и image-gen создают тысячи вариантов объявлений. Скорость ×100, стоимость ÷10.</div></div></div>
+      <div class="fi rv d2"><div class="fi-n">02</div><div><div class="fi-name">Cookieless world</div><div class="fi-desc">После отказа от third-party cookies — эпоха first-party data стратегий.</div></div></div>
+      <div class="fi rv d3"><div class="fi-n">03</div><div><div class="fi-name">Retail Media Networks</div><div class="fi-desc">Amazon, Wildberries, Ozon — ритейлеры сами стали рекламными платформами.</div></div></div>
+      <div class="fi rv d4"><div class="fi-n">04</div><div><div class="fi-name">Этика и прозрачность</div><div class="fi-desc">GDPR, регуляция алгоритмов, права пользователей. Индустрия взрослеет.</div></div></div>
+    </div>
+  </div>
+  <div class="fut-r">
+    <div>
+      <div class="credits-t rv">DIGITAL<br>AGENCY<br>ZINE</div>
+      <div>
+        <div class="cr-line rv d1">История <span>1994 — 2025</span></div>
+        <div class="cr-line rv d2">Кейсы <span>Nike · Beats · Jordan · BK</span></div>
+        <div class="cr-line rv d3">Агентства <span>W+K · R/GA · AKQA</span></div>
+        <div class="cr-line rv d4">Игра <span>Internet Nightmare 2003</span></div>
+        <div class="cr-line rv d5">Формат <span>Веб-плакат · Адаптив</span></div>
+      </div>
+    </div>
+    <div class="mono rv" style="font-size:10px;letter-spacing:.3em;color:var(--dim);text-transform:uppercase">— END OF ISSUE 001 —</div>
+  </div>
+</section>
+<div class="footer-bar">
+  <p>DIGITAL AGENCY ZINE — ISSUE 001 — 2025</p>
+  <p>История · Кейсы · Данные · Игра</p>
+</div>
+
+<script>
+// ── CURSOR ──
+const cur = document.getElementById('cur');
+const curT = document.getElementById('curT');
+let mx=0, my=0;
+document.addEventListener('mousemove', e => {
+  mx=e.clientX; my=e.clientY;
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+  setTimeout(()=>{ curT.style.left=mx+'px'; curT.style.top=my+'px'; }, 80);
+});
+document.querySelectorAll('.tl-c,.cc,.sc,.ag-c,.plat-row,.fi,.g-btn').forEach(el => {
+  el.addEventListener('mouseenter', ()=>cur.classList.add('big'));
+  el.addEventListener('mouseleave', ()=>cur.classList.remove('big'));
+});
+
+// ── TL POPUP ──
+const tlp = document.getElementById('tlp');
+document.querySelectorAll('.tl-c').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    document.getElementById('tlp-y').textContent = card.dataset.y;
+    document.getElementById('tlp-t').textContent = card.dataset.e;
+    document.getElementById('tlp-b').textContent = card.dataset.b;
+    document.getElementById('tlp-tag').textContent = card.dataset.t;
+    tlp.classList.add('on');
+  });
+  card.addEventListener('mousemove', e => {
+    let x=e.clientX+20, y=e.clientY+20;
+    if(x+330>window.innerWidth) x=e.clientX-330;
+    if(y+220>window.innerHeight) y=e.clientY-230;
+    tlp.style.left=x+'px'; tlp.style.top=y+'px';
+  });
+  card.addEventListener('mouseleave', ()=>tlp.classList.remove('on'));
+});
+
+// ── CASES MOBILE ──
+document.querySelectorAll('.cc').forEach(c => {
+  c.addEventListener('click', ()=>{ if(window.innerWidth<=640) c.classList.toggle('op'); });
+});
+
+// ── SCROLL REVEAL ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+// ════════════════════════════════════
+// POPUP GAME
+// ════════════════════════════════════
+const DURATION = 30;
+const POPUP_DATA = [
+  { bar:'Реклама 1998', body:'Нажмите ЗДЕСЬ и получите бесплатный интернет навсегда!', cta:'ПОЛУЧИТЬ' },
+  { bar:'Вы победитель!', body:'Вы — 1 000 000-й посетитель! Заберите свой приз прямо сейчас.', cta:'ЗАБРАТЬ ПРИЗ' },
+  { bar:'Вирус найден!', body:'Ваш компьютер заражён 3 вирусами. Скачайте антивирус!', cta:'СКАЧАТЬ' },
+  { bar:'Горячие скидки!', body:'Купи 2 телевизора — получи 3-й в подарок! Только сегодня!', cta:'КУПИТЬ' },
+  { bar:'Вы выбраны!', body:'Заполните форму и выиграйте новый iPhone уже сейчас!', cta:'ВЫИГРАТЬ' },
+  { bar:'Срочно!', body:'Ваш аккаунт будет заблокирован через 5 минут! Действуйте!', cta:'РАЗБЛОКИРОВАТЬ' },
+  { bar:'Flash Player', body:'Обновите Flash Player для продолжения просмотра видео!', cta:'ОБНОВИТЬ' },
+  { bar:'Знакомства', body:'Одинокие люди рядом с вами ищут общения прямо сейчас!', cta:'СМОТРЕТЬ' },
+  { bar:'Бесплатно!', body:'Скачайте 1000 рингтонов АБСОЛЮТНО БЕСПЛАТНО для Nokia!', cta:'СКАЧАТЬ' },
+  { bar:'Поздравляем!', body:'Вы выиграли круиз на Карибы! Нажмите чтобы узнать детали.', cta:'УЗНАТЬ' },
+  { bar:'Ваш IQ', body:'Проверьте свой IQ! Результаты шокируют. Жмите немедленно!', cta:'ПРОВЕРИТЬ' },
+  { bar:'AdWords 2000', body:'Разместите рекламу в Google — всего 1 цент за клик!', cta:'РАЗМЕСТИТЬ' },
+];
+
+let state = 'idle';
+let score = 0, misses = 0, timeLeft = DURATION, best = 0;
+let timerInt = null, spawnTmt = null;
+
+const arena = document.getElementById('arena');
+const missFlash = document.getElementById('missFlash');
+const tBar = document.getElementById('tBar');
+const hScore = document.getElementById('hScore');
+const hMiss = document.getElementById('hMiss');
+const hTime = document.getElementById('hTime');
+const ovStart = document.getElementById('ovStart');
+const ovOver = document.getElementById('ovOver');
+
+function startGame() {
+  score=0; misses=0; timeLeft=DURATION; state='playing';
+  ovStart.style.display='none'; ovOver.style.display='none';
+  arena.querySelectorAll('.fp').forEach(p=>p.remove());
+  arena.querySelectorAll('.s-pop').forEach(p=>p.remove());
+  tBar.style.width='100%'; tBar.style.background='var(--accent)';
+  document.getElementById('btnPause').style.display='inline-block';
+  updateHUD();
+
+  timerInt = setInterval(()=>{
+    timeLeft -= 0.1;
+    const pct = Math.max(0, timeLeft/DURATION*100);
+    tBar.style.width = pct+'%';
+    if(timeLeft<=8) tBar.style.background='#ff3300';
+    hTime.textContent = Math.ceil(Math.max(0,timeLeft));
+    if(timeLeft<=0) endGame();
+  }, 100);
+
+  spawnNext(1600);
+}
+
+function spawnNext(delay) {
+  if(state!=='playing') return;
+  spawnTmt = setTimeout(()=>{
+    if(state!=='playing') return;
+    spawnPopup();
+    const elapsed = DURATION - timeLeft;
+    const nd = Math.max(500, 1600 - elapsed*38);
+    spawnNext(nd);
+  }, delay);
+}
+
+function spawnPopup() {
+  const W = arena.offsetWidth, H = arena.offsetHeight;
+  const pw = Math.min(206, W - 24), ph=148, hudH=54;
+  const x = Math.random()*(W-pw-16)+8;
+  const y = Math.random()*(H-ph-hudH-16)+hudH+8;
+  const d = POPUP_DATA[Math.floor(Math.random()*POPUP_DATA.length)];
+
+  const p = document.createElement('div');
+  p.className='fp';
+  p.style.left=x+'px'; p.style.top=y+'px';
+  p.style.width=pw+'px';
+  p.innerHTML=`
+    <div class="fp-bar">
+      <span class="fp-bar-t">${d.bar}</span>
+      <span class="fp-x">✕</span>
+    </div>
+    <div class="fp-body">${d.body}</div>
+    <button class="fp-cta">${d.cta}</button>
+  `;
+
+  // ✕ = correct close
+  p.querySelector('.fp-x').addEventListener('click', e=>{
+    e.stopPropagation();
+    if(state!=='playing') return;
+    killPopup(p, true, x, y);
+  });
+  // CTA = miss
+  p.querySelector('.fp-cta').addEventListener('click', e=>{
+    e.stopPropagation();
+    if(state!=='playing') return;
+    registerMiss();
+    p.classList.remove('shake'); void p.offsetWidth; p.classList.add('shake');
+  });
+  // Body click = miss
+  p.addEventListener('click', ()=>{
+    if(state!=='playing') return;
+    registerMiss();
+    p.classList.remove('shake'); void p.offsetWidth; p.classList.add('shake');
+  });
+
+  arena.appendChild(p);
+
+  // Auto-escape after 4.5-7s
+  p._esc = setTimeout(()=>{
+    if(p.parentNode && state==='playing') {
+      p.classList.add('dying');
+      setTimeout(()=>{ if(p.parentNode) p.remove(); }, 200);
+    }
+  }, 4500 + Math.random()*2500);
+}
+
+function killPopup(p, scored, x, y) {
+  clearTimeout(p._esc);
+  p.classList.add('dying');
+  if(scored){
+    score++;
+    updateHUD();
+    const sp = document.createElement('div');
+    sp.className='s-pop';
+    sp.textContent='+1';
+    sp.style.left=(x+80)+'px';
+    sp.style.top=(y+16)+'px';
+    arena.appendChild(sp);
+    setTimeout(()=>sp.remove(), 680);
+  }
+  setTimeout(()=>{ if(p.parentNode) p.remove(); }, 200);
+}
+
+function registerMiss(){
+  misses++;
+  updateHUD();
+  missFlash.classList.add('on');
+  setTimeout(()=>missFlash.classList.remove('on'), 180);
+}
+
+function updateHUD(){
+  hScore.textContent=score;
+  hMiss.textContent=misses;
+  hMiss.className='hud-val'+(misses>4?' red':'');
+}
+
+function pauseGame(){
+  if(state==='playing'){
+    state='paused';
+    clearInterval(timerInt); clearTimeout(spawnTmt);
+    document.getElementById('btnPause').textContent='Продолжить';
+  } else if(state==='paused'){
+    state='playing';
+    document.getElementById('btnPause').textContent='Пауза';
+    timerInt=setInterval(()=>{
+      timeLeft-=0.1;
+      tBar.style.width=Math.max(0,timeLeft/DURATION*100)+'%';
+      if(timeLeft<=8) tBar.style.background='#ff3300';
+      hTime.textContent=Math.ceil(Math.max(0,timeLeft));
+      if(timeLeft<=0) endGame();
+    },100);
+    const elapsed=DURATION-timeLeft;
+    spawnNext(Math.max(500,1600-elapsed*38));
+  }
+}
+
+function endGame(){
+  state='over';
+  clearInterval(timerInt); clearTimeout(spawnTmt);
+  arena.querySelectorAll('.fp').forEach(p=>{ clearTimeout(p._esc); p.remove(); });
+  if(score>best) best=score;
+  document.getElementById('btnPause').style.display='none';
+  document.getElementById('gFinalScore').textContent=score;
+  document.getElementById('gFinalMiss').textContent=misses;
+  document.getElementById('gBest').textContent=best;
+  const grades=[
+    [22,'Легенда! Ты закрывал поп-апы быстрее любого антивируса 2003 года.'],
+    [15,'Отлично! В 2000-х ты бы выжил без единого вируса.'],
+    [8,'Неплохо. Но пару троянов ты бы всё-таки поймал.'],
+    [0,'В 2003-м твой компьютер был бы полон malware уже через 10 минут.'],
+  ];
+  document.getElementById('gGrade').textContent = grades.find(g=>score>=g[0])[1];
+  tBar.style.width='0%';
+  ovOver.style.display='flex';
+}
+
+document.getElementById('btnStart').addEventListener('click', startGame);
+document.getElementById('btnRestart').addEventListener('click', startGame);
+</script>
+</body>
+</html>
