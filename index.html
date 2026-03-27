@@ -6,25 +6,25 @@
   <title>30 лет Digital-рекламы</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-/* ══ RESET ══ */
+/*RESET */
 :root{--ink:#0a0a0a;--paper:#f4f0e8;--accent:#e8412a;--dim:#7a7060;--mid:#c8c0b0}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);overflow-x:hidden}
 
-/* ══ CURSOR ══ */
+/*CURSOR*/
 .cur,.cur-t{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
 .cur{width:8px;height:8px;background:var(--accent);transition:width .18s,height .18s}
 .cur.big{width:44px;height:44px;background:transparent;border:1.5px solid var(--accent)}
 .cur-t{width:26px;height:26px;border:1px solid rgba(232,65,42,.22);transition:left .09s,top .09s}
 
-/* ══ REVEAL ══ */
+/*REVEAL */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
 .rv.on{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 .d4{transition-delay:.4s}.d5{transition-delay:.5s}
 
-/* ══ SHARED ══ */
+/*SHARED*/
 .kicker{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.35em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;font-weight:500}
 .sec-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(46px,7vw,86px);line-height:.9;color:var(--paper)}
 .sec-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;padding-bottom:28px;border-bottom:1px solid #1e1e1e}
@@ -32,7 +32,7 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
 .body-t{font-size:14px;font-weight:300;line-height:1.8;color:var(--dim)}
 .mono{font-family:'Montserrat',sans-serif;font-weight:400}
 
-/* ══ HERO ══ */
+/* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column}
 .hero-bar{display:flex;justify-content:space-between;align-items:center;padding:26px 60px;border-bottom:1px solid #1e1e1e}
 .hero-lbl{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.25em;color:var(--dim);text-transform:uppercase;font-weight:400}
@@ -51,7 +51,7 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
 @keyframes sl{0%,100%{width:40px;opacity:1}50%{width:80px;opacity:.4}}
 @keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 
-/* ══ INTRO SPLIT ══ */
+/* INTRO SPLIT */
 .intro{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #1e1e1e}
 .intro-l{padding:100px 60px;border-right:1px solid #1e1e1e}
 .intro-r{padding:100px 60px;display:flex;flex-direction:column;justify-content:flex-end;gap:20px}
@@ -59,7 +59,7 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
 .big-q em{color:var(--accent);font-style:normal}
 .pull{font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,2.8vw,34px);line-height:1.1;color:var(--accent);border-left:3px solid var(--accent);padding-left:18px;margin:20px 0}
 
-/* ══ TIMELINE ══ */
+/* TIMELINE */
 .tl-sec{padding:120px 60px}
 .tl-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:2px}
 .tl-c{background:#111;padding:28px 22px;cursor:none;transition:background .3s;border-top:2px solid transparent}
@@ -76,14 +76,14 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
 .tlp-b{font-size:12px;font-weight:300;line-height:1.7;color:#3a3530}
 .tlp-tag{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-top:14px;font-weight:500}
 
-/* ══ STATS BAND ══ */
+/* STATS BAND  */
 .sband{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(0,0,0,.2)}
 .sc{background:var(--accent);padding:52px 44px;cursor:none;transition:background .3s}
 .sc:hover{background:#d03020}
 .sc-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,6vw,70px);color:var(--ink);line-height:1}
 .sc-l{font-family:'Montserrat',sans-serif;font-size:8px;color:rgba(0,0,0,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:8px;line-height:1.5;font-weight:400}
 
-/* ══ AGENCIES ══ */
+/* AGENCIES */
 .ag-sec{padding:120px 60px;background:var(--paper);color:var(--ink)}
 .ag-sec .sec-title{color:var(--ink)}
 .ag-sec .sec-num{color:rgba(0,0,0,.05)}
@@ -99,7 +99,7 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
 .ag-desc{font-size:12px;font-weight:300;line-height:1.65;color:#3a3530;transition:color .3s}
 .ag-tag{display:inline-block;margin-top:12px;font-family:'Montserrat',sans-serif;font-size:8px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
 
-/* ══ CASES ══ */
+/* CASES */
 .cases-sec{padding:120px 60px}
 .c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#1a1a1a}
 .cc{background:#111;padding:38px 34px;cursor:none;position:relative;overflow:hidden;min-height:290px}
@@ -116,14 +116,14 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
 .cc-m-n{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--ink);line-height:1}
 .cc-m-l{font-family:'Montserrat',sans-serif;font-size:8px;color:rgba(0,0,0,.45);text-transform:uppercase;margin-top:2px;font-weight:500}
 
-/* ══ QUOTE BREAK ══ */
+/* QUOTE BREAK */
 .quote-break{padding:100px 60px;display:grid;grid-template-columns:80px 1fr;gap:40px;align-items:start;border-top:1px solid #1e1e1e;border-bottom:1px solid #1e1e1e}
 .qb-line{width:2px;height:100%;background:var(--accent);margin-top:8px}
 .qb-text{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(36px,5vw,70px);line-height:1;color:var(--paper)}
 .qb-text em{color:var(--accent);font-style:normal}
 .qb-src{font-family:'Montserrat',sans-serif;font-size:9px;color:var(--dim);letter-spacing:.18em;text-transform:uppercase;margin-top:18px;font-weight:400}
 
-/* ══ PLATFORMS ══ */
+/* PLATFORMS */
 .plat-sec{padding:120px 60px}
 .plat-list{display:flex;flex-direction:column}
 .plat-row{display:grid;grid-template-columns:180px 1fr auto;align-items:center;padding:18px 0;border-bottom:1px solid #1e1e1e;gap:36px;cursor:none;transition:padding-left .3s}
@@ -133,9 +133,7 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
 .p-sub{font-size:11px;font-weight:300;color:var(--dim);line-height:1.5;font-family:'Montserrat',sans-serif}
 .p-rev{font-family:'Bebas Neue',sans-serif;font-size:clamp(18px,2.6vw,32px);color:var(--accent);white-space:nowrap}
 
-/* ══════════════════════════════════════
-   POPUP GAME
-══════════════════════════════════════ */
+/* POPUP GAME*/
 .game-sec{padding:120px 60px;background:var(--paper);color:var(--ink)}
 .game-sec .sec-title{color:var(--ink)}
 .game-sec .sec-num{color:rgba(0,0,0,.05)}
@@ -282,8 +280,9 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
   /* Hero */
   .hero-bar{padding:14px 20px;flex-wrap:wrap;gap:6px}
   .hero-main{padding:36px 20px}
-  .hero-h{font-size:clamp(60px,18vw,96px);line-height:.88}
+  .hero-h{font-size:clamp(52px,15vw,82px);line-height:.88}
   .hero-grid{grid-template-columns:1fr 1fr}
+  .hero-cell:last-child{grid-column: 1 / -1}
   .hero-cell{padding:18px 16px}
   .hero-cell-n{font-size:32px}
   .hero-foot{padding:14px 20px;flex-direction:column;align-items:flex-start;gap:8px}
@@ -377,8 +376,8 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
     <div class="hero-h">30 ЛЕТ<br><em>DIGITAL</em><br>РЕКЛАМЫ</div>
     <div class="hero-grid">
       <div class="hero-cell"><div class="hero-cell-n">$725B</div><div class="hero-cell-l">объём рынка digital в 2024</div></div>
-      <div class="hero-cell"><div class="hero-cell-n">44%</div><div class="hero-cell-l">CTR первого баннера AT&T</div></div>
-      <div class="hero-cell"><div class="hero-cell-n">100мс</div><div class="hero-cell-l">длится RTB-аукцион за показ</div></div>
+      <div class="hero-cell"><div class="hero-cell-n">44%</div><div class="hero-cell-l">кликабельность первого баннера AT&T</div></div>
+      <div class="hero-cell"><div class="hero-cell-n">100мс</div><div class="hero-cell-l">длится аукцион за один показ</div></div>
     </div>
   </div>
   <div class="hero-foot">
@@ -391,29 +390,29 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
 <div class="scroll-ticker">
   <div class="ticker-inner">
     <span class="t-item"><em>1994</em> — Первый баннер</span>
-    <span class="t-item"><em>CTR 44%</em> — AT&T на HotWired</span>
+    <span class="t-item"><em>44%</em> — кликабельность AT&T</span>
     <span class="t-item"><em>2000</em> — Google AdWords</span>
-    <span class="t-item"><em>PPC</em> — pay per click</span>
-    <span class="t-item"><em>2007</em> — Facebook Ads</span>
-    <span class="t-item"><em>$134B</em> — Meta 2023</span>
-    <span class="t-item"><em>2012</em> — Programmatic RTB</span>
+    <span class="t-item"><em>Оплата за клик</em> — новая модель</span>
+    <span class="t-item"><em>2007</em> — Реклама в соцсетях</span>
+    <span class="t-item"><em>$134B</em> — выручка Meta 2023</span>
+    <span class="t-item"><em>2012</em> — Автоматизированные торги</span>
     <span class="t-item"><em>100мс</em> — один аукцион</span>
-    <span class="t-item"><em>90%</em> — display через programmatic</span>
-    <span class="t-item"><em>2024</em> — AI-генерация</span>
-    <span class="t-item"><em>Cookieless</em> — новая эпоха</span>
+    <span class="t-item"><em>90%</em> — закупок через автоторги</span>
+    <span class="t-item"><em>2024</em> — ИИ-генерация рекламы</span>
+    <span class="t-item"><em>Без куков</em> — новая эпоха</span>
     <span class="t-item"><em>$725B</em> — рынок 2024</span>
     <!-- repeat for seamless loop -->
     <span class="t-item"><em>1994</em> — Первый баннер</span>
-    <span class="t-item"><em>CTR 44%</em> — AT&T на HotWired</span>
+    <span class="t-item"><em>44%</em> — кликабельность AT&T</span>
     <span class="t-item"><em>2000</em> — Google AdWords</span>
-    <span class="t-item"><em>PPC</em> — pay per click</span>
-    <span class="t-item"><em>2007</em> — Facebook Ads</span>
-    <span class="t-item"><em>$134B</em> — Meta 2023</span>
-    <span class="t-item"><em>2012</em> — Programmatic RTB</span>
+    <span class="t-item"><em>Оплата за клик</em> — новая модель</span>
+    <span class="t-item"><em>2007</em> — Реклама в соцсетях</span>
+    <span class="t-item"><em>$134B</em> — выручка Meta 2023</span>
+    <span class="t-item"><em>2012</em> — Автоматизированные торги</span>
     <span class="t-item"><em>100мс</em> — один аукцион</span>
-    <span class="t-item"><em>90%</em> — display через programmatic</span>
-    <span class="t-item"><em>2024</em> — AI-генерация</span>
-    <span class="t-item"><em>Cookieless</em> — новая эпоха</span>
+    <span class="t-item"><em>90%</em> — закупок через автоторги</span>
+    <span class="t-item"><em>2024</em> — ИИ-генерация рекламы</span>
+    <span class="t-item"><em>Без куков</em> — новая эпоха</span>
     <span class="t-item"><em>$725B</em> — рынок 2024</span>
   </div>
 </div>
@@ -421,58 +420,58 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
 <!-- ═══════════ INTRO SPLIT ═══════════ -->
 <div class="intro">
   <div class="intro-l">
-    <div class="big-q rv"><em>С ЧЕГО</em><br>ВСЁ<br>НАЧАЛОСЬ</div>
-    <p class="body-t rv d1">До 1994 года реклама жила на бумаге, радио и телеэкранах. Интернет был уделом учёных и энтузиастов. Всё изменилось 27 октября, когда на сайте HotWired вышел первый рекламный баннер.</p>
+    <div class="big-q rv"><em>БАННЕР.</em><br>468×60<br>ПИКСЕЛЕЙ</div>
+    <p class="body-t rv d1">27 октября 1994 года AT&T разместил первый рекламный баннер на сайте HotWired. Размер — 468×60 пикселей. Кликабельность — 44%. Средняя кликабельность баннера сегодня — 0.1%.</p>
     <div class="pull rv d2">«Вы когда-нибудь кликали правой кнопкой мыши?»</div>
-    <p class="body-t rv d3">Заказчик — AT&T. Слоган: «Вы когда-нибудь кликали правой кнопкой?». CTR составил 44%. Сегодня средний CTR баннера — 0.1%. Мир не понял, что произошло. Но агентства почуяли деньги.</p>
+    <p class="body-t rv d3">Этан Цукерман изобрёл pop-up рекламу в 1990-х и позже публично извинился за это. Формат баннера 468×60 стал стандартом IAB и просуществовал без изменений почти 20 лет.</p>
   </div>
   <div class="intro-r">
-    <p class="body-t rv">Razorfish, AGENCY.COM, Organic — первые digital-агентства придумывали правила на ходу. Клиенты платили за сайты, а не за результат. Никакой аналитики, никаких KPI. Но рынок рос в 20 раз за 4 года.</p>
-    <p class="body-t rv d1">Dot-com пузырь 2001 года убил половину агентств. Выжили те, кто научился считать ROI. Именно тогда родилась профессия digital-стратега.</p>
-    <div class="mono rv d2" style="font-size:10px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-top:16px">1994 → Начало эпохи</div>
+    <p class="body-t rv">Первые цифровые агентства: Razorfish (1995), AGENCY.COM (1995), Organic (1993). Специализация — веб-разработка и баннерная реклама. Метрика успеха — количество сайтов, не окупаемость.</p>
+    <p class="body-t rv d1">Крах доткомов 2001 года: индекс NASDAQ упал на 78%. Агентства потеряли 50% клиентов. Выжившие переориентировались на измеримые результаты и рекламу с оплатой за результат.</p>
+    <div class="mono rv d2" style="font-size:10px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-top:16px">Формат · Контекст · Данные</div>
   </div>
 </div>
 
 <!-- ═══════════ TIMELINE ═══════════ -->
 <section class="tl-sec">
   <div class="sec-hdr rv">
-    <div><div class="kicker">Хронология · hover = детали</div><div class="sec-title">КАК ВСЁ<br>МЕНЯЛОСЬ</div></div>
+    <div><div class="kicker">Ключевые события · 1994—2024</div><div class="sec-title">DIGITAL<br>РЕКЛАМА<br>ПО ГОДАМ</div></div>
     <div class="sec-num">01</div>
   </div>
   <div class="tl-grid">
-    <div class="tl-c rv" data-y="1994" data-e="Первый баннер" data-b="27 октября AT&T разместил баннер 468×60 пикселей на HotWired. CTR — 44%. Этан Цукерман придумал pop-up рекламу и позже публично извинился за это." data-t="Display · HotWired · AT&T">
-      <div class="tl-y">1994</div><div class="tl-e">Первый баннер</div><div class="tl-d">AT&T. CTR 44%. Всё началось.</div>
+    <div class="tl-c rv" data-y="1994" data-e="Первый баннер" data-b="27 октября AT&T разместил баннер 468×60 пикселей на HotWired. Кликабельность — 44%. Этан Цукерман придумал всплывающую рекламу и позже публично извинился за это." data-t="Медийная реклама · HotWired · AT&T">
+      <div class="tl-y">1994</div><div class="tl-e">Первый баннер</div><div class="tl-d">AT&T. Кликабельность 44%.</div>
     </div>
-    <div class="tl-c rv d1" data-y="1995" data-e="DoubleClick" data-b="Первая централизованная ad-сеть. Агентства получили инструмент для управления кампаниями сразу на многих площадках. Начало эпохи ad tech." data-t="Ad Network · Display · Ad Tech">
-      <div class="tl-y">1995</div><div class="tl-e">DoubleClick</div><div class="tl-d">Первая ad-сеть. Централизованная закупка.</div>
+    <div class="tl-c rv d1" data-y="1995" data-e="DoubleClick" data-b="Первая централизованная рекламная сеть. Агентства получили инструмент для управления кампаниями сразу на многих площадках. Начало эпохи рекламных технологий." data-t="Рекламная сеть · Медийка · Технологии">
+      <div class="tl-y">1995</div><div class="tl-e">DoubleClick</div><div class="tl-d">Первая рекламная сеть. Централизованная закупка.</div>
     </div>
-    <div class="tl-c rv d2" data-y="2000" data-e="Google AdWords" data-b="Pay-per-click перевернул логику рекламы. Платишь только за результат. Реклама впервые стала по-настоящему измеримой. Агентства срочно переучивали команды." data-t="PPC · Search · Google">
-      <div class="tl-y">2000</div><div class="tl-e">Google AdWords</div><div class="tl-d">PPC. Платишь только за клик.</div>
+    <div class="tl-c rv d2" data-y="2000" data-e="Google AdWords" data-b="Оплата за клик перевернула логику рекламы. Платишь только за результат. Реклама впервые стала по-настоящему измеримой. Агентства срочно переучивали команды." data-t="Оплата за клик · Поиск · Google">
+      <div class="tl-y">2000</div><div class="tl-e">Google AdWords</div><div class="tl-d">Оплата за клик. Только за результат.</div>
     </div>
-    <div class="tl-c rv d3" data-y="2007" data-e="Facebook Ads" data-b="Таргетинг по интересам, демографии и поведению. Впервые бренд мог выбрать: женщины 25–34, Москва, йога. Революция персонализации. Агентства спешно нанимали SMM-специалистов." data-t="Social · Targeting · Meta">
-      <div class="tl-y">2007</div><div class="tl-e">Facebook Ads</div><div class="tl-d">Таргетинг по интересам. Революция.</div>
+    <div class="tl-c rv d3" data-y="2007" data-e="Реклама в Facebook" data-b="Таргетинг по интересам, демографии и поведению. Впервые бренд мог выбрать: женщины 25–34, Москва, йога. Революция персонализации. Агентства спешно нанимали специалистов по соцсетям." data-t="Соцсети · Таргетинг · Meta">
+      <div class="tl-y">2007</div><div class="tl-e">Реклама в Facebook</div><div class="tl-d">Таргетинг по интересам. Революция.</div>
     </div>
-    <div class="tl-c rv d4" data-y="2012" data-e="Programmatic RTB" data-b="Real-Time Bidding — аукцион за 100 миллисекунд. Пока страница грузится, десятки систем оценивают пользователя и делают ставки. Data Scientist стал важнее арт-директора." data-t="RTB · Programmatic · Data">
-      <div class="tl-y">2012</div><div class="tl-e">Programmatic RTB</div><div class="tl-d">100 мс аукцион за каждый показ.</div>
+    <div class="tl-c rv d4" data-y="2012" data-e="Автоматизированные торги" data-b="Торги в реальном времени — аукцион за 100 миллисекунд. Пока страница грузится, десятки систем оценивают пользователя и делают ставки. Специалист по данным стал важнее арт-директора." data-t="Автоторги · Реклама · Данные">
+      <div class="tl-y">2012</div><div class="tl-e">Автоматизированные торги</div><div class="tl-d">100 мс аукцион за каждый показ.</div>
     </div>
-    <div class="tl-c rv d5" data-y="2024" data-e="AI-реклама" data-b="Генеративный AI создаёт тысячи вариантов за секунды. Конец third-party cookies. Нейросети замещают копирайтеров и дизайнеров в A/B тестах. Начало новой эпохи." data-t="AI · Cookieless · Generative">
-      <div class="tl-y">2024</div><div class="tl-e">AI-реклама</div><div class="tl-d">Генеративный AI. Конец куков.</div>
+    <div class="tl-c rv d5" data-y="2024" data-e="ИИ-реклама" data-b="Генеративный искусственный интеллект создаёт тысячи вариантов за секунды. Конец сторонних файлов-идентификаторов. Нейросети замещают копирайтеров и дизайнеров в тестах." data-t="ИИ · Без куков · Генерация">
+      <div class="tl-y">2024</div><div class="tl-e">ИИ-реклама</div><div class="tl-d">Генеративный ИИ. Конец куков.</div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ STATS BAND ═══════════ -->
+<!-- STATS BAND  -->
 <div class="sband">
   <div class="sc rv"><div class="sc-n">$200B</div><div class="sc-l">выручка Google от рекламы 2023</div></div>
   <div class="sc rv d1"><div class="sc-n">98%</div><div class="sc-l">выручки Meta приходит от рекламы</div></div>
   <div class="sc rv d2"><div class="sc-n">42%</div><div class="sc-l">трафика блокирует adblock в Европе</div></div>
-  <div class="sc rv d3"><div class="sc-n">90%</div><div class="sc-l">display-закупок через programmatic</div></div>
+  <div class="sc rv d3"><div class="sc-n">90%</div><div class="sc-l">медийных закупок через автоматизированные торги</div></div>
 </div>
 
-<!-- ═══════════ AGENCIES ═══════════ -->
+<!--AGENCIES -->
 <section class="ag-sec">
   <div class="sec-hdr rv">
-    <div><div class="kicker">Пионеры индустрии · hover</div><div class="sec-title">АГЕНТСТВА<br>ИЗМЕНИВШИЕ<br>ВСЁ</div></div>
+    <div><div class="kicker">Профили агентств · наведи</div><div class="sec-title">ЗНАКОВЫЕ<br>АГЕНТСТВА<br>ИНДУСТРИИ</div></div>
     <div class="sec-num">02</div>
   </div>
   <div class="ag-grid">
@@ -507,10 +506,10 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
   </div>
 </section>
 
-<!-- ═══════════ CASES ═══════════ -->
+<!-- CASES -->
 <section class="cases-sec">
   <div class="sec-hdr rv">
-    <div><div class="kicker">Hover — открыть кейс</div><div class="sec-title">КАМПАНИИ<br>ДЕСЯТИЛЕТИЯ</div></div>
+    <div><div class="kicker">Разбор кейсов · наведи</div><div class="sec-title">ИЗБРАННЫЕ<br>КАМПАНИИ</div></div>
     <div class="sec-num">03</div>
   </div>
   <div class="c-grid">
@@ -560,7 +559,7 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
       <div class="cc-teaser">40% бронирований онлайн. $60M экономии.</div>
       <div class="cc-bgn">05</div>
       <div class="cc-rev">
-        <div><div class="cc-rev-tag">AGENCY.COM · BA · 1999</div><div class="cc-rev-title">Digital vs Офлайн</div><div class="cc-rev-body">AGENCY.COM перевели 40% бронирований BA в онлайн. Первый крупный доказанный ROI digital против офлайна. До этого никто не умел считать эффективность сайта.</div></div>
+        <div><div class="cc-rev-tag">AGENCY.COM · British Airways · 1999</div><div class="cc-rev-title">Цифровое против офлайна</div><div class="cc-rev-body">AGENCY.COM перевели 40% бронирований British Airways в онлайн. Первый крупный доказанный результат цифровой рекламы против офлайна. До этого никто не умел считать эффективность сайта.</div></div>
         <div class="cc-mets"><div><div class="cc-m-n">$60M</div><div class="cc-m-l">экономии/год</div></div><div><div class="cc-m-n">40%</div><div class="cc-m-l">бронирований онлайн</div></div></div>
       </div>
     </div>
@@ -577,50 +576,50 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
   </div>
 </section>
 
-<!-- ═══════════ QUOTE BREAK ═══════════ -->
+<!-- QUOTE BREAK -->
 <div class="quote-break">
   <div class="qb-line rv"></div>
   <div>
-    <div class="qb-text rv d1">«В 2000-х ИНТЕРНЕТ-<em>РЕКЛАМА</em> БЫЛА ДИКОСТЬЮ.<br>В 2025-М — ОНА КОРМИТ ПОЛОВИНУ МЕДИА.»</div>
-    <div class="qb-src rv d2">— Digital Agency Zine · Issue 001 · 2025</div>
+    <div class="qb-text rv d1">DIGITAL-РЕКЛАМА — <em>$725B</em> РЫНОК.<br>44% МИРОВОГО РЕКЛАМНОГО БЮДЖЕТА.</div>
+    <div class="qb-src rv d2">— Statista · GroupM · IAB · 2024</div>
   </div>
 </div>
 
 <!-- ═══════════ PLATFORMS ═══════════ -->
 <section class="plat-sec">
   <div class="sec-hdr rv">
-    <div><div class="kicker">Выручка от рекламы · 2023</div><div class="sec-title">ПЛАТФОРМЫ<br>ЗАХВАТИЛИ<br>РЫНОК</div></div>
+    <div><div class="kicker">Выручка от рекламы · 2023</div><div class="sec-title">РЕКЛАМНЫЕ<br>ПЛАТФОРМЫ</div></div>
     <div class="sec-num">04</div>
   </div>
   <div class="plat-list">
     <div class="plat-row rv">
       <div class="p-name">Google Ads</div>
-      <div class="p-sub">Search, Display, YouTube — доминирует с 2000. Изобрели PPC.</div>
+      <div class="p-sub">Search + Display + YouTube + DV360. Модель PPC с 2000 года.</div>
       <div class="p-rev">$237B</div>
     </div>
     <div class="plat-row rv d1">
       <div class="p-name">Meta Ads</div>
-      <div class="p-sub">Facebook + Instagram. 98% выручки компании — реклама.</div>
+      <div class="p-sub">Facebook + Instagram + партнёрская сеть. Таргетинг по интересам.</div>
       <div class="p-rev">$134B</div>
     </div>
     <div class="plat-row rv d2">
       <div class="p-name">Amazon Ads</div>
-      <div class="p-sub">Retail Media Network. Реклама внутри e-commerce.</div>
+      <div class="p-sub">Рекламная сеть ритейлера. Реклама внутри торговых площадок.</div>
       <div class="p-rev">$47B</div>
     </div>
     <div class="plat-row rv d3">
       <div class="p-name">TikTok Ads</div>
-      <div class="p-sub">Быстрейший рост в истории. С нуля до $18B за 4 года.</div>
+      <div class="p-sub">Короткое видео. Форматы: в ленте, на весь экран, захват бренда.</div>
       <div class="p-rev">$18B</div>
     </div>
     <div class="plat-row rv d4">
       <div class="p-name">Twitter / X</div>
-      <div class="p-sub">Кризис с 2022. Бренды массово уходят после сделки Маска.</div>
+      <div class="p-sub">Promoted Posts, Trend Takeover. Реструктуризация с 2022.</div>
       <div class="p-rev" style="color:rgba(244,240,232,.2)">↓ $2.5B</div>
     </div>
     <div class="plat-row rv d5">
       <div class="p-name">Spotify Ads</div>
-      <div class="p-sub">Audio + подкасты. Новый формат для брендов в эпоху streaming.</div>
+      <div class="p-sub">Audio + подкасты + видео. Programmatic через Spotify Ad Studio.</div>
       <div class="p-rev">$1.7B</div>
     </div>
   </div>
@@ -688,19 +687,19 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
 <section class="future-sec">
   <div class="fut-l">
     <div>
-      <div class="kicker rv" style="color:rgba(0,0,0,.4)">Что дальше</div>
-      <div class="fut-title rv d1">БУДУЩЕЕ<br>DIGITAL-<br>АГЕНТСТВ</div>
+      <div class="kicker rv" style="color:rgba(0,0,0,.4)">Тренды · 2025—2030</div>
+      <div class="fut-title rv d1">DIGITAL<br>РЕКЛАМА<br>2025+</div>
     </div>
     <div class="fut-items">
-      <div class="fi rv d1"><div class="fi-n">01</div><div><div class="fi-name">AI-генерация креатива</div><div class="fi-desc">LLM и image-gen создают тысячи вариантов объявлений. Скорость ×100, стоимость ÷10.</div></div></div>
-      <div class="fi rv d2"><div class="fi-n">02</div><div><div class="fi-name">Cookieless world</div><div class="fi-desc">После отказа от third-party cookies — эпоха first-party data стратегий.</div></div></div>
-      <div class="fi rv d3"><div class="fi-n">03</div><div><div class="fi-name">Retail Media Networks</div><div class="fi-desc">Amazon, Wildberries, Ozon — ритейлеры сами стали рекламными платформами.</div></div></div>
-      <div class="fi rv d4"><div class="fi-n">04</div><div><div class="fi-name">Этика и прозрачность</div><div class="fi-desc">GDPR, регуляция алгоритмов, права пользователей. Индустрия взрослеет.</div></div></div>
+      <div class="fi rv d1"><div class="fi-n">01</div><div><div class="fi-name">ИИ-генерация креатива</div><div class="fi-desc">Языковые модели и генераторы изображений в связке с тестами вариантов. Цикл производства сокращается с недель до часов.</div></div></div>
+      <div class="fi rv d2"><div class="fi-n">02</div><div><div class="fi-name">Таргетинг без куков</div><div class="fi-desc">Собственные данные, контекстный таргетинг, когортные модели. Инициатива Google по приватности с 2024 года.</div></div></div>
+      <div class="fi rv d3"><div class="fi-n">03</div><div><div class="fi-name">Реклама в торговых сетях</div><div class="fi-desc">Amazon, Ozon, Wildberries — ритейлеры как рекламные платформы со своими данными о покупках.</div></div></div>
+      <div class="fi rv d4"><div class="fi-n">04</div><div><div class="fi-name">Регуляция и маркировка</div><div class="fi-desc">Европейский закон о цифровых рынках, закон об ИИ. Обязательная маркировка рекламного контента.</div></div></div>
     </div>
   </div>
   <div class="fut-r">
     <div>
-      <div class="credits-t rv">DIGITAL<br>AGENCY<br>ZINE</div>
+      <div class="credits-t rv">DIGITAL<br>AGENCY<br>WEB-POSTER</div>
       <div>
         <div class="cr-line rv d1">История <span>1994 — 2025</span></div>
         <div class="cr-line rv d2">Кейсы <span>Nike · Beats · Jordan · BK</span></div>
@@ -713,7 +712,7 @@ body{background:var(--ink);font-family:'DM Sans',sans-serif;color:var(--paper);o
   </div>
 </section>
 <div class="footer-bar">
-  <p>DIGITAL AGENCY ZINE — ISSUE 001 — 2025</p>
+  <p>DIGITAL AGENCY WEB-POSTER — ISSUE 001 — 2025</p>
   <p>История · Кейсы · Данные · Игра</p>
 </div>
 
@@ -768,9 +767,9 @@ document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 const DURATION = 30;
 const POPUP_DATA = [
   { bar:'Реклама 1998', body:'Нажмите ЗДЕСЬ и получите бесплатный интернет навсегда!', cta:'ПОЛУЧИТЬ' },
-  { bar:'Вы победитель!', body:'Вы — 1 000 000-й посетитель! Заберите свой приз прямо сейчас.', cta:'ЗАБРАТЬ ПРИЗ' },
+  { bar:'Вы победитель!', body:'Вы - 1 000 000-й посетитель! Заберите свой приз прямо сейчас.', cta:'ЗАБРАТЬ ПРИЗ' },
   { bar:'Вирус найден!', body:'Ваш компьютер заражён 3 вирусами. Скачайте антивирус!', cta:'СКАЧАТЬ' },
-  { bar:'Горячие скидки!', body:'Купи 2 телевизора — получи 3-й в подарок! Только сегодня!', cta:'КУПИТЬ' },
+  { bar:'Горячие скидки!', body:'Купи 2 телевизора - получи 3-й в подарок! Только сегодня!', cta:'КУПИТЬ' },
   { bar:'Вы выбраны!', body:'Заполните форму и выиграйте новый iPhone уже сейчас!', cta:'ВЫИГРАТЬ' },
   { bar:'Срочно!', body:'Ваш аккаунт будет заблокирован через 5 минут! Действуйте!', cta:'РАЗБЛОКИРОВАТЬ' },
   { bar:'Flash Player', body:'Обновите Flash Player для продолжения просмотра видео!', cta:'ОБНОВИТЬ' },
@@ -778,7 +777,7 @@ const POPUP_DATA = [
   { bar:'Бесплатно!', body:'Скачайте 1000 рингтонов АБСОЛЮТНО БЕСПЛАТНО для Nokia!', cta:'СКАЧАТЬ' },
   { bar:'Поздравляем!', body:'Вы выиграли круиз на Карибы! Нажмите чтобы узнать детали.', cta:'УЗНАТЬ' },
   { bar:'Ваш IQ', body:'Проверьте свой IQ! Результаты шокируют. Жмите немедленно!', cta:'ПРОВЕРИТЬ' },
-  { bar:'AdWords 2000', body:'Разместите рекламу в Google — всего 1 цент за клик!', cta:'РАЗМЕСТИТЬ' },
+  { bar:'AdWords 2000', body:'Разместите рекламу в Google - всего 1 цент за клик!', cta:'РАЗМЕСТИТЬ' },
 ];
 
 let state = 'idle';
