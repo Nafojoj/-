@@ -7,6 +7,178 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { width: 800px; height: 1100px; overflow: hidden; background: #F4F1EA; }
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>WF — О нас</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Martian+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1440px; height:900px; overflow:hidden; background:#1A1A1A; font-family:'Montserrat',sans-serif; }
+.ph  { background:#2A2A2A; border-radius:3px; }
+.phl { background:#333;   border-radius:3px; }
+.phd { background:#222;   border-radius:3px; }
+.lbl { font-family:'Martian Mono',monospace; font-size:9px; color:rgba(255,255,255,0.22); letter-spacing:.1em; text-transform:uppercase; white-space:nowrap; }
+.badge { position:absolute; font-family:'Martian Mono',monospace; font-size:8px; color:rgba(255,255,255,0.28); background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); padding:2px 7px; border-radius:3px; letter-spacing:.07em; text-transform:uppercase; white-space:nowrap; }
+.rule { height:1px; background:rgba(255,255,255,0.06); }
+.page { width:1440px; height:900px; position:relative; overflow:hidden; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <div style="position:absolute;top:0;left:0;right:0;height:64px;background:#222;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;padding:0 80px;gap:48px">
+    <div class="ph" style="width:80px;height:14px"></div>
+    <div style="display:flex;gap:32px;margin-left:auto">
+      <div class="ph" style="width:56px;height:10px"></div>
+      <div class="ph" style="width:56px;height:10px"></div>
+      <div class="ph" style="width:56px;height:10px;opacity:.5"></div>
+      <div class="ph" style="width:56px;height:10px"></div>
+    </div>
+    <div class="ph" style="width:120px;height:36px;border-radius:4px;background:#555"></div>
+  </div>
+
+  <!-- LEFT COLUMN — Manifesto -->
+  <div style="position:absolute;top:64px;left:0;width:560px;bottom:0;background:#1E1E1E;border-right:1px solid rgba(255,255,255,0.06);padding:56px 64px;display:flex;flex-direction:column;gap:18px">
+    <div class="ph" style="width:120px;height:10px"></div>
+    <!-- H1 -->
+    <div class="phl" style="height:100px;border-radius:4px;position:relative">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)" class="lbl">H1 — Заголовок страницы</div>
+    </div>
+    <!-- Manifesto text -->
+    <div style="display:flex;flex-direction:column;gap:7px;margin-top:8px">
+      <div class="ph" style="height:11px;width:100%"></div>
+      <div class="ph" style="height:11px;width:95%"></div>
+      <div class="ph" style="height:11px;width:88%"></div>
+      <div class="ph" style="height:11px;width:92%"></div>
+    </div>
+    <div class="rule"></div>
+    <div style="display:flex;flex-direction:column;gap:7px">
+      <div class="ph" style="height:11px;width:100%"></div>
+      <div class="ph" style="height:11px;width:80%"></div>
+      <div class="ph" style="height:11px;width:90%"></div>
+    </div>
+
+    <!-- Values -->
+    <div class="rule" style="margin-top:8px"></div>
+    <div class="ph" style="width:80px;height:10px"></div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="phl" style="width:6px;height:6px;border-radius:50%;flex-shrink:0"></div>
+        <div class="ph" style="flex:1;height:11px"></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="ph" style="width:6px;height:6px;border-radius:50%;flex-shrink:0"></div>
+        <div class="ph" style="flex:1;height:11px"></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="ph" style="width:6px;height:6px;border-radius:50%;flex-shrink:0"></div>
+        <div class="ph" style="flex:1;height:11px"></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="ph" style="width:6px;height:6px;border-radius:50%;flex-shrink:0"></div>
+        <div class="ph" style="flex:1;height:11px"></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="ph" style="width:6px;height:6px;border-radius:50%;flex-shrink:0"></div>
+        <div class="ph" style="flex:1;height:11px"></div>
+      </div>
+    </div>
+
+    <div style="margin-top:auto">
+      <div class="ph" style="width:160px;height:44px;border-radius:4px;background:#444"></div>
+    </div>
+    <span class="badge" style="bottom:16px;left:64px">CTA — Вакансии</span>
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div style="position:absolute;top:64px;left:560px;right:0;bottom:0;padding:56px 80px;display:flex;flex-direction:column;gap:32px">
+
+    <!-- Stats 4-grid -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+      <div class="ph" style="height:72px;border-radius:6px;position:relative;border:1px solid rgba(255,255,255,0.06)">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)" class="lbl" style="font-size:8px">50+ клиентов</div>
+      </div>
+      <div class="ph" style="height:72px;border-radius:6px;position:relative;border:1px solid rgba(255,255,255,0.06)">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)" class="lbl" style="font-size:8px">5 лет</div>
+      </div>
+      <div class="ph" style="height:72px;border-radius:6px;position:relative;border:1px solid rgba(255,255,255,0.06)">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)" class="lbl" style="font-size:8px">×2.4</div>
+      </div>
+      <div class="ph" style="height:72px;border-radius:6px;position:relative;border:1px solid rgba(255,255,255,0.06)">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)" class="lbl" style="font-size:8px">−38%</div>
+      </div>
+    </div>
+    <span class="badge" style="top:120px;right:80px">Цифры компании</span>
+
+    <div style="height:1px;background:rgba(255,255,255,0.06)"></div>
+
+    <!-- Team heading -->
+    <div class="ph" style="width:100px;height:11px"></div>
+
+    <!-- Team cards 4 -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="phl" style="height:120px;border-radius:6px;position:relative">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)" class="lbl" style="font-size:8px;text-align:center">Фото</div>
+        </div>
+        <div class="ph" style="height:12px;width:80%"></div>
+        <div class="ph" style="height:9px;width:60%"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="ph" style="height:120px;border-radius:6px"></div>
+        <div class="ph" style="height:12px;width:75%"></div>
+        <div class="ph" style="height:9px;width:55%"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="ph" style="height:120px;border-radius:6px"></div>
+        <div class="ph" style="height:12px;width:80%"></div>
+        <div class="ph" style="height:9px;width:65%"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="ph" style="height:120px;border-radius:6px"></div>
+        <div class="ph" style="height:12px;width:70%"></div>
+        <div class="ph" style="height:9px;width:50%"></div>
+      </div>
+    </div>
+    <span class="badge" style="top:280px;right:80px">Команда — 4+ карточки</span>
+
+    <div style="height:1px;background:rgba(255,255,255,0.06)"></div>
+
+    <!-- Timeline -->
+    <div class="ph" style="width:80px;height:11px"></div>
+    <div style="display:flex;gap:0;position:relative">
+      <div style="position:absolute;top:6px;left:16px;right:16px;height:1px;background:rgba(255,255,255,0.1)"></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:flex-start;position:relative;z-index:1">
+        <div class="phl" style="width:14px;height:14px;border-radius:50%"></div>
+        <div class="ph" style="width:48px;height:8px"></div>
+        <div class="ph" style="width:64px;height:8px"></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:flex-start;position:relative;z-index:1">
+        <div class="ph" style="width:14px;height:14px;border-radius:50%"></div>
+        <div class="ph" style="width:44px;height:8px"></div>
+        <div class="ph" style="width:60px;height:8px"></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:flex-start;position:relative;z-index:1">
+        <div class="ph" style="width:14px;height:14px;border-radius:50%"></div>
+        <div class="ph" style="width:52px;height:8px"></div>
+        <div class="ph" style="width:68px;height:8px"></div>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:flex-start;position:relative;z-index:1">
+        <div class="ph" style="width:14px;height:14px;border-radius:50%"></div>
+        <div class="ph" style="width:40px;height:8px"></div>
+        <div class="ph" style="width:72px;height:8px"></div>
+      </div>
+    </div>
+    <span class="badge" style="bottom:40px;right:80px">История / Тайм-лайн</span>
+  </div>
+
+  <div class="badge" style="top:72px;left:80px">02 — О нас / About</div>
+</div>
+</body>
+</html>
 
 .poster {
   width: 800px;
