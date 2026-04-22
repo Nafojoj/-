@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>WF — Кейсы</title>
+<title>WF — Контакты</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Martian+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -13,6 +13,7 @@ body { width:1440px; height:900px; overflow:hidden; background:#1A1A1A; font-fam
 .badge { position:absolute; font-family:'Martian Mono',monospace; font-size:8px; color:rgba(255,255,255,0.28); background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); padding:2px 7px; border-radius:3px; letter-spacing:.07em; text-transform:uppercase; white-space:nowrap; }
 .page { width:1440px; height:900px; position:relative; overflow:hidden; }
 .center { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%); }
+.field { height:48px; background:#1E1E1E; border:1px solid rgba(255,255,255,0.08); border-radius:4px; }
 </style>
 </head>
 <body>
@@ -30,108 +31,145 @@ body { width:1440px; height:900px; overflow:hidden; background:#1A1A1A; font-fam
     <div class="ph" style="width:120px;height:36px;border-radius:4px;background:#555;margin-left:32px"></div>
   </div>
 
-  <!-- HEADER ROW -->
-  <div style="position:absolute;top:64px;left:80px;right:80px;height:80px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06)">
-    <div style="display:flex;flex-direction:column;gap:8px">
-      <div class="ph" style="width:80px;height:10px"></div>
-      <div class="phl" style="width:200px;height:28px;border-radius:4px"></div>
-    </div>
-    <!-- Filter pills -->
-    <div style="display:flex;gap:8px;align-items:center">
-      <div class="phl" style="width:48px;height:28px;border-radius:20px"></div>
-      <div class="ph" style="width:72px;height:28px;border-radius:20px"></div>
-      <div class="ph" style="width:60px;height:28px;border-radius:20px"></div>
-      <div class="ph" style="width:68px;height:28px;border-radius:20px"></div>
-      <div class="ph" style="width:56px;height:28px;border-radius:20px"></div>
-    </div>
-  </div>
-  <span class="badge" style="top:108px;right:80px">Фильтры по нишам</span>
+  <!-- LEFT PANEL — Info -->
+  <div style="position:absolute;top:64px;left:0;width:480px;bottom:0;background:#1E1E1E;border-right:1px solid rgba(255,255,255,0.06);padding:56px 64px;display:flex;flex-direction:column;gap:0">
 
-  <!-- FEATURED BIG CASE -->
-  <div style="position:absolute;top:164px;left:80px;right:80px;height:220px;background:#242424;border:1px solid rgba(255,255,255,0.07);border-radius:8px;border-left:4px solid #666;padding:32px;display:flex;gap:40px;align-items:stretch">
-    <!-- Left: image placeholder -->
-    <div class="phl" style="width:300px;height:100%;border-radius:6px;flex-shrink:0;position:relative">
-      <div class="center lbl" style="font-size:8px;text-align:center">Обложка кейса</div>
+    <div class="ph" style="width:80px;height:10px;margin-bottom:16px"></div>
+    <div class="phl" style="height:48px;width:100%;border-radius:4px;margin-bottom:24px;position:relative">
+      <div class="center lbl">H1 — Заголовок</div>
     </div>
-    <!-- Middle: content -->
-    <div style="flex:1;display:flex;flex-direction:column;gap:10px;justify-content:center">
+    <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:24px">
+      <div class="ph" style="height:11px;width:90%"></div>
+      <div class="ph" style="height:11px;width:75%"></div>
+    </div>
+
+    <div style="height:1px;background:rgba(255,255,255,0.06);margin-bottom:24px"></div>
+
+    <!-- Contact items -->
+    <div class="ph" style="width:80px;height:10px;margin-bottom:16px"></div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:14px;align-items:center">
+        <div class="phl" style="width:36px;height:36px;border-radius:6px;flex-shrink:0"></div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div class="ph" style="height:9px;width:48px"></div>
+          <div class="phl" style="height:12px;width:160px"></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center">
+        <div class="ph" style="width:36px;height:36px;border-radius:6px;flex-shrink:0"></div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div class="ph" style="height:9px;width:48px"></div>
+          <div class="phl" style="height:12px;width:140px"></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center">
+        <div class="ph" style="width:36px;height:36px;border-radius:6px;flex-shrink:0"></div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div class="ph" style="height:9px;width:48px"></div>
+          <div class="phl" style="height:12px;width:120px"></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center">
+        <div class="ph" style="width:36px;height:36px;border-radius:6px;flex-shrink:0"></div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div class="ph" style="height:9px;width:48px"></div>
+          <div class="phl" style="height:12px;width:100px"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:1px;background:rgba(255,255,255,0.06);margin:28px 0"></div>
+
+    <!-- Trust badges -->
+    <div class="ph" style="width:120px;height:10px;margin-bottom:16px"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="ph" style="height:64px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);position:relative">
+        <div class="center lbl" style="font-size:7px;text-align:center">Ответим за 1 день</div>
+      </div>
+      <div class="ph" style="height:64px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);position:relative">
+        <div class="center lbl" style="font-size:7px;text-align:center">50+ клиентов</div>
+      </div>
+      <div class="ph" style="height:64px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);position:relative">
+        <div class="center lbl" style="font-size:7px;text-align:center">Бесплатная консультация</div>
+      </div>
+      <div class="ph" style="height:64px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);position:relative">
+        <div class="center lbl" style="font-size:7px;text-align:center">5 лет на рынке</div>
+      </div>
+    </div>
+    <span class="badge" style="bottom:16px;left:64px">Доверительные элементы</span>
+  </div>
+
+  <!-- RIGHT PANEL — Form -->
+  <div style="position:absolute;top:64px;left:480px;right:0;bottom:0;padding:56px 80px;display:flex;flex-direction:column;gap:20px">
+
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px">
       <div class="ph" style="width:100px;height:10px"></div>
-      <div class="phl" style="height:20px;width:80%"></div>
-      <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
-        <div class="ph" style="height:10px;width:90%"></div>
-        <div class="ph" style="height:10px;width:75%"></div>
-      </div>
-      <div style="display:flex;gap:8px;margin-top:8px">
-        <div class="ph" style="width:64px;height:24px;border-radius:20px;background:#333"></div>
-        <div class="ph" style="width:56px;height:24px;border-radius:20px;background:#333"></div>
-      </div>
+      <div class="phl" style="height:28px;width:300px;border-radius:4px"></div>
     </div>
-    <!-- Right: metrics -->
-    <div style="width:200px;display:flex;flex-direction:column;gap:8px;justify-content:center">
-      <div class="ph" style="height:56px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);position:relative">
-        <div class="center lbl" style="font-size:8px">−38% CPL</div>
-      </div>
-      <div class="ph" style="height:56px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);position:relative">
-        <div class="center lbl" style="font-size:8px">×2.4 Конверсия</div>
-      </div>
-      <div class="ph" style="height:56px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);position:relative">
-        <div class="center lbl" style="font-size:8px">ROI 280%</div>
-      </div>
-    </div>
-  </div>
-  <span class="badge" style="top:172px;left:80px;margin-left:8px">Featured кейс</span>
 
-  <!-- CASES GRID 3-COL -->
-  <div style="position:absolute;top:408px;left:80px;right:80px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
-    <!-- Card template repeated -->
-    <div style="height:180px;background:#222;border:1px solid rgba(255,255,255,0.05);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:10px;position:relative">
-      <div class="ph" style="height:80px;border-radius:4px;position:relative">
-        <div class="center lbl" style="font-size:8px">Обложка</div>
+    <!-- Form fields 2-col -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="ph" style="height:9px;width:40px"></div>
+        <div class="field"></div>
       </div>
-      <div class="ph" style="width:70px;height:9px"></div>
-      <div class="ph" style="height:12px;width:85%"></div>
-      <div style="display:flex;gap:32px;margin-top:auto">
-        <div style="display:flex;flex-direction:column;gap:4px">
-          <div class="phl" style="width:48px;height:14px;border-radius:2px"></div>
-          <div class="ph" style="width:56px;height:8px"></div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:4px">
-          <div class="phl" style="width:48px;height:14px;border-radius:2px"></div>
-          <div class="ph" style="width:64px;height:8px"></div>
-        </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="ph" style="height:9px;width:64px"></div>
+        <div class="field"></div>
       </div>
     </div>
-    <div style="height:180px;background:#222;border:1px solid rgba(255,255,255,0.05);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:10px">
-      <div class="ph" style="height:80px;border-radius:4px"></div>
-      <div class="ph" style="width:64px;height:9px"></div>
-      <div class="ph" style="height:12px;width:78%"></div>
-      <div style="display:flex;gap:32px;margin-top:auto">
-        <div style="display:flex;flex-direction:column;gap:4px"><div class="phl" style="width:48px;height:14px;border-radius:2px"></div><div class="ph" style="width:52px;height:8px"></div></div>
-        <div style="display:flex;flex-direction:column;gap:4px"><div class="phl" style="width:48px;height:14px;border-radius:2px"></div><div class="ph" style="width:60px;height:8px"></div></div>
-      </div>
-    </div>
-    <div style="height:180px;background:#222;border:1px solid rgba(255,255,255,0.05);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:10px">
-      <div class="ph" style="height:80px;border-radius:4px"></div>
-      <div class="ph" style="width:72px;height:9px"></div>
-      <div class="ph" style="height:12px;width:90%"></div>
-      <div style="display:flex;gap:32px;margin-top:auto">
-        <div style="display:flex;flex-direction:column;gap:4px"><div class="phl" style="width:48px;height:14px;border-radius:2px"></div><div class="ph" style="width:56px;height:8px"></div></div>
-        <div style="display:flex;flex-direction:column;gap:4px"><div class="phl" style="width:48px;height:14px;border-radius:2px"></div><div class="ph" style="width:64px;height:8px"></div></div>
-      </div>
-    </div>
-  </div>
-  <span class="badge" style="top:416px;right:80px">Сетка кейсов 3 кол.</span>
 
-  <!-- CTA BAR -->
-  <div style="position:absolute;bottom:0;left:0;right:0;height:80px;background:#1E1E1E;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;padding:0 80px;justify-content:space-between">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="ph" style="height:9px;width:48px"></div>
+        <div class="field"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="ph" style="height:9px;width:40px"></div>
+        <div class="field"></div>
+      </div>
+    </div>
+
+    <!-- Checkboxes — task type -->
     <div style="display:flex;flex-direction:column;gap:8px">
-      <div class="phl" style="width:260px;height:14px"></div>
-      <div class="ph" style="width:180px;height:10px"></div>
+      <div class="ph" style="height:9px;width:100px"></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <div class="phl" style="height:32px;width:120px;border-radius:4px"></div>
+        <div class="ph" style="height:32px;width:140px;border-radius:4px;border:1px solid rgba(255,255,255,0.08)"></div>
+        <div class="ph" style="height:32px;width:132px;border-radius:4px;border:1px solid rgba(255,255,255,0.08)"></div>
+        <div class="ph" style="height:32px;width:124px;border-radius:4px;border:1px solid rgba(255,255,255,0.08)"></div>
+      </div>
     </div>
-    <div class="ph" style="width:160px;height:44px;border-radius:4px;background:#555"></div>
+    <span class="badge" style="top:312px;right:80px">Тип задачи — чекбоксы</span>
+
+    <!-- Budget select -->
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div class="ph" style="height:9px;width:56px"></div>
+      <div class="field" style="position:relative">
+        <div class="center lbl">Выпадающий список — бюджет</div>
+      </div>
+    </div>
+
+    <!-- Textarea -->
+    <div style="display:flex;flex-direction:column;gap:6px;flex:1">
+      <div class="ph" style="height:9px;width:80px"></div>
+      <div style="flex:1;min-height:80px;background:#1E1E1E;border:1px solid rgba(255,255,255,0.08);border-radius:4px;position:relative">
+        <div class="center lbl">Необязательно — описание задачи</div>
+      </div>
+    </div>
+
+    <!-- Submit row -->
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div class="ph" style="height:10px;width:200px"></div>
+      <div class="ph" style="width:200px;height:52px;border-radius:4px;background:#555;position:relative">
+        <div class="center lbl">Отправить заявку</div>
+      </div>
+    </div>
+    <span class="badge" style="bottom:24px;right:80px">Кнопка отправки</span>
+
   </div>
 
-  <div class="badge" style="top:72px;left:80px">04 — Кейсы / Cases</div>
+  <div class="badge" style="top:72px;left:80px">06 — Контакты / Contact</div>
 </div>
 </body>
 </html>
