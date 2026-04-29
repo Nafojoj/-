@@ -2,174 +2,350 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>WF — Контакты</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Martian+Mono:wght@400&display=swap" rel="stylesheet">
+<title>SIGNAL — Концепция 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { width:1440px; height:900px; overflow:hidden; background:#1A1A1A; font-family:'Montserrat',sans-serif; }
-.ph  { background:#2A2A2A; border-radius:3px; }
-.phl { background:#333;   border-radius:3px; }
-.lbl { font-family:'Martian Mono',monospace; font-size:9px; color:rgba(255,255,255,0.22); letter-spacing:.1em; text-transform:uppercase; white-space:nowrap; }
-.badge { position:absolute; font-family:'Martian Mono',monospace; font-size:8px; color:rgba(255,255,255,0.28); background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); padding:2px 7px; border-radius:3px; letter-spacing:.07em; text-transform:uppercase; white-space:nowrap; }
-.page { width:1440px; height:900px; position:relative; overflow:hidden; }
-.center { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%); }
-.field { height:48px; background:#1E1E1E; border:1px solid rgba(255,255,255,0.08); border-radius:4px; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 800px; height: 1100px; overflow: hidden; background: #0A2AFF; }
+
+.poster {
+  width: 800px;
+  height: 1100px;
+  background: #0A2AFF;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ---- GEOMETRIC SHAPES ---- */
+
+/* Big circle top-right */
+.circle-big {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: #DCDCF0;
+  top: -80px;
+  right: -80px;
+}
+
+/* Circle cutout inside big circle (creates ring feel) */
+.circle-inner {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: #0A2AFF;
+  top: -20px;
+  right: -20px;
+}
+
+/* Diamond / rotated square mid */
+.diamond {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: #DCDCF0;
+  transform: rotate(45deg);
+  top: 300px;
+  right: 60px;
+}
+
+/* Small circle mid-left */
+.circle-sm {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #DCDCF0;
+  top: 360px;
+  left: 56px;
+}
+
+/* Horizontal bar */
+.h-bar {
+  position: absolute;
+  height: 6px;
+  background: #DCDCF0;
+  border-radius: 3px;
+}
+
+/* Dot pattern grid bottom */
+.dots {
+  position: absolute;
+  bottom: 180px;
+  left: 56px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 14px;
+  width: 240px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(220,220,240,0.4);
+}
+
+/* Three circles (DNA/Strexo motif) */
+.trio {
+  position: absolute;
+  display: flex;
+  gap: 0px;
+  align-items: center;
+}
+.trio-c {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #DCDCF0;
+  margin-left: -10px;
+}
+.trio-c:first-child { margin-left: 0; }
+.trio-c.outline {
+  background: transparent;
+  border: 3px solid rgba(220,220,240,0.5);
+}
+
+/* ---- CONTENT ---- */
+
+/* Top bar */
+.top-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: #DCDCF0;
+}
+
+/* Header */
+.header {
+  position: absolute;
+  top: 28px;
+  left: 56px;
+  right: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+.logo {
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: .3em;
+  color: #DCDCF0;
+}
+.header-tag {
+  font-family: 'Martian Mono', monospace;
+  font-size: 9px;
+  color: rgba(220,220,240,0.5);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+/* Main content area */
+.main {
+  position: absolute;
+  bottom: 80px;
+  left: 56px;
+  right: 56px;
+  z-index: 10;
+}
+
+.eyebrow {
+  font-family: 'Martian Mono', monospace;
+  font-size: 10px;
+  color: rgba(220,220,240,0.6);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: rgba(220,220,240,0.5);
+}
+
+.h1 {
+  font-weight: 900;
+  font-size: 76px;
+  line-height: .92;
+  letter-spacing: -2px;
+  color: #DCDCF0;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.body-text {
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(220,220,240,0.6);
+  line-height: 1.75;
+  max-width: 380px;
+  margin-bottom: 32px;
+}
+
+/* Stats row */
+.stats {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid rgba(220,220,240,0.2);
+  padding-top: 20px;
+}
+.stat {
+  flex: 1;
+  border-right: 1px solid rgba(220,220,240,0.15);
+  padding-right: 20px;
+  margin-right: 20px;
+}
+.stat:last-child { border-right: none; }
+.stat-val {
+  font-weight: 900;
+  font-size: 32px;
+  color: #DCDCF0;
+  line-height: 1;
+  margin-bottom: 4px;
+  letter-spacing: -1px;
+}
+.stat-label {
+  font-family: 'Martian Mono', monospace;
+  font-size: 8px;
+  color: rgba(220,220,240,0.45);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/* Bottom footer */
+.footer {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 5px;
+  background: #DCDCF0;
+}
+
+/* Mid label */
+.mid-label {
+  position: absolute;
+  top: 490px;
+  left: 56px;
+  z-index: 10;
+}
+.ml-text {
+  font-family: 'Martian Mono', monospace;
+  font-size: 10px;
+  color: rgba(220,220,240,0.4);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* Badge top-left area */
+.badge {
+  position: absolute;
+  top: 100px;
+  left: 56px;
+  z-index: 10;
+  border: 1.5px solid rgba(220,220,240,0.35);
+  padding: 8px 14px;
+  display: inline-block;
+}
+.badge-text {
+  font-family: 'Martian Mono', monospace;
+  font-size: 9px;
+  color: rgba(220,220,240,0.5);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+/* large geometric X/cross  */
+.cross-shape {
+  position: absolute;
+  top: 160px;
+  left: 160px;
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+}
+.cross-shape::before, .cross-shape::after {
+  content: '';
+  position: absolute;
+  background: rgba(220,220,240,0.18);
+}
+.cross-shape::before { width: 20px; height: 100%; left: 50%; transform: translateX(-50%); }
+.cross-shape::after  { width: 100%; height: 20px; top: 50%; transform: translateY(-50%); }
 </style>
 </head>
 <body>
-<div class="page">
+<div class="poster">
+  <div class="top-bar"></div>
+  <div class="footer"></div>
 
-  <!-- NAV -->
-  <div style="position:absolute;top:0;left:0;right:0;height:64px;background:#222;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;padding:0 80px;">
-    <div class="ph" style="width:80px;height:14px"></div>
-    <div style="display:flex;gap:32px;margin-left:auto">
-      <div class="ph" style="width:56px;height:10px"></div>
-      <div class="ph" style="width:56px;height:10px"></div>
-      <div class="ph" style="width:56px;height:10px"></div>
-      <div class="ph" style="width:56px;height:10px;opacity:.5"></div>
-    </div>
-    <div class="ph" style="width:120px;height:36px;border-radius:4px;background:#555;margin-left:32px"></div>
+  <!-- Geometric shapes -->
+  <div class="circle-big"></div>
+  <div class="circle-inner"></div>
+  <div class="diamond"></div>
+  <div class="circle-sm"></div>
+  <div class="cross-shape"></div>
+
+  <!-- H-bars -->
+  <div class="h-bar" style="top:200px;left:180px;width:140px"></div>
+  <div class="h-bar" style="top:216px;left:180px;width:80px;opacity:.4"></div>
+
+  <!-- Trio circles -->
+  <div class="trio" style="top:440px;left:160px">
+    <div class="trio-c"></div>
+    <div class="trio-c outline"></div>
+    <div class="trio-c outline" style="opacity:.4"></div>
   </div>
 
-  <!-- LEFT PANEL — Info -->
-  <div style="position:absolute;top:64px;left:0;width:480px;bottom:0;background:#1E1E1E;border-right:1px solid rgba(255,255,255,0.06);padding:56px 64px;display:flex;flex-direction:column;gap:0">
+  <!-- Dot grid -->
+  <div class="dots" id="dots"></div>
 
-    <div class="ph" style="width:80px;height:10px;margin-bottom:16px"></div>
-    <div class="phl" style="height:48px;width:100%;border-radius:4px;margin-bottom:24px;position:relative">
-      <div class="center lbl">H1 — Заголовок</div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:24px">
-      <div class="ph" style="height:11px;width:90%"></div>
-      <div class="ph" style="height:11px;width:75%"></div>
-    </div>
-
-    <div style="height:1px;background:rgba(255,255,255,0.06);margin-bottom:24px"></div>
-
-    <!-- Contact items -->
-    <div class="ph" style="width:80px;height:10px;margin-bottom:16px"></div>
-    <div style="display:flex;flex-direction:column;gap:14px">
-      <div style="display:flex;gap:14px;align-items:center">
-        <div class="phl" style="width:36px;height:36px;border-radius:6px;flex-shrink:0"></div>
-        <div style="display:flex;flex-direction:column;gap:5px">
-          <div class="ph" style="height:9px;width:48px"></div>
-          <div class="phl" style="height:12px;width:160px"></div>
-        </div>
-      </div>
-      <div style="display:flex;gap:14px;align-items:center">
-        <div class="ph" style="width:36px;height:36px;border-radius:6px;flex-shrink:0"></div>
-        <div style="display:flex;flex-direction:column;gap:5px">
-          <div class="ph" style="height:9px;width:48px"></div>
-          <div class="phl" style="height:12px;width:140px"></div>
-        </div>
-      </div>
-      <div style="display:flex;gap:14px;align-items:center">
-        <div class="ph" style="width:36px;height:36px;border-radius:6px;flex-shrink:0"></div>
-        <div style="display:flex;flex-direction:column;gap:5px">
-          <div class="ph" style="height:9px;width:48px"></div>
-          <div class="phl" style="height:12px;width:120px"></div>
-        </div>
-      </div>
-      <div style="display:flex;gap:14px;align-items:center">
-        <div class="ph" style="width:36px;height:36px;border-radius:6px;flex-shrink:0"></div>
-        <div style="display:flex;flex-direction:column;gap:5px">
-          <div class="ph" style="height:9px;width:48px"></div>
-          <div class="phl" style="height:12px;width:100px"></div>
-        </div>
-      </div>
-    </div>
-
-    <div style="height:1px;background:rgba(255,255,255,0.06);margin:28px 0"></div>
-
-    <!-- Trust badges -->
-    <div class="ph" style="width:120px;height:10px;margin-bottom:16px"></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <div class="ph" style="height:64px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);position:relative">
-        <div class="center lbl" style="font-size:7px;text-align:center">Ответим за 1 день</div>
-      </div>
-      <div class="ph" style="height:64px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);position:relative">
-        <div class="center lbl" style="font-size:7px;text-align:center">50+ клиентов</div>
-      </div>
-      <div class="ph" style="height:64px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);position:relative">
-        <div class="center lbl" style="font-size:7px;text-align:center">Бесплатная консультация</div>
-      </div>
-      <div class="ph" style="height:64px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);position:relative">
-        <div class="center lbl" style="font-size:7px;text-align:center">5 лет на рынке</div>
-      </div>
-    </div>
-    <span class="badge" style="bottom:16px;left:64px">Доверительные элементы</span>
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">SIGNAL</div>
+    <div class="header-tag">Digital Agency · 2025</div>
   </div>
 
-  <!-- RIGHT PANEL — Form -->
-  <div style="position:absolute;top:64px;left:480px;right:0;bottom:0;padding:56px 80px;display:flex;flex-direction:column;gap:20px">
-
-    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px">
-      <div class="ph" style="width:100px;height:10px"></div>
-      <div class="phl" style="height:28px;width:300px;border-radius:4px"></div>
-    </div>
-
-    <!-- Form fields 2-col -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <div class="ph" style="height:9px;width:40px"></div>
-        <div class="field"></div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <div class="ph" style="height:9px;width:64px"></div>
-        <div class="field"></div>
-      </div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <div class="ph" style="height:9px;width:48px"></div>
-        <div class="field"></div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <div class="ph" style="height:9px;width:40px"></div>
-        <div class="field"></div>
-      </div>
-    </div>
-
-    <!-- Checkboxes — task type -->
-    <div style="display:flex;flex-direction:column;gap:8px">
-      <div class="ph" style="height:9px;width:100px"></div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px">
-        <div class="phl" style="height:32px;width:120px;border-radius:4px"></div>
-        <div class="ph" style="height:32px;width:140px;border-radius:4px;border:1px solid rgba(255,255,255,0.08)"></div>
-        <div class="ph" style="height:32px;width:132px;border-radius:4px;border:1px solid rgba(255,255,255,0.08)"></div>
-        <div class="ph" style="height:32px;width:124px;border-radius:4px;border:1px solid rgba(255,255,255,0.08)"></div>
-      </div>
-    </div>
-    <span class="badge" style="top:312px;right:80px">Тип задачи — чекбоксы</span>
-
-    <!-- Budget select -->
-    <div style="display:flex;flex-direction:column;gap:6px">
-      <div class="ph" style="height:9px;width:56px"></div>
-      <div class="field" style="position:relative">
-        <div class="center lbl">Выпадающий список — бюджет</div>
-      </div>
-    </div>
-
-    <!-- Textarea -->
-    <div style="display:flex;flex-direction:column;gap:6px;flex:1">
-      <div class="ph" style="height:9px;width:80px"></div>
-      <div style="flex:1;min-height:80px;background:#1E1E1E;border:1px solid rgba(255,255,255,0.08);border-radius:4px;position:relative">
-        <div class="center lbl">Необязательно — описание задачи</div>
-      </div>
-    </div>
-
-    <!-- Submit row -->
-    <div style="display:flex;align-items:center;justify-content:space-between">
-      <div class="ph" style="height:10px;width:200px"></div>
-      <div class="ph" style="width:200px;height:52px;border-radius:4px;background:#555;position:relative">
-        <div class="center lbl">Отправить заявку</div>
-      </div>
-    </div>
-    <span class="badge" style="bottom:24px;right:80px">Кнопка отправки</span>
-
+  <!-- Badge -->
+  <div class="badge">
+    <div class="badge-text">Концепция 01 · Связь</div>
   </div>
 
-  <div class="badge" style="top:72px;left:80px">06 — Контакты / Contact</div>
+  <!-- Vertical label -->
+  <div class="mid-label">
+    <div class="ml-text">Signal · Connect · Grow</div>
+  </div>
+
+  <!-- Main content -->
+  <div class="main">
+    <div class="eyebrow">Сигнал как обновление</div>
+    <div class="h1">СВЯЗЬ<br>БИЗНЕСА<br>С МИРОМ</div>
+    <div class="body-text">
+      Цифровая реклама, которая соединяет<br>
+      бренд с нужной аудиторией. Точно,<br>
+      измеримо, без лишнего шума.
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-val">−38%</div><div class="stat-label">Стоимость<br>лида</div></div>
+      <div class="stat"><div class="stat-val">×2.4</div><div class="stat-label">Рост<br>конверсий</div></div>
+      <div class="stat"><div class="stat-val">50+</div><div class="stat-label">Проектов<br>роста</div></div>
+    </div>
+  </div>
 </div>
+<script>
+  const d = document.getElementById('dots');
+  for(let i=0;i<32;i++) {
+    const el = document.createElement('div');
+    el.className = 'dot';
+    el.style.opacity = Math.random() * 0.5 + 0.15;
+    d.appendChild(el);
+  }
+</script>
 </body>
 </html>
