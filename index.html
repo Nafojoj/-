@@ -2,273 +2,2137 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>SIGNAL — Концепция 2</title>
+<title>SIGNAL — Orange Grid</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { width: 800px; height: 1100px; overflow: hidden; background: #F0EDE6; }
-
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: #0A0A0A;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
 .poster {
   width: 800px;
   height: 1100px;
-  background: #F0EDE6;
   position: relative;
   overflow: hidden;
-  font-family: 'Montserrat', sans-serif;
-}
-
-/* ---- BIG TYPE BLOCK TOP ---- */
-.type-block {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  background: #111111;
-  padding: 52px 48px 44px;
-}
-
-.tb-eyebrow {
-  font-family: 'Martian Mono', monospace;
-  font-size: 10px;
-  color: rgba(255,255,255,0.35);
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-
-.tb-h1 {
-  font-weight: 900;
-  font-size: 118px;
-  line-height: .88;
-  letter-spacing: -4px;
-  color: #F0EDE6;
-  text-transform: uppercase;
-  position: relative;
-}
-
-/* Arrow character inline */
-.arrow {
-  display: inline-block;
-  font-size: 90px;
-  line-height: 1;
-  vertical-align: middle;
-  color: #F0EDE6;
-  margin-left: 4px;
-  font-weight: 900;
-  /* custom arrow using unicode ↗ */
-}
-
-/* ---- MIDDLE SECTION ---- */
-.mid-section {
-  position: absolute;
-  top: 430px;
-  left: 0; right: 0;
-  background: #F0EDE6;
-  padding: 40px 48px;
-}
-
-.ms-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 40px;
-  margin-bottom: 32px;
-}
-
-.ms-left {
-  flex: 1;
-}
-
-.ms-label {
-  font-family: 'Martian Mono', monospace;
-  font-size: 9px;
-  color: #999;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-.ms-text {
-  font-weight: 700;
-  font-size: 28px;
-  color: #111;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  text-transform: uppercase;
-}
-
-.ms-right {
-  flex: 1;
-}
-
-.ms-body {
-  font-weight: 400;
-  font-size: 13px;
-  color: #555;
-  line-height: 1.75;
-}
-
-/* Rule */
-.rule { height: 2px; background: #111; margin-bottom: 28px; }
-.rule-thin { height: 1px; background: #D0CEC8; margin: 20px 0; }
-
-/* Stats horizontal strip */
-.stats-strip {
-  display: flex;
-  gap: 0;
-}
-.s-item {
-  flex: 1;
-  border-right: 1px solid #D0CEC8;
-  padding-right: 20px;
-  margin-right: 20px;
-}
-.s-item:last-child { border-right: none; }
-.s-val {
-  font-weight: 900;
-  font-size: 44px;
-  color: #111;
-  line-height: 1;
-  letter-spacing: -1.5px;
-  margin-bottom: 4px;
-}
-.s-label {
-  font-family: 'Martian Mono', monospace;
-  font-size: 8px;
-  color: #999;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-/* ---- SERVICES ROW ---- */
-.services {
-  position: absolute;
-  top: 790px;
-  left: 0; right: 0;
-  background: #111;
-  padding: 28px 48px;
-  display: flex;
-  gap: 0;
-}
-
-.srv {
-  flex: 1;
-  border-right: 1px solid rgba(255,255,255,0.1);
-  padding-right: 24px;
-  margin-right: 24px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.srv:last-child { border-right: none; }
-
-.srv-arr {
-  font-size: 18px;
-  color: #F0EDE6;
-  font-weight: 900;
   flex-shrink: 0;
 }
-
-.srv-name {
-  font-family: 'Martian Mono', monospace;
-  font-size: 9px;
-  color: rgba(240,237,230,0.6);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  line-height: 1.5;
-}
-
-/* ---- FOOTER ---- */
-.footer {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 48px;
-  background: #F0EDE6;
-  border-top: 2px solid #111;
-  display: flex;
-  align-items: center;
-  padding: 0 48px;
-  justify-content: space-between;
-}
-
-.f-logo {
-  font-weight: 900;
-  font-size: 13px;
-  color: #111;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-}
-
-.f-tag {
-  font-family: 'Martian Mono', monospace;
-  font-size: 9px;
-  color: #AAA;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-/* vertical text on type block */
-.vert-num {
-  position: absolute;
-  top: 52px;
-  right: 48px;
-  font-family: 'Martian Mono', monospace;
-  font-size: 10px;
-  color: rgba(255,255,255,0.2);
-  letter-spacing: .15em;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-}
+.poster svg.bg { position:absolute; inset:0; width:100%; height:100%; }
+.layer { position:absolute; inset:0; }
+.logo  { font-weight:900; letter-spacing:.32em; }
+.mono  { font-family:'Martian Mono',monospace; letter-spacing:.16em; text-transform:uppercase; }
 </style>
 </head>
 <body>
+
+<!-- ══════════════════════════════════════════════
+     01 — STAIRCASE / STEPPED BLOCKS
+     ══════════════════════════════════════════════ -->
 <div class="poster">
-
-  <!-- TOP BIG TYPE -->
-  <div class="type-block">
-    <div class="tb-eyebrow">Мы не про бумагу — про дело</div>
-    <div class="tb-h1">
-      МЫ ↗<br>
-      НЕ ПРО<br>
-      ШУМꞶ
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#F2F0EB"/>
+  <!-- staircase blocks, ascending left to right -->
+  <rect x="0"   y="800" width="133" height="300" fill="#E8430A"/>
+  <rect x="133" y="660" width="133" height="440" fill="#111111"/>
+  <rect x="266" y="520" width="133" height="580" fill="#E8430A"/>
+  <rect x="399" y="380" width="133" height="720" fill="#111111"/>
+  <rect x="532" y="240" width="133" height="860" fill="#E8430A"/>
+  <rect x="665" y="100" width="135" height="1000" fill="#111111"/>
+  <!-- top horizontal rule -->
+  <rect x="0" y="0" width="800" height="4" fill="#111111"/>
+  <!-- thin lines -->
+  <line x1="0" y1="100" x2="665" y2="100" stroke="#111" stroke-width=".8" opacity=".15"/>
+  <line x1="0" y1="240" x2="532" y2="240" stroke="#111" stroke-width=".8" opacity=".15"/>
+  <line x1="0" y1="380" x2="399" y2="380" stroke="#111" stroke-width=".8" opacity=".15"/>
+  <!-- arrow up indicator -->
+  <polygon points="720,60 750,100 690,100" fill="#E8430A"/>
+</svg>
+<div class="layer" style="padding:32px 44px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:15px;color:#111">SIGNAL</span>
+    <span class="mono" style="font-size:8px;color:#999">SIG–01 · Staircase</span>
+  </div>
+  <div style="margin-top:auto;padding-bottom:8px">
+    <div class="mono" style="font-size:9px;color:#E8430A;margin-bottom:14px">Архитектура роста</div>
+    <div style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-3px;color:#111;text-transform:uppercase;margin-bottom:22px">
+      СТУПЕНИ<br>ВВЕРХ
     </div>
-    <div class="vert-num">SIG–002 · 2025</div>
-  </div>
-
-  <!-- MID SECTION -->
-  <div class="mid-section">
-    <div class="rule"></div>
-    <div class="ms-row">
-      <div class="ms-left">
-        <div class="ms-label">Наша позиция</div>
-        <div class="ms-text">Рост,<br>не отчёты↗</div>
-      </div>
-      <div class="ms-right">
-        <div class="ms-label">Что это значит</div>
-        <div class="ms-body">
-          Пока другие агентства гонятся за охватами, мы строим системы, которые приносят выручку. Каждое решение — на данных. Каждый результат — измерим.
-        </div>
-      </div>
-    </div>
-    <div class="rule-thin"></div>
-    <div class="stats-strip">
-      <div class="s-item"><div class="s-val">−38%</div><div class="s-label">CPL</div></div>
-      <div class="s-item"><div class="s-val">×2.4</div><div class="s-label">Конверсия</div></div>
-      <div class="s-item"><div class="s-val">50+</div><div class="s-label">Клиентов</div></div>
+    <p style="font-size:13px;color:#666;line-height:1.8;max-width:340px;margin-bottom:26px">
+      Каждый шаг — проверенная гипотеза. Строим рост поэтапно: без спешки, без пустых охватов.
+    </p>
+    <div style="display:flex;gap:24px;border-top:1px solid rgba(0,0,0,.1);padding-top:16px">
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:#999">CPL</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:#999">Конверсия</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">50+</div><div class="mono" style="font-size:8px;color:#999">Проектов</div></div>
     </div>
   </div>
-
-  <!-- SERVICES -->
-  <div class="services">
-    <div class="srv"><div class="srv-arr">↗</div><div class="srv-name">Контекстная<br>реклама</div></div>
-    <div class="srv"><div class="srv-arr">↗</div><div class="srv-name">Таргетиро-<br>ванная</div></div>
-    <div class="srv"><div class="srv-arr">↗</div><div class="srv-name">Сквозная<br>аналитика</div></div>
-    <div class="srv"><div class="srv-arr">↗</div><div class="srv-name">Стратегия<br>роста</div></div>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="f-logo">SIGNAL</div>
-    <div class="f-tag">Сигнал важнее шума · signal.agency</div>
-  </div>
-
 </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     02 — PIXEL / BITMAP PORTRAIT
+     ══════════════════════════════════════════════ -->
+<div class="poster">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#111111"/>
+  <!-- pixel grid — each cell 40x40 -->
+  <!-- row 1 top -->
+  <rect x="0"   y="0"   width="40" height="40" fill="#E8430A"/>
+  <rect x="80"  y="0"   width="40" height="40" fill="#E8430A" opacity=".5"/>
+  <rect x="160" y="0"   width="40" height="40" fill="#E8430A" opacity=".2"/>
+  <rect x="280" y="0"   width="40" height="40" fill="#E8430A" opacity=".7"/>
+  <rect x="400" y="0"   width="40" height="40" fill="#F2F0EB" opacity=".1"/>
+  <rect x="520" y="0"   width="40" height="40" fill="#E8430A" opacity=".3"/>
+  <rect x="680" y="0"   width="40" height="40" fill="#E8430A"/>
+  <rect x="760" y="0"   width="40" height="40" fill="#E8430A" opacity=".6"/>
+  <!-- row 2 -->
+  <rect x="40"  y="40"  width="40" height="40" fill="#E8430A" opacity=".4"/>
+  <rect x="200" y="40"  width="40" height="40" fill="#F2F0EB" opacity=".08"/>
+  <rect x="320" y="40"  width="40" height="40" fill="#E8430A" opacity=".6"/>
+  <rect x="440" y="40"  width="40" height="40" fill="#E8430A" opacity=".15"/>
+  <rect x="600" y="40"  width="40" height="40" fill="#E8430A" opacity=".8"/>
+  <rect x="720" y="40"  width="40" height="40" fill="#E8430A" opacity=".3"/>
+  <!-- row 3 -->
+  <rect x="0"   y="80"  width="40" height="40" fill="#E8430A" opacity=".25"/>
+  <rect x="120" y="80"  width="40" height="40" fill="#E8430A" opacity=".7"/>
+  <rect x="240" y="80"  width="40" height="40" fill="#E8430A" opacity=".4"/>
+  <rect x="360" y="80"  width="40" height="40" fill="#E8430A"/>
+  <rect x="480" y="80"  width="40" height="40" fill="#E8430A" opacity=".2"/>
+  <rect x="640" y="80"  width="40" height="40" fill="#E8430A" opacity=".5"/>
+  <rect x="760" y="80"  width="40" height="40" fill="#E8430A" opacity=".15"/>
+  <!-- row 4 -->
+  <rect x="40"  y="120" width="40" height="40" fill="#E8430A" opacity=".6"/>
+  <rect x="160" y="120" width="40" height="40" fill="#E8430A" opacity=".1"/>
+  <rect x="280" y="120" width="40" height="40" fill="#E8430A" opacity=".8"/>
+  <rect x="400" y="120" width="40" height="40" fill="#E8430A" opacity=".35"/>
+  <rect x="520" y="120" width="40" height="40" fill="#E8430A" opacity=".6"/>
+  <rect x="680" y="120" width="40" height="40" fill="#E8430A" opacity=".25"/>
+  <!-- row 5 -->
+  <rect x="0"   y="160" width="40" height="40" fill="#E8430A" opacity=".45"/>
+  <rect x="80"  y="160" width="40" height="40" fill="#E8430A" opacity=".15"/>
+  <rect x="200" y="160" width="40" height="40" fill="#E8430A" opacity=".7"/>
+  <rect x="320" y="160" width="40" height="40" fill="#E8430A" opacity=".3"/>
+  <rect x="440" y="160" width="40" height="40" fill="#E8430A" opacity=".9"/>
+  <rect x="600" y="160" width="40" height="40" fill="#E8430A" opacity=".2"/>
+  <rect x="720" y="160" width="40" height="40" fill="#E8430A" opacity=".55"/>
+  <!-- row 6 -->
+  <rect x="40"  y="200" width="40" height="40" fill="#E8430A" opacity=".3"/>
+  <rect x="120" y="200" width="40" height="40" fill="#E8430A" opacity=".6"/>
+  <rect x="240" y="200" width="40" height="40" fill="#E8430A" opacity=".12"/>
+  <rect x="360" y="200" width="40" height="40" fill="#E8430A" opacity=".75"/>
+  <rect x="480" y="200" width="40" height="40" fill="#E8430A" opacity=".4"/>
+  <rect x="640" y="200" width="40" height="40" fill="#E8430A" opacity=".65"/>
+  <rect x="760" y="200" width="40" height="40" fill="#E8430A" opacity=".2"/>
+  <!-- large solid blocks lower -->
+  <rect x="0"   y="260" width="160" height="160" fill="#E8430A"/>
+  <rect x="320" y="260" width="160" height="160" fill="#E8430A" opacity=".7"/>
+  <rect x="640" y="260" width="160" height="160" fill="#E8430A" opacity=".4"/>
+  <rect x="160" y="380" width="160" height="80" fill="#E8430A" opacity=".2"/>
+  <rect x="480" y="340" width="160" height="80" fill="#E8430A" opacity=".5"/>
+  <!-- bottom bar -->
+  <rect x="0" y="1096" width="800" height="4" fill="#E8430A"/>
+  <rect x="0" y="0" width="800" height="4" fill="#E8430A"/>
+</svg>
+<div class="layer" style="padding:32px 44px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:15px;color:#F2F0EB">SIGNAL</span>
+    <span class="mono" style="font-size:8px;color:rgba(242,240,235,.3)">SIG–02 · Pixel</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="mono" style="font-size:9px;color:#E8430A;margin-bottom:14px">Пиксель за пикселем</div>
+    <div style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-3px;color:#F2F0EB;text-transform:uppercase;margin-bottom:22px">
+      КАЖ<br>ДЫЙ<br>БИТ
+    </div>
+    <p style="font-size:13px;color:rgba(242,240,235,.5);line-height:1.8;max-width:340px;margin-bottom:26px">
+      Работаем с данными на уровне каждого касания. Детальная аналитика — основа точного таргетинга.
+    </p>
+    <div style="display:flex;gap:24px;border-top:1px solid rgba(242,240,235,.1);padding-top:16px">
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">CR</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">50+</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">Клиентов</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     03 — ROTATING SQUARES / WINDMILL
+     ══════════════════════════════════════════════ -->
+<div class="poster">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#F2F0EB"/>
+  <!-- big black top half -->
+  <rect x="0" y="0" width="800" height="520" fill="#111111"/>
+  <!-- large rotated squares from center -->
+  <g transform="translate(400,520)">
+    <rect x="-280" y="-280" width="280" height="280" fill="#E8430A" transform="rotate(0)"/>
+    <rect x="0"    y="-280" width="280" height="280" fill="#E8430A" opacity=".15" transform="rotate(0)"/>
+    <rect x="-280" y="0"    width="280" height="280" fill="#F2F0EB" opacity=".12" transform="rotate(0)"/>
+    <rect x="0"    y="0"    width="280" height="280" fill="#E8430A" opacity=".6" transform="rotate(0)"/>
+    <!-- rotated overlay -->
+    <rect x="-200" y="-200" width="400" height="400" fill="none" stroke="#E8430A" stroke-width="2" transform="rotate(45)" opacity=".4"/>
+    <rect x="-140" y="-140" width="280" height="280" fill="none" stroke="#E8430A" stroke-width="1.5" transform="rotate(45)" opacity=".25"/>
+    <rect x="-80"  y="-80"  width="160" height="160" fill="none" stroke="#E8430A" stroke-width="1" transform="rotate(45)" opacity=".35"/>
+    <!-- center -->
+    <circle r="20" fill="#E8430A"/>
+    <circle r="6"  fill="#111"/>
+  </g>
+  <!-- top bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#E8430A"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#111"/>
+  <!-- bottom right corner square -->
+  <rect x="640" y="860" width="160" height="240" fill="#111"/>
+  <rect x="640" y="860" width="160" height="240" fill="none" stroke="#E8430A" stroke-width="2" opacity=".5"/>
+</svg>
+<div class="layer" style="padding:32px 44px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:15px;color:#F2F0EB">SIGNAL</span>
+    <span class="mono" style="font-size:8px;color:rgba(242,240,235,.3)">SIG–03 · Windmill</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="mono" style="font-size:9px;color:#E8430A;margin-bottom:14px">Центр притяжения</div>
+    <div style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-3px;color:#111;text-transform:uppercase;margin-bottom:22px">
+      ВИН<br>ДМИЛЛ<br>РОСТА
+    </div>
+    <p style="font-size:13px;color:#666;line-height:1.8;max-width:340px;margin-bottom:26px">
+      Вращаемся вокруг результата. Каждый канал — лопасть одного механизма.
+    </p>
+    <div style="display:flex;gap:24px;border-top:1px solid rgba(0,0,0,.1);padding-top:16px">
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:#999">CPL</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:#999">CR</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     04 — BARCODE / VERTICAL LINES
+     ══════════════════════════════════════════════ -->
+<div class="poster">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#111111"/>
+  <!-- barcode strips — varying widths and heights -->
+  <rect x="40"  y="80"  width="6"  height="600" fill="#E8430A"/>
+  <rect x="54"  y="80"  width="2"  height="600" fill="#E8430A" opacity=".5"/>
+  <rect x="64"  y="80"  width="10" height="600" fill="#E8430A"/>
+  <rect x="82"  y="80"  width="4"  height="600" fill="#E8430A" opacity=".7"/>
+  <rect x="94"  y="80"  width="2"  height="600" fill="#E8430A"/>
+  <rect x="104" y="80"  width="8"  height="600" fill="#E8430A" opacity=".6"/>
+  <rect x="120" y="80"  width="3"  height="600" fill="#E8430A"/>
+  <rect x="131" y="80"  width="12" height="600" fill="#E8430A" opacity=".8"/>
+  <rect x="151" y="80"  width="2"  height="600" fill="#E8430A"/>
+  <rect x="161" y="80"  width="6"  height="600" fill="#E8430A" opacity=".5"/>
+  <rect x="175" y="80"  width="4"  height="600" fill="#E8430A"/>
+  <rect x="187" y="80"  width="14" height="600" fill="#E8430A" opacity=".7"/>
+  <rect x="209" y="80"  width="2"  height="600" fill="#E8430A"/>
+  <rect x="219" y="80"  width="8"  height="600" fill="#E8430A" opacity=".9"/>
+  <rect x="235" y="80"  width="3"  height="600" fill="#E8430A"/>
+  <rect x="246" y="80"  width="6"  height="600" fill="#E8430A" opacity=".6"/>
+  <rect x="260" y="80"  width="10" height="600" fill="#E8430A"/>
+  <rect x="278" y="80"  width="2"  height="600" fill="#E8430A" opacity=".4"/>
+  <rect x="288" y="80"  width="16" height="600" fill="#E8430A" opacity=".8"/>
+  <rect x="312" y="80"  width="4"  height="600" fill="#E8430A"/>
+  <rect x="324" y="80"  width="6"  height="600" fill="#E8430A" opacity=".55"/>
+  <rect x="338" y="80"  width="2"  height="600" fill="#E8430A"/>
+  <rect x="348" y="80"  width="12" height="600" fill="#E8430A" opacity=".7"/>
+  <rect x="368" y="80"  width="8"  height="600" fill="#E8430A" opacity=".9"/>
+  <rect x="384" y="80"  width="2"  height="600" fill="#E8430A"/>
+  <rect x="394" y="80"  width="6"  height="600" fill="#E8430A" opacity=".45"/>
+  <rect x="408" y="80"  width="4"  height="600" fill="#E8430A"/>
+  <rect x="420" y="80"  width="14" height="600" fill="#E8430A" opacity=".75"/>
+  <rect x="442" y="80"  width="2"  height="600" fill="#E8430A"/>
+  <rect x="452" y="80"  width="8"  height="600" fill="#E8430A" opacity=".6"/>
+  <rect x="468" y="80"  width="6"  height="600" fill="#E8430A"/>
+  <rect x="482" y="80"  width="2"  height="600" fill="#E8430A" opacity=".35"/>
+  <rect x="492" y="80"  width="10" height="600" fill="#E8430A" opacity=".85"/>
+  <rect x="510" y="80"  width="4"  height="600" fill="#E8430A"/>
+  <rect x="522" y="80"  width="6"  height="600" fill="#E8430A" opacity=".5"/>
+  <rect x="536" y="80"  width="12" height="600" fill="#E8430A" opacity=".7"/>
+  <rect x="556" y="80"  width="2"  height="600" fill="#E8430A"/>
+  <rect x="566" y="80"  width="8"  height="600" fill="#E8430A" opacity=".9"/>
+  <rect x="582" y="80"  width="4"  height="600" fill="#E8430A"/>
+  <rect x="594" y="80"  width="16" height="600" fill="#E8430A" opacity=".65"/>
+  <rect x="618" y="80"  width="2"  height="600" fill="#E8430A"/>
+  <rect x="628" y="80"  width="6"  height="600" fill="#E8430A" opacity=".8"/>
+  <rect x="642" y="80"  width="10" height="600" fill="#E8430A" opacity=".4"/>
+  <rect x="660" y="80"  width="4"  height="600" fill="#E8430A"/>
+  <rect x="672" y="80"  width="2"  height="600" fill="#E8430A" opacity=".6"/>
+  <rect x="682" y="80"  width="14" height="600" fill="#E8430A" opacity=".85"/>
+  <rect x="704" y="80"  width="6"  height="600" fill="#E8430A"/>
+  <rect x="718" y="80"  width="2"  height="600" fill="#E8430A" opacity=".5"/>
+  <rect x="728" y="80"  width="8"  height="600" fill="#E8430A" opacity=".7"/>
+  <rect x="744" y="80"  width="4"  height="600" fill="#E8430A"/>
+  <rect x="756" y="80"  width="6"  height="600" fill="#E8430A" opacity=".4"/>
+  <!-- top & bottom bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#E8430A"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#E8430A"/>
+  <!-- white zone -->
+  <rect x="0" y="720" width="800" height="380" fill="#111"/>
+</svg>
+<div class="layer" style="padding:32px 44px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:15px;color:#F2F0EB">SIGNAL</span>
+    <span class="mono" style="font-size:8px;color:rgba(242,240,235,.3)">SIG–04 · Barcode</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="mono" style="font-size:9px;color:#E8430A;margin-bottom:14px">Считываем сигнал</div>
+    <div style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-3px;color:#F2F0EB;text-transform:uppercase;margin-bottom:22px">
+      КОД<br>РОСТА
+    </div>
+    <p style="font-size:13px;color:rgba(242,240,235,.5);line-height:1.8;max-width:360px;margin-bottom:26px">
+      Каждая метрика — штрих в коде вашего бизнеса. Мы читаем и расшифровываем их точно.
+    </p>
+    <div style="display:flex;gap:24px;border-top:1px solid rgba(242,240,235,.1);padding-top:16px">
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">CR</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">50+</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">Проектов</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     05 — CIRCLE CUTS / HALF-MOON TILES
+     ══════════════════════════════════════════════ -->
+<div class="poster">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#F2F0EB"/>
+  <!-- large black top section -->
+  <rect x="0" y="0" width="800" height="480" fill="#111111"/>
+  <!-- big orange circle cut -->
+  <circle cx="400" cy="480" r="320" fill="#E8430A"/>
+  <!-- cut out with bg color to create half moon -->
+  <rect x="0" y="480" width="800" height="320" fill="#F2F0EB"/>
+  <!-- ring outline -->
+  <circle cx="400" cy="480" r="320" fill="none" stroke="#E8430A" stroke-width="2" opacity=".3"/>
+  <circle cx="400" cy="480" r="220" fill="none" stroke="#E8430A" stroke-width="1.5" opacity=".2"/>
+  <!-- half circle black overlay top -->
+  <path d="M80,480 A320,320 0 0,1 720,480 Z" fill="#111"/>
+  <!-- small orange dots grid in lower zone -->
+  <circle cx="120" cy="680" r="12" fill="#E8430A" opacity=".8"/>
+  <circle cx="200" cy="680" r="8"  fill="#E8430A" opacity=".5"/>
+  <circle cx="280" cy="680" r="16" fill="#E8430A" opacity=".6"/>
+  <circle cx="360" cy="680" r="6"  fill="#E8430A" opacity=".4"/>
+  <circle cx="440" cy="680" r="12" fill="#E8430A" opacity=".7"/>
+  <circle cx="520" cy="680" r="10" fill="#E8430A" opacity=".5"/>
+  <circle cx="600" cy="680" r="18" fill="#E8430A" opacity=".6"/>
+  <circle cx="680" cy="680" r="8"  fill="#E8430A" opacity=".4"/>
+  <circle cx="120" cy="760" r="8"  fill="#E8430A" opacity=".4"/>
+  <circle cx="200" cy="760" r="14" fill="#E8430A" opacity=".6"/>
+  <circle cx="280" cy="760" r="6"  fill="#E8430A" opacity=".3"/>
+  <circle cx="360" cy="760" r="10" fill="#E8430A" opacity=".7"/>
+  <circle cx="440" cy="760" r="16" fill="#E8430A" opacity=".5"/>
+  <circle cx="520" cy="760" r="8"  fill="#E8430A" opacity=".4"/>
+  <circle cx="600" cy="760" r="10" fill="#E8430A" opacity=".6"/>
+  <circle cx="680" cy="760" r="14" fill="#E8430A" opacity=".3"/>
+  <!-- bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#E8430A"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#111"/>
+</svg>
+<div class="layer" style="padding:32px 44px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:15px;color:#F2F0EB">SIGNAL</span>
+    <span class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">SIG–05 · Half-Moon</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="mono" style="font-size:9px;color:#E8430A;margin-bottom:14px">Горизонт роста</div>
+    <div style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-3px;color:#111;text-transform:uppercase;margin-bottom:22px">
+      РАС<br>СВЕТ<br>РЫНКА
+    </div>
+    <p style="font-size:13px;color:#666;line-height:1.8;max-width:340px;margin-bottom:26px">
+      Новый день — новые данные. Мы следим за рынком 24/7 и реагируем раньше конкурентов.
+    </p>
+    <div style="display:flex;gap:24px;border-top:1px solid rgba(0,0,0,.1);padding-top:16px">
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:#999">CPL</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:#999">CR</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     06 — TETRIS BLOCKS
+     ══════════════════════════════════════════════ -->
+<div class="poster">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#111111"/>
+  <!-- tetris-style block compositions, gap=4px, block=80px -->
+  <!-- T-piece orange top-left -->
+  <rect x="40"  y="40"  width="80" height="80" fill="#E8430A"/>
+  <rect x="124" y="40"  width="80" height="80" fill="#E8430A"/>
+  <rect x="208" y="40"  width="80" height="80" fill="#E8430A"/>
+  <rect x="124" y="124" width="80" height="80" fill="#E8430A"/>
+  <!-- L-piece white top-right -->
+  <rect x="480" y="40"  width="80" height="80" fill="#F2F0EB" opacity=".12"/>
+  <rect x="480" y="124" width="80" height="80" fill="#F2F0EB" opacity=".12"/>
+  <rect x="480" y="208" width="80" height="80" fill="#F2F0EB" opacity=".12"/>
+  <rect x="564" y="208" width="80" height="80" fill="#F2F0EB" opacity=".12"/>
+  <!-- S-piece orange mid -->
+  <rect x="40"  y="340" width="80" height="80" fill="#E8430A" opacity=".6"/>
+  <rect x="124" y="340" width="80" height="80" fill="#E8430A" opacity=".6"/>
+  <rect x="124" y="424" width="80" height="80" fill="#E8430A" opacity=".6"/>
+  <rect x="208" y="424" width="80" height="80" fill="#E8430A" opacity=".6"/>
+  <!-- I-piece right -->
+  <rect x="676" y="40"  width="80" height="80" fill="#E8430A" opacity=".4"/>
+  <rect x="676" y="124" width="80" height="80" fill="#E8430A" opacity=".4"/>
+  <rect x="676" y="208" width="80" height="80" fill="#E8430A" opacity=".4"/>
+  <rect x="676" y="292" width="80" height="80" fill="#E8430A" opacity=".4"/>
+  <!-- O-piece orange mid-right -->
+  <rect x="480" y="340" width="80" height="80" fill="#E8430A"/>
+  <rect x="564" y="340" width="80" height="80" fill="#E8430A"/>
+  <rect x="480" y="424" width="80" height="80" fill="#E8430A"/>
+  <rect x="564" y="424" width="80" height="80" fill="#E8430A"/>
+  <!-- Z-piece low-left -->
+  <rect x="40"  y="600" width="80" height="80" fill="#E8430A" opacity=".8"/>
+  <rect x="124" y="600" width="80" height="80" fill="#E8430A" opacity=".8"/>
+  <rect x="124" y="684" width="80" height="80" fill="#E8430A" opacity=".8"/>
+  <rect x="208" y="684" width="80" height="80" fill="#E8430A" opacity=".8"/>
+  <!-- falling blocks hints at bottom -->
+  <rect x="340" y="700" width="80" height="80" fill="#E8430A" opacity=".3"/>
+  <rect x="340" y="784" width="80" height="80" fill="#E8430A" opacity=".5"/>
+  <rect x="340" y="868" width="80" height="80" fill="#E8430A" opacity=".7"/>
+  <rect x="340" y="952" width="80" height="80" fill="#E8430A" opacity=".9"/>
+  <!-- gap lines -->
+  <rect x="0" y="0" width="800" height="4" fill="#E8430A"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#E8430A"/>
+</svg>
+<div class="layer" style="padding:32px 44px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:15px;color:#F2F0EB">SIGNAL</span>
+    <span class="mono" style="font-size:8px;color:rgba(242,240,235,.3)">SIG–06 · Tetris</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="mono" style="font-size:9px;color:#E8430A;margin-bottom:14px">Складываем рост</div>
+    <div style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-3px;color:#F2F0EB;text-transform:uppercase;margin-bottom:22px">
+      БЛОКИ<br>УСПЕ<br>ХА
+    </div>
+    <p style="font-size:13px;color:rgba(242,240,235,.5);line-height:1.8;max-width:340px;margin-bottom:26px">
+      Складываем блоки: канал + аудитория + креатив + аналитика — и получаем результат.
+    </p>
+    <div style="display:flex;gap:24px;border-top:1px solid rgba(242,240,235,.1);padding-top:16px">
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">CR</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">50+</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">Проектов</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     07 — ISOMETRIC CUBES
+     ══════════════════════════════════════════════ -->
+<div class="poster">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#F2F0EB"/>
+  <!-- isometric cube macro — top face, left face, right face -->
+  <!-- CUBE 1 large top-right -->
+  <polygon points="500,120 700,240 700,440 500,320" fill="#E8430A"/>
+  <polygon points="300,240 500,120 500,320 300,440" fill="#C43408"/>
+  <polygon points="300,440 500,320 700,440 500,560" fill="#F06030"/>
+  <!-- CUBE 2 medium left -->
+  <polygon points="60,360 200,440 200,580 60,500"  fill="#111111"/>
+  <polygon points="60,360 200,280 200,440 60,360"  fill="#1A1A1A"/>
+  <polygon points="60,500 200,580 340,500 200,420" fill="#222222"/>
+  <!-- CUBE 3 small bottom -->
+  <polygon points="360,680 460,740 460,840 360,780" fill="#E8430A" opacity=".6"/>
+  <polygon points="260,740 360,680 360,780 260,840" fill="#C43408" opacity=".6"/>
+  <polygon points="260,840 360,780 460,840 360,900" fill="#F06030" opacity=".6"/>
+  <!-- CUBE 4 tiny -->
+  <polygon points="580,580 640,614 640,680 580,646" fill="#111" opacity=".5"/>
+  <polygon points="520,614 580,580 580,646 520,680" fill="#1A1A1A" opacity=".5"/>
+  <polygon points="520,680 580,646 640,680 580,714" fill="#222" opacity=".5"/>
+  <!-- grid lines suggestion -->
+  <line x1="0" y1="560" x2="800" y2="560" stroke="#111" stroke-width=".5" opacity=".08"/>
+  <!-- bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#E8430A"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#111"/>
+</svg>
+<div class="layer" style="padding:32px 44px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:15px;color:#111">SIGNAL</span>
+    <span class="mono" style="font-size:8px;color:#999">SIG–07 · Isometric</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="mono" style="font-size:9px;color:#E8430A;margin-bottom:14px">Объём результата</div>
+    <div style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-3px;color:#111;text-transform:uppercase;margin-bottom:22px">
+      ТРЕ<br>ТЬЕ<br>ИЗМЕР.
+    </div>
+    <p style="font-size:13px;color:#666;line-height:1.8;max-width:340px;margin-bottom:26px">
+      Смотрим на рекламу в трёх измерениях: охват, глубина, конверсия. Объёмный подход к росту.
+    </p>
+    <div style="display:flex;gap:24px;border-top:1px solid rgba(0,0,0,.1);padding-top:16px">
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:#999">CPL</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:#999">CR</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     08 — DIAGONAL CHECKERBOARD
+     ══════════════════════════════════════════════ -->
+<div class="poster">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#111111"/>
+  <!-- top-right triangle zone with diagonal checker -->
+  <defs>
+    <pattern id="checker" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect x="0" y="0" width="40" height="40" fill="#E8430A" opacity=".9"/>
+      <rect x="40" y="40" width="40" height="40" fill="#E8430A" opacity=".9"/>
+      <rect x="40" y="0" width="40" height="40" fill="transparent"/>
+      <rect x="0" y="40" width="40" height="40" fill="transparent"/>
+    </pattern>
+    <clipPath id="topzone">
+      <polygon points="0,0 800,0 800,700 0,400"/>
+    </clipPath>
+  </defs>
+  <rect width="800" height="1100" fill="url(#checker)" clip-path="url(#topzone)" opacity=".18"/>
+  <!-- big solid orange block -->
+  <rect x="0" y="0" width="400" height="340" fill="#E8430A"/>
+  <!-- cut corner -->
+  <polygon points="0,340 400,340 400,0 0,0" fill="#E8430A"/>
+  <polygon points="400,0 400,200 600,0" fill="#E8430A" opacity=".5"/>
+  <!-- inner cut white -->
+  <polygon points="0,0 300,0 0,200" fill="#111111" opacity=".3"/>
+  <!-- bottom clean -->
+  <rect x="0" y="700" width="800" height="400" fill="#111"/>
+  <!-- bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#F2F0EB" opacity=".9"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#E8430A"/>
+  <!-- right vertical -->
+  <rect x="796" y="0" width="4" height="1100" fill="#E8430A" opacity=".5"/>
+</svg>
+<div class="layer" style="padding:32px 44px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:15px;color:#F2F0EB">SIGNAL</span>
+    <span class="mono" style="font-size:8px;color:rgba(242,240,235,.3)">SIG–08 · Checker</span>
+  </div>
+  <!-- text on orange block -->
+  <div style="position:absolute;top:60px;left:44px">
+    <div class="mono" style="font-size:9px;color:rgba(242,240,235,.6);margin-bottom:10px">Концепция 08</div>
+    <div style="font-weight:900;font-size:72px;line-height:.88;letter-spacing:-2px;color:#F2F0EB;text-transform:uppercase">
+      КЛЕТ<br>КА
+    </div>
+  </div>
+  <div style="margin-top:auto">
+    <div style="font-weight:900;font-size:64px;line-height:.88;letter-spacing:-2px;color:#F2F0EB;text-transform:uppercase;margin-bottom:22px">
+      СТРА<br>ТЕГИИ
+    </div>
+    <p style="font-size:13px;color:rgba(242,240,235,.5);line-height:1.8;max-width:340px;margin-bottom:26px">
+      Чёрное и белое — данные и решения. Контраст рождает точность. Работаем без полутонов.
+    </p>
+    <div style="display:flex;gap:24px;border-top:1px solid rgba(242,240,235,.1);padding-top:16px">
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">CR</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">50+</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">Проектов</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     09 — CONCENTRIC SQUARES (RUSSIAN DOLL)
+     ══════════════════════════════════════════════ -->
+<div class="poster">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#F2F0EB"/>
+  <!-- concentric squares centered -->
+  <rect x="40"  y="140" width="720" height="720" fill="none" stroke="#E8430A" stroke-width="2.5"/>
+  <rect x="40"  y="140" width="720" height="720" fill="#E8430A" opacity=".04"/>
+  <rect x="100" y="200" width="600" height="600" fill="none" stroke="#111"    stroke-width="1.5" opacity=".15"/>
+  <rect x="160" y="260" width="480" height="480" fill="none" stroke="#E8430A" stroke-width="2"   opacity=".7"/>
+  <rect x="160" y="260" width="480" height="480" fill="#E8430A" opacity=".06"/>
+  <rect x="220" y="320" width="360" height="360" fill="none" stroke="#111"    stroke-width="1"   opacity=".12"/>
+  <rect x="280" y="380" width="240" height="240" fill="none" stroke="#E8430A" stroke-width="2"   opacity=".6"/>
+  <rect x="280" y="380" width="240" height="240" fill="#E8430A" opacity=".1"/>
+  <rect x="340" y="440" width="120" height="120" fill="none" stroke="#111"    stroke-width="1"   opacity=".2"/>
+  <rect x="370" y="470" width="60"  height="60"  fill="#E8430A"/>
+  <!-- diagonal from corners -->
+  <line x1="40"  y1="140" x2="760" y2="860" stroke="#E8430A" stroke-width="1" opacity=".12"/>
+  <line x1="760" y1="140" x2="40"  y2="860" stroke="#E8430A" stroke-width="1" opacity=".12"/>
+  <!-- corner dots -->
+  <circle cx="40"  cy="140" r="6" fill="#E8430A" opacity=".8"/>
+  <circle cx="760" cy="140" r="6" fill="#E8430A" opacity=".8"/>
+  <circle cx="40"  cy="860" r="6" fill="#E8430A" opacity=".8"/>
+  <circle cx="760" cy="860" r="6" fill="#E8430A" opacity=".8"/>
+  <!-- bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#E8430A"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#111"/>
+</svg>
+<div class="layer" style="padding:32px 44px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:15px;color:#111">SIGNAL</span>
+    <span class="mono" style="font-size:8px;color:#999">SIG–09 · Concentric</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="mono" style="font-size:9px;color:#E8430A;margin-bottom:14px">Фокус на цели</div>
+    <div style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-3px;color:#111;text-transform:uppercase;margin-bottom:22px">
+      В<br>ЦЕНТР<br>ЦЕЛИ
+    </div>
+    <p style="font-size:13px;color:#666;line-height:1.8;max-width:340px;margin-bottom:26px">
+      Концентрируемся на главном — ROI. Все слои аналитики ведут к одному центру: вашей выручке.
+    </p>
+    <div style="display:flex;gap:24px;border-top:1px solid rgba(0,0,0,.1);padding-top:16px">
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:#999">CPL</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:#999">CR</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">50+</div><div class="mono" style="font-size:8px;color:#999">Проектов</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     10 — EXPLOSION / SHARDS
+     ══════════════════════════════════════════════ -->
+<div class="poster">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#111111"/>
+  <!-- shards radiating from center-top -->
+  <polygon points="400,160 560,0 800,0 640,320"   fill="#E8430A" opacity=".9"/>
+  <polygon points="400,160 800,0 800,280"          fill="#C43408" opacity=".8"/>
+  <polygon points="400,160 640,320 800,560 800,280" fill="#E8430A" opacity=".5"/>
+  <polygon points="400,160 0,0 240,0"              fill="#E8430A" opacity=".7"/>
+  <polygon points="400,160 240,0 0,0 0,200"        fill="#C43408" opacity=".6"/>
+  <polygon points="400,160 0,200 0,440 160,320"    fill="#E8430A" opacity=".4"/>
+  <polygon points="400,160 160,320 0,440 0,640 280,480" fill="#E8430A" opacity=".25"/>
+  <polygon points="400,160 640,320 800,560 600,600 480,380" fill="#E8430A" opacity=".2"/>
+  <!-- dark inner shards -->
+  <polygon points="400,160 480,0 560,0"            fill="#111" opacity=".3"/>
+  <polygon points="400,160 320,0 480,0"            fill="#1A1A1A" opacity=".2"/>
+  <!-- center glow -->
+  <circle cx="400" cy="160" r="24" fill="#F2F0EB" opacity=".2"/>
+  <circle cx="400" cy="160" r="10" fill="#F2F0EB" opacity=".6"/>
+  <circle cx="400" cy="160" r="4"  fill="#F2F0EB"/>
+  <!-- bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#E8430A"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#E8430A"/>
+</svg>
+<div class="layer" style="padding:32px 44px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:15px;color:#F2F0EB">SIGNAL</span>
+    <span class="mono" style="font-size:8px;color:rgba(242,240,235,.3)">SIG–10 · Explosion</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="mono" style="font-size:9px;color:#E8430A;margin-bottom:14px">Взрывной рост</div>
+    <div style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-3px;color:#F2F0EB;text-transform:uppercase;margin-bottom:22px">
+      ВЗРЫВ<br>НА<br>РЫНКЕ
+    </div>
+    <p style="font-size:13px;color:rgba(242,240,235,.5);line-height:1.8;max-width:340px;margin-bottom:26px">
+      Запускаем рекламу, которая разлетается по всем каналам — и возвращается выручкой.
+    </p>
+    <div style="display:flex;gap:24px;border-top:1px solid rgba(242,240,235,.1);padding-top:16px">
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">CR</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">50+</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">Проектов</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     11 — HORIZONTAL BANDS / BAUHAUS
+     ══════════════════════════════════════════════ -->
+<div class="poster">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#F2F0EB"/>
+  <!-- bauhaus-inspired horizontal bands -->
+  <rect x="0" y="0"   width="800" height="160" fill="#111111"/>
+  <rect x="0" y="164" width="800" height="80"  fill="#E8430A"/>
+  <rect x="0" y="248" width="800" height="160" fill="#F2F0EB"/>
+  <rect x="0" y="412" width="800" height="4"   fill="#111111"/>
+  <rect x="0" y="420" width="800" height="80"  fill="#E8430A" opacity=".12"/>
+  <rect x="0" y="504" width="800" height="4"   fill="#111111"/>
+  <rect x="0" y="512" width="800" height="240" fill="#111111"/>
+  <rect x="0" y="756" width="800" height="4"   fill="#E8430A"/>
+  <rect x="0" y="764" width="800" height="120" fill="#F2F0EB"/>
+  <rect x="0" y="888" width="800" height="4"   fill="#111111"/>
+  <rect x="0" y="896" width="800" height="204" fill="#E8430A"/>
+  <!-- vertical accent line -->
+  <rect x="120" y="0" width="3" height="1100" fill="#E8430A" opacity=".5"/>
+  <!-- circle in black band -->
+  <circle cx="600" cy="272" r="52" fill="none" stroke="#E8430A" stroke-width="2.5"/>
+  <circle cx="600" cy="272" r="20" fill="#E8430A"/>
+  <!-- top/bottom -->
+  <rect x="0" y="0" width="800" height="4" fill="#E8430A"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#F2F0EB" opacity=".8"/>
+</svg>
+<div class="layer" style="padding:0;display:flex;flex-direction:column">
+  <!-- logo in top black band -->
+  <div style="height:160px;display:flex;align-items:center;padding:0 44px;justify-content:space-between">
+    <span class="logo" style="font-size:15px;color:#F2F0EB">SIGNAL</span>
+    <span class="mono" style="font-size:8px;color:rgba(242,240,235,.3)">SIG–11 · Bauhaus</span>
+  </div>
+  <!-- content in white band -->
+  <div style="padding:0 44px;margin-top:auto;padding-bottom:32px">
+    <div class="mono" style="font-size:9px;color:#E8430A;margin-bottom:14px;margin-top:20px">Принципы Баухауса</div>
+    <div style="font-weight:900;font-size:92px;line-height:.88;letter-spacing:-3px;color:#F2F0EB;text-transform:uppercase;margin-bottom:22px">
+      ФОРМА<br>СЛЕДУЕТ<br>ДАННЫМ
+    </div>
+    <p style="font-size:13px;color:rgba(242,240,235,.6);line-height:1.8;max-width:420px;margin-bottom:26px">
+      Никакого украшательства. Только функция, только результат. Баухаус в цифровой рекламе.
+    </p>
+    <div style="display:flex;gap:24px;border-top:1px solid rgba(242,240,235,.2);padding-top:16px">
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.4)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.4)">CR</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     12 — OVERLAPPING RECTANGLES TRANSPARENCY
+     ══════════════════════════════════════════════ -->
+<div class="poster">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#111111"/>
+  <!-- layered translucent rects -->
+  <rect x="40"  y="80"  width="500" height="500" fill="#E8430A" opacity=".9"/>
+  <rect x="180" y="200" width="500" height="500" fill="#E8430A" opacity=".5"/>
+  <rect x="320" y="320" width="440" height="440" fill="#E8430A" opacity=".3"/>
+  <!-- black overlapping rects -->
+  <rect x="60"  y="280" width="300" height="300" fill="#111111" opacity=".85"/>
+  <rect x="420" y="100" width="340" height="200" fill="#111111" opacity=".7"/>
+  <!-- white accent outlines -->
+  <rect x="40"  y="80"  width="500" height="500" fill="none" stroke="#F2F0EB" stroke-width="1" opacity=".15"/>
+  <rect x="180" y="200" width="500" height="500" fill="none" stroke="#F2F0EB" stroke-width="1" opacity=".08"/>
+  <rect x="320" y="320" width="440" height="440" fill="none" stroke="#E8430A" stroke-width="1.5" opacity=".4"/>
+  <!-- corner accent -->
+  <rect x="600" y="0" width="200" height="80" fill="#E8430A"/>
+  <!-- bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#E8430A"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#E8430A"/>
+</svg>
+<div class="layer" style="padding:32px 44px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:15px;color:#F2F0EB">SIGNAL</span>
+    <span class="mono" style="font-size:8px;color:rgba(242,240,235,.3)">SIG–12 · Layers</span>
+  </div>
+  <!-- text inside black overlapping rect -->
+  <div style="position:absolute;top:296px;left:76px;width:280px">
+    <div class="mono" style="font-size:9px;color:#E8430A;margin-bottom:8px">Слои данных</div>
+    <div style="font-weight:900;font-size:52px;line-height:.9;letter-spacing:-1.5px;color:#F2F0EB;text-transform:uppercase">
+      СЛОИ<br>РОСТА
+    </div>
+  </div>
+  <div style="margin-top:auto">
+    <div class="mono" style="font-size:9px;color:#E8430A;margin-bottom:14px">Прозрачность решений</div>
+    <div style="font-weight:900;font-size:64px;line-height:.88;letter-spacing:-2px;color:#F2F0EB;text-transform:uppercase;margin-bottom:22px">
+      ОТКРЫ<br>ТОСТЬ<br>ЛЕЖ. В ОСНОВЕ
+    </div>
+    <p style="font-size:13px;color:rgba(242,240,235,.5);line-height:1.8;max-width:360px;margin-bottom:26px">
+      Наслаиваем данные, снимаем слои отчётности — и видим картину целиком.
+    </p>
+    <div style="display:flex;gap:24px;border-top:1px solid rgba(242,240,235,.1);padding-top:16px">
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">CR</div></div>
+      <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">50+</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.35)">Проектов</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>SIGNAL — Blue Geometry</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: #080808;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* each poster is self-contained */
+.poster {
+  width: 800px;
+  height: 1100px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* ─── SHARED TYPOGRAPHY ─── */
+.logo       { font-weight:900; letter-spacing:.32em; }
+.eyebrow    { font-family:'Martian Mono',monospace; letter-spacing:.2em; text-transform:uppercase; }
+.mono-sm    { font-family:'Martian Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; line-height:1.7; }
+
+/* ─── SVG full-bleed ─── */
+.poster svg.bg { position:absolute; inset:0; width:100%; height:100%; }
+/* content layer always on top */
+.layer { position:absolute; inset:0; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     POSTER 01 — CONCENTRIC RINGS
+     ═══════════════════════════════════════════════ -->
+<div class="poster" id="p01">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#0018FF"/>
+  <!-- concentric rings from bottom-right -->
+  <circle cx="680" cy="900" r="720" fill="none" stroke="#DCDEFF" stroke-width="1" opacity=".12"/>
+  <circle cx="680" cy="900" r="560" fill="none" stroke="#DCDEFF" stroke-width="1" opacity=".14"/>
+  <circle cx="680" cy="900" r="400" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".18"/>
+  <circle cx="680" cy="900" r="240" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".22"/>
+  <circle cx="680" cy="900" r="120" fill="#DCDEFF" opacity=".1"/>
+  <circle cx="680" cy="900" r="48"  fill="#DCDEFF" opacity=".25"/>
+  <!-- cross-hair -->
+  <line x1="680" y1="680" x2="680" y2="1100" stroke="#DCDEFF" stroke-width="1" opacity=".15"/>
+  <line x1="460" y1="900" x2="800" y2="900" stroke="#DCDEFF" stroke-width="1" opacity=".15"/>
+  <!-- top-left arc -->
+  <path d="M-60,300 Q120,60 400,120" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".18"/>
+  <!-- accent top bar -->
+  <rect x="0" y="0" width="800" height="4" fill="#DCDEFF" opacity=".9"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#DCDEFF" opacity=".9"/>
+  <!-- dot grid -->
+  <pattern id="dots01" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+    <circle cx="20" cy="20" r="1.2" fill="#DCDEFF" opacity=".18"/>
+  </pattern>
+  <rect width="800" height="1100" fill="url(#dots01)"/>
+</svg>
+<div class="layer" style="display:flex;flex-direction:column;padding:36px 52px;">
+  <!-- header -->
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:auto">
+    <span class="logo" style="font-size:16px;color:#DCDEFF">SIGNAL</span>
+    <span class="mono-sm" style="color:rgba(220,222,255,.45)">SIG–01 · Концентрика</span>
+  </div>
+  <!-- mid tag -->
+  <div style="margin-bottom:auto;margin-top:320px">
+    <div class="eyebrow" style="font-size:9px;color:rgba(220,222,255,.55);margin-bottom:16px">Сигнал как связь</div>
+  </div>
+  <!-- bottom content -->
+  <div style="margin-top:auto">
+    <div style="height:2px;background:#DCDEFF;opacity:.6;width:48px;margin-bottom:20px;border-radius:1px"></div>
+    <div style="font-weight:900;font-size:88px;line-height:.88;letter-spacing:-3px;color:#DCDEFF;text-transform:uppercase;margin-bottom:28px">
+      ВОЛ<br>НА<br>РОСТА
+    </div>
+    <p style="font-size:13px;color:rgba(220,222,255,.5);line-height:1.8;max-width:340px;margin-bottom:32px">
+      Каждый сигнал расходится кругами. Мы запускаем рекламу, которая достигает нужной аудитории — точно и измеримо.
+    </p>
+    <div style="display:flex;gap:32px;border-top:1px solid rgba(220,222,255,.15);padding-top:20px">
+      <div><div style="font-weight:900;font-size:32px;color:#DCDEFF;letter-spacing:-1px">−38%</div><div class="mono-sm" style="color:rgba(220,222,255,.4)">Стоимость лида</div></div>
+      <div><div style="font-weight:900;font-size:32px;color:#DCDEFF;letter-spacing:-1px">×2.4</div><div class="mono-sm" style="color:rgba(220,222,255,.4)">Конверсия</div></div>
+      <div><div style="font-weight:900;font-size:32px;color:#DCDEFF;letter-spacing:-1px">50+</div><div class="mono-sm" style="color:rgba(220,222,255,.4)">Проектов</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     POSTER 02 — GRID SQUARES mosaic
+     ═══════════════════════════════════════════════ -->
+<div class="poster" id="p02">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#0020E8"/>
+  <!-- large grid of squares, different opacities -->
+  <rect x="0"   y="0"   width="200" height="200" fill="#DCDEFF" opacity=".9"/>
+  <rect x="204" y="0"   width="200" height="200" fill="#DCDEFF" opacity=".08"/>
+  <rect x="408" y="0"   width="200" height="200" fill="#DCDEFF" opacity=".18"/>
+  <rect x="612" y="0"   width="188" height="200" fill="#0020E8"/>
+
+  <rect x="0"   y="204" width="200" height="200" fill="#DCDEFF" opacity=".06"/>
+  <rect x="204" y="204" width="200" height="200" fill="#DCDEFF" opacity=".14"/>
+  <rect x="408" y="204" width="200" height="200" fill="#DCDEFF" opacity=".04"/>
+  <rect x="612" y="204" width="188" height="200" fill="#DCDEFF" opacity=".22"/>
+
+  <rect x="0"   y="408" width="200" height="200" fill="#DCDEFF" opacity=".12"/>
+  <rect x="204" y="408" width="200" height="200" fill="#DCDEFF" opacity=".04"/>
+  <rect x="408" y="408" width="200" height="200" fill="#DCDEFF" opacity=".08"/>
+  <rect x="612" y="408" width="188" height="200" fill="#DCDEFF" opacity=".05"/>
+
+  <!-- bottom area clean -->
+  <rect x="0" y="612" width="800" height="488" fill="#0020E8"/>
+
+  <!-- diagonal accent line -->
+  <line x1="0" y1="612" x2="800" y2="0" stroke="#DCDEFF" stroke-width="1" opacity=".1"/>
+
+  <!-- top bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#DCDEFF"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#DCDEFF"/>
+
+  <!-- small dot accent -->
+  <circle cx="612" cy="816" r="6" fill="#DCDEFF" opacity=".7"/>
+  <circle cx="636" cy="816" r="6" fill="#DCDEFF" opacity=".4"/>
+  <circle cx="660" cy="816" r="6" fill="#DCDEFF" opacity=".2"/>
+</svg>
+<div class="layer" style="padding:36px 52px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:16px;color:#DCDEFF">SIGNAL</span>
+    <span class="mono-sm" style="color:rgba(220,222,255,.4)">SIG–02 · Mosaic</span>
+  </div>
+  <!-- text overlay on white square -->
+  <div style="position:absolute;top:28px;left:44px;width:192px;height:192px;display:flex;flex-direction:column;justify-content:flex-end;padding:18px">
+    <div style="font-family:'Martian Mono',monospace;font-size:8px;color:#0020E8;letter-spacing:.16em;text-transform:uppercase;opacity:.6;margin-bottom:4px">Цифровое агентство</div>
+    <div style="font-weight:900;font-size:28px;color:#0020E8;line-height:1;letter-spacing:-1px">DATA<br>FIRST</div>
+  </div>
+  <!-- bottom content -->
+  <div style="margin-top:auto">
+    <div class="eyebrow" style="font-size:9px;color:rgba(220,222,255,.5);margin-bottom:16px">Реклама на данных</div>
+    <div style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-3px;color:#DCDEFF;text-transform:uppercase;margin-bottom:24px">
+      МОЗ<br>АИ<br>КА
+    </div>
+    <p style="font-size:13px;color:rgba(220,222,255,.5);line-height:1.8;max-width:360px;margin-bottom:28px">
+      Каждый блок — отдельная гипотеза. Тестируем, оставляем лучшее, масштабируем.
+    </p>
+    <div style="display:flex;gap:28px;border-top:1px solid rgba(220,222,255,.15);padding-top:18px">
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">−38%</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">×2.4</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">CR</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">100%</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Прозрачность</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     POSTER 03 — DIAGONAL SPLIT
+     ═══════════════════════════════════════════════ -->
+<div class="poster" id="p03">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#0A1FD4"/>
+  <!-- diagonal split — top-right white triangle -->
+  <polygon points="800,0 800,560 240,0" fill="#DCDEFF" opacity=".92"/>
+  <!-- second diagonal strip -->
+  <polygon points="800,0 800,280 520,0" fill="#0A1FD4" opacity=".8"/>
+  <!-- bottom left dark area -->
+  <polygon points="0,700 0,1100 360,1100" fill="rgba(0,0,40,.2)"/>
+  <!-- horizontal rules -->
+  <line x1="0" y1="640" x2="800" y2="640" stroke="#DCDEFF" stroke-width="1" opacity=".15"/>
+  <line x1="0" y1="680" x2="800" y2="680" stroke="#DCDEFF" stroke-width=".5" opacity=".08"/>
+  <!-- small circle -->
+  <circle cx="120" cy="200" r="40" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".35"/>
+  <circle cx="120" cy="200" r="8" fill="#DCDEFF" opacity=".5"/>
+  <!-- accent bars -->
+  <rect x="0" y="0" width="4" height="1100" fill="#DCDEFF" opacity=".9"/>
+  <rect x="796" y="0" width="4" height="1100" fill="#DCDEFF" opacity=".4"/>
+  <!-- top bottom rules -->
+  <rect x="0" y="0" width="800" height="4" fill="#DCDEFF"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#DCDEFF"/>
+</svg>
+<div class="layer" style="padding:36px 52px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:16px;color:#DCDEFF">SIGNAL</span>
+    <span class="mono-sm" style="color:rgba(220,222,255,.4)">SIG–03 · Diagonal</span>
+  </div>
+  <!-- text in white area — dark colored -->
+  <div style="position:absolute;top:80px;right:48px;text-align:right">
+    <div style="font-family:'Martian Mono',monospace;font-size:9px;color:#0A1FD4;letter-spacing:.18em;text-transform:uppercase;opacity:.6;margin-bottom:8px">Цифровое агентство</div>
+    <div style="font-weight:900;font-size:44px;line-height:.9;letter-spacing:-1.5px;color:#0A1FD4;text-transform:uppercase">РОСТ<br>НА<br>ДАННЫХ</div>
+  </div>
+  <!-- bottom content -->
+  <div style="margin-top:auto">
+    <div style="height:2px;background:#DCDEFF;opacity:.5;width:36px;margin-bottom:18px;border-radius:1px"></div>
+    <div style="font-weight:900;font-size:100px;line-height:.88;letter-spacing:-4px;color:#DCDEFF;text-transform:uppercase;margin-bottom:24px">
+      ДИА<br>ГО<br>НАЛЬ
+    </div>
+    <p style="font-size:13px;color:rgba(220,222,255,.5);line-height:1.8;max-width:340px;margin-bottom:28px">
+      Движемся напрямую — от задачи к результату. Никаких лишних шагов.
+    </p>
+    <div style="display:flex;gap:28px;border-top:1px solid rgba(220,222,255,.15);padding-top:18px">
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">−38%</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Стоимость лида</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">×2.4</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Конверсия</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     POSTER 04 — SIGNAL WAVE / ECG
+     ═══════════════════════════════════════════════ -->
+<div class="poster" id="p04">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#0515CC"/>
+  <!-- horizontal grid lines -->
+  <line x1="0" y1="300" x2="800" y2="300" stroke="#DCDEFF" stroke-width=".5" opacity=".1"/>
+  <line x1="0" y1="400" x2="800" y2="400" stroke="#DCDEFF" stroke-width=".5" opacity=".1"/>
+  <line x1="0" y1="500" x2="800" y2="500" stroke="#DCDEFF" stroke-width=".5" opacity=".1"/>
+  <line x1="0" y1="600" x2="800" y2="600" stroke="#DCDEFF" stroke-width=".5" opacity=".1"/>
+  <!-- vertical grid lines -->
+  <line x1="160" y1="250" x2="160" y2="650" stroke="#DCDEFF" stroke-width=".5" opacity=".08"/>
+  <line x1="320" y1="250" x2="320" y2="650" stroke="#DCDEFF" stroke-width=".5" opacity=".08"/>
+  <line x1="480" y1="250" x2="480" y2="650" stroke="#DCDEFF" stroke-width=".5" opacity=".08"/>
+  <line x1="640" y1="250" x2="640" y2="650" stroke="#DCDEFF" stroke-width=".5" opacity=".08"/>
+  <!-- ECG signal wave -->
+  <polyline
+    points="
+      0,450
+      60,450
+      80,450
+      100,200
+      120,700
+      140,280
+      160,620
+      180,380
+      200,420
+      220,450
+      280,450
+      300,450
+      320,180
+      340,720
+      360,250
+      380,640
+      400,400
+      420,440
+      440,450
+      500,450
+      520,450
+      540,210
+      560,690
+      580,270
+      600,630
+      620,410
+      640,445
+      660,450
+      800,450"
+    fill="none" stroke="#DCDEFF" stroke-width="2.5" opacity=".85"/>
+  <!-- glow duplicate -->
+  <polyline
+    points="
+      0,450 60,450 80,450 100,200 120,700 140,280 160,620 180,380 200,420 220,450
+      280,450 300,450 320,180 340,720 360,250 380,640 400,400 420,440 440,450
+      500,450 520,450 540,210 560,690 580,270 600,630 620,410 640,445 660,450 800,450"
+    fill="none" stroke="#DCDEFF" stroke-width="12" opacity=".06"/>
+  <!-- top & bottom bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#DCDEFF"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#DCDEFF"/>
+  <!-- accent circle at peak -->
+  <circle cx="320" cy="180" r="8" fill="#DCDEFF" opacity=".9"/>
+  <circle cx="320" cy="180" r="20" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".3"/>
+  <!-- dot pattern top -->
+  <pattern id="dots04" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+    <circle cx="16" cy="16" r="1" fill="#DCDEFF" opacity=".12"/>
+  </pattern>
+  <rect width="800" height="240" fill="url(#dots04)"/>
+  <rect y="740" width="800" height="360" fill="url(#dots04)"/>
+</svg>
+<div class="layer" style="padding:36px 52px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:16px;color:#DCDEFF">SIGNAL</span>
+    <span class="mono-sm" style="color:rgba(220,222,255,.4)">SIG–04 · ECG Wave</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="eyebrow" style="font-size:9px;color:rgba(220,222,255,.5);margin-bottom:16px">Пульс вашего бизнеса</div>
+    <div style="font-weight:900;font-size:92px;line-height:.88;letter-spacing:-3px;color:#DCDEFF;text-transform:uppercase;margin-bottom:24px">
+      ПУЛ<br>ЬС<br>РЫНКА
+    </div>
+    <p style="font-size:13px;color:rgba(220,222,255,.5);line-height:1.8;max-width:360px;margin-bottom:28px">
+      Мы читаем сигналы рынка и превращаем их в точные рекламные решения. Аналитика в реальном времени.
+    </p>
+    <div style="display:flex;gap:28px;border-top:1px solid rgba(220,222,255,.15);padding-top:18px">
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">−38%</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">CPL средний</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">×2.4</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Конверсия</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">50+</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Клиентов</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     POSTER 05 — OVERLAPPING CIRCLES (Venn energy)
+     ═══════════════════════════════════════════════ -->
+<div class="poster" id="p05">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#0B2AE0"/>
+  <!-- three large overlapping circles -->
+  <circle cx="280" cy="380" r="260" fill="#DCDEFF" opacity=".12"/>
+  <circle cx="520" cy="380" r="260" fill="#DCDEFF" opacity=".12"/>
+  <circle cx="400" cy="560" r="260" fill="#DCDEFF" opacity=".14"/>
+  <!-- outlines -->
+  <circle cx="280" cy="380" r="260" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".3"/>
+  <circle cx="520" cy="380" r="260" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".3"/>
+  <circle cx="400" cy="560" r="260" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".3"/>
+  <!-- center highlight -->
+  <circle cx="400" cy="460" r="48" fill="#DCDEFF" opacity=".22"/>
+  <circle cx="400" cy="460" r="16" fill="#DCDEFF" opacity=".6"/>
+  <!-- labels in circles -->
+  <text x="200" y="280" font-family="Martian Mono" font-size="11" fill="#DCDEFF" opacity=".5" letter-spacing="2" text-anchor="middle">ДАННЫЕ</text>
+  <text x="600" y="280" font-family="Martian Mono" font-size="11" fill="#DCDEFF" opacity=".5" letter-spacing="2" text-anchor="middle">СТРАТЕГИЯ</text>
+  <text x="400" y="720" font-family="Martian Mono" font-size="11" fill="#DCDEFF" opacity=".5" letter-spacing="2" text-anchor="middle">РЕЗУЛЬТАТ</text>
+  <text x="400" y="450" font-family="Martian Mono" font-size="10" fill="#DCDEFF" opacity=".8" letter-spacing="1" text-anchor="middle">SIGNAL</text>
+  <!-- bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#DCDEFF"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#DCDEFF"/>
+</svg>
+<div class="layer" style="padding:36px 52px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:16px;color:#DCDEFF">SIGNAL</span>
+    <span class="mono-sm" style="color:rgba(220,222,255,.4)">SIG–05 · Venn</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="eyebrow" style="font-size:9px;color:rgba(220,222,255,.5);margin-bottom:16px">На пересечении</div>
+    <div style="font-weight:900;font-size:88px;line-height:.88;letter-spacing:-3px;color:#DCDEFF;text-transform:uppercase;margin-bottom:24px">
+      ПЕ<br>РЕ<br>СЕ<br>ЧЕ<br>НИЕ
+    </div>
+    <p style="font-size:13px;color:rgba(220,222,255,.5);line-height:1.8;max-width:360px;margin-bottom:28px">
+      Данные + стратегия + исполнение = результат. Мы работаем там, где они пересекаются.
+    </p>
+    <div style="display:flex;gap:28px;border-top:1px solid rgba(220,222,255,.15);padding-top:18px">
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">−38%</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">×2.4</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Конверсия</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     POSTER 06 — VERTICAL STRIPES
+     ═══════════════════════════════════════════════ -->
+<div class="poster" id="p06">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#041EBB"/>
+  <!-- vertical stripes of varying opacity -->
+  <rect x="0"   y="0" width="80" height="1100" fill="#DCDEFF" opacity=".04"/>
+  <rect x="84"  y="0" width="40" height="1100" fill="#DCDEFF" opacity=".08"/>
+  <rect x="128" y="0" width="16" height="1100" fill="#DCDEFF" opacity=".15"/>
+  <rect x="148" y="0" width="8"  height="1100" fill="#DCDEFF" opacity=".25"/>
+  <rect x="160" y="0" width="4"  height="1100" fill="#DCDEFF" opacity=".5"/>
+  <rect x="168" y="0" width="2"  height="1100" fill="#DCDEFF" opacity=".8"/>
+  <!-- mirror right -->
+  <rect x="630" y="0" width="2"  height="1100" fill="#DCDEFF" opacity=".8"/>
+  <rect x="636" y="0" width="4"  height="1100" fill="#DCDEFF" opacity=".5"/>
+  <rect x="644" y="0" width="8"  height="1100" fill="#DCDEFF" opacity=".25"/>
+  <rect x="656" y="0" width="16" height="1100" fill="#DCDEFF" opacity=".15"/>
+  <rect x="676" y="0" width="40" height="1100" fill="#DCDEFF" opacity=".08"/>
+  <rect x="720" y="0" width="80" height="1100" fill="#DCDEFF" opacity=".04"/>
+  <!-- horizontal rule mid -->
+  <line x1="170" y1="550" x2="630" y2="550" stroke="#DCDEFF" stroke-width="1" opacity=".2"/>
+  <!-- top/bottom bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#DCDEFF"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#DCDEFF"/>
+  <!-- dot grid in center channel -->
+  <pattern id="dots06" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+    <circle cx="15" cy="15" r="1" fill="#DCDEFF" opacity=".15"/>
+  </pattern>
+  <rect x="170" y="0" width="460" height="1100" fill="url(#dots06)"/>
+  <!-- large circle center -->
+  <circle cx="400" cy="420" r="180" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".2"/>
+  <circle cx="400" cy="420" r="90" fill="none" stroke="#DCDEFF" stroke-width="1" opacity=".15"/>
+</svg>
+<div class="layer" style="padding:36px 52px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:16px;color:#DCDEFF">SIGNAL</span>
+    <span class="mono-sm" style="color:rgba(220,222,255,.4)">SIG–06 · Stripes</span>
+  </div>
+  <!-- centered heading in the stripe channel -->
+  <div style="position:absolute;top:200px;left:170px;width:460px;text-align:center">
+    <div class="eyebrow" style="font-size:9px;color:rgba(220,222,255,.45);margin-bottom:14px">Частота роста</div>
+    <div style="font-weight:900;font-size:72px;line-height:.9;letter-spacing:-2px;color:#DCDEFF;text-transform:uppercase">
+      ЧАС<br>ТО<br>ТА
+    </div>
+  </div>
+  <div style="margin-top:auto">
+    <p style="font-size:13px;color:rgba(220,222,255,.5);line-height:1.8;max-width:360px;margin-bottom:28px">
+      Настраиваем рекламу на нужную частоту — попадаем в аудиторию в нужный момент.
+    </p>
+    <div style="display:flex;gap:28px;border-top:1px solid rgba(220,222,255,.15);padding-top:18px">
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">−38%</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">×2.4</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Конверсия</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">50+</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Проектов</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     POSTER 07 — RADIAL LINES / BURST
+     ═══════════════════════════════════════════════ -->
+<div class="poster" id="p07">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#0816D8"/>
+  <!-- radial lines from top-right -->
+  <g opacity=".15" stroke="#DCDEFF" stroke-width="1" transform="translate(800,0)">
+    <line x1="0" y1="0" x2="-800" y2="1100"/>
+    <line x1="0" y1="0" x2="-700" y2="1100"/>
+    <line x1="0" y1="0" x2="-600" y2="1100"/>
+    <line x1="0" y1="0" x2="-500" y2="1100"/>
+    <line x1="0" y1="0" x2="-400" y2="1100"/>
+    <line x1="0" y1="0" x2="-300" y2="1100"/>
+    <line x1="0" y1="0" x2="-200" y2="1100"/>
+    <line x1="0" y1="0" x2="-100" y2="1100"/>
+    <line x1="0" y1="0" x2="0"    y2="1100"/>
+    <line x1="0" y1="0" x2="-800" y2="600"/>
+    <line x1="0" y1="0" x2="-800" y2="400"/>
+    <line x1="0" y1="0" x2="-800" y2="200"/>
+  </g>
+  <!-- origin circle -->
+  <circle cx="800" cy="0" r="40" fill="#DCDEFF" opacity=".2"/>
+  <circle cx="800" cy="0" r="15" fill="#DCDEFF" opacity=".5"/>
+  <!-- concentric arcs from origin -->
+  <path d="M800,320 A320,320 0 0,0 480,0" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".25"/>
+  <path d="M800,560 A560,560 0 0,0 240,0" fill="none" stroke="#DCDEFF" stroke-width="1" opacity=".15"/>
+  <!-- horizontal rules -->
+  <rect x="0" y="0" width="800" height="4" fill="#DCDEFF"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#DCDEFF"/>
+  <!-- bottom left circle -->
+  <circle cx="100" cy="950" r="80" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".3"/>
+  <circle cx="100" cy="950" r="40" fill="#DCDEFF" opacity=".08"/>
+  <!-- small dot -->
+  <circle cx="100" cy="950" r="8" fill="#DCDEFF" opacity=".5"/>
+</svg>
+<div class="layer" style="padding:36px 52px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:16px;color:#DCDEFF">SIGNAL</span>
+    <span class="mono-sm" style="color:rgba(220,222,255,.4)">SIG–07 · Burst</span>
+  </div>
+  <div style="margin-top:auto">
+    <div style="height:2px;background:#DCDEFF;opacity:.5;width:36px;margin-bottom:18px;border-radius:1px"></div>
+    <div class="eyebrow" style="font-size:9px;color:rgba(220,222,255,.5);margin-bottom:16px">Охват без потерь</div>
+    <div style="font-weight:900;font-size:100px;line-height:.88;letter-spacing:-3px;color:#DCDEFF;text-transform:uppercase;margin-bottom:24px">
+      ИС<br>ТОЧ<br>НИК
+    </div>
+    <p style="font-size:13px;color:rgba(220,222,255,.5);line-height:1.8;max-width:360px;margin-bottom:28px">
+      Из одной точки — в тысячи. Запускаем рекламу, которая расходится точно по целевой аудитории.
+    </p>
+    <div style="display:flex;gap:28px;border-top:1px solid rgba(220,222,255,.15);padding-top:18px">
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">−38%</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">×2.4</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Конверсия</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     POSTER 08 — SPIRAL / FIBONACCI
+     ═══════════════════════════════════════════════ -->
+<div class="poster" id="p08">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#0C22F0"/>
+  <!-- fibonacci-like rectangles -->
+  <rect x="0"   y="0"   width="496" height="680" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".2"/>
+  <rect x="496" y="0"   width="304" height="680" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".2"/>
+  <rect x="496" y="0"   width="304" height="420" fill="none" stroke="#DCDEFF" stroke-width="1" opacity=".12"/>
+  <rect x="496" y="420" width="304" height="260" fill="none" stroke="#DCDEFF" stroke-width="1" opacity=".12"/>
+  <rect x="496" y="420" width="188" height="260" fill="none" stroke="#DCDEFF" stroke-width=".8" opacity=".1"/>
+  <!-- spiral arc approximation -->
+  <path d="M496,680 Q496,0 0,0" fill="none" stroke="#DCDEFF" stroke-width="2" opacity=".4"/>
+  <path d="M800,420 Q496,420 496,680" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".3"/>
+  <path d="M800,680 Q800,420 684,420" fill="none" stroke="#DCDEFF" stroke-width="1" opacity=".2"/>
+  <!-- fill one rect -->
+  <rect x="612" y="0" width="188" height="420" fill="#DCDEFF" opacity=".1"/>
+  <!-- top/bottom -->
+  <rect x="0" y="0" width="800" height="4" fill="#DCDEFF"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#DCDEFF"/>
+  <!-- dot pattern -->
+  <pattern id="dots08" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+    <circle cx="14" cy="14" r="1" fill="#DCDEFF" opacity=".12"/>
+  </pattern>
+  <rect x="0" y="680" width="800" height="420" fill="url(#dots08)"/>
+  <!-- small accent circles -->
+  <circle cx="496" cy="0"   r="6" fill="#DCDEFF" opacity=".7"/>
+  <circle cx="800" cy="420" r="6" fill="#DCDEFF" opacity=".5"/>
+  <circle cx="496" cy="680" r="6" fill="#DCDEFF" opacity=".5"/>
+</svg>
+<div class="layer" style="padding:36px 52px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:16px;color:#DCDEFF">SIGNAL</span>
+    <span class="mono-sm" style="color:rgba(220,222,255,.4)">SIG–08 · Fibonacci</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="eyebrow" style="font-size:9px;color:rgba(220,222,255,.5);margin-bottom:16px">Золотое сечение роста</div>
+    <div style="font-weight:900;font-size:92px;line-height:.88;letter-spacing:-3px;color:#DCDEFF;text-transform:uppercase;margin-bottom:24px">
+      СИС<br>ТЕ<br>МА
+    </div>
+    <p style="font-size:13px;color:rgba(220,222,255,.5);line-height:1.8;max-width:360px;margin-bottom:28px">
+      Каждый элемент на своём месте. Строим рекламные системы, которые масштабируются без хаоса.
+    </p>
+    <div style="display:flex;gap:28px;border-top:1px solid rgba(220,222,255,.15);padding-top:18px">
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">−38%</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">×2.4</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Конверсия</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">50+</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Клиентов</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     POSTER 09 — HEXAGONAL GRID
+     ═══════════════════════════════════════════════ -->
+<div class="poster" id="p09">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#0318D8"/>
+  <!-- hexagons -->
+  <g fill="none" stroke="#DCDEFF" stroke-width="1.2">
+    <!-- row 1 -->
+    <polygon points="100,60 140,37 180,60 180,106 140,129 100,106" opacity=".18"/>
+    <polygon points="188,60 228,37 268,60 268,106 228,129 188,106" opacity=".1"/>
+    <polygon points="276,60 316,37 356,60 356,106 316,129 276,106" opacity=".22"/>
+    <polygon points="364,60 404,37 444,60 444,106 404,129 364,106" opacity=".08"/>
+    <polygon points="452,60 492,37 532,60 532,106 492,129 452,106" opacity=".16"/>
+    <polygon points="540,60 580,37 620,60 620,106 580,129 540,106" opacity=".12"/>
+    <polygon points="628,60 668,37 708,60 708,106 668,129 628,106" opacity=".2"/>
+    <!-- row 2 (offset) -->
+    <polygon points="56,144 96,121 136,144 136,190 96,213 56,190" opacity=".1"/>
+    <polygon points="144,144 184,121 224,144 224,190 184,213 144,190" opacity=".2"/>
+    <polygon points="232,144 272,121 312,144 312,190 272,213 232,190" opacity=".08"/>
+    <polygon points="320,144 360,121 400,144 400,190 360,213 320,190" opacity=".25"/>
+    <polygon points="408,144 448,121 488,144 488,190 448,213 408,190" opacity=".12"/>
+    <polygon points="496,144 536,121 576,144 576,190 536,213 496,190" opacity=".18"/>
+    <polygon points="584,144 624,121 664,144 664,190 624,213 584,190" opacity=".06"/>
+    <polygon points="672,144 712,121 752,144 752,190 712,213 672,190" opacity=".14"/>
+    <!-- row 3 -->
+    <polygon points="100,228 140,205 180,228 180,274 140,297 100,274" opacity=".14"/>
+    <polygon points="276,228 316,205 356,228 356,274 316,297 276,274" opacity=".2"/>
+    <polygon points="364,228 404,205 444,228 444,274 404,297 364,274" opacity=".08"/>
+    <polygon points="540,228 580,205 620,228 620,274 580,297 540,274" opacity=".18"/>
+    <polygon points="628,228 668,205 708,228 708,274 668,297 628,274" opacity=".1"/>
+    <!-- row 4 offset -->
+    <polygon points="320,312 360,289 400,312 400,358 360,381 320,358" opacity=".16"/>
+    <polygon points="496,312 536,289 576,312 576,358 536,381 496,358" opacity=".22"/>
+  </g>
+  <!-- filled hex accent -->
+  <polygon points="320,312 360,289 400,312 400,358 360,381 320,358" fill="#DCDEFF" opacity=".2"/>
+  <!-- bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#DCDEFF"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#DCDEFF"/>
+  <!-- vertical left rule -->
+  <rect x="52" y="0" width="2" height="1100" fill="#DCDEFF" opacity=".12"/>
+</svg>
+<div class="layer" style="padding:36px 52px 36px 72px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:16px;color:#DCDEFF">SIGNAL</span>
+    <span class="mono-sm" style="color:rgba(220,222,255,.4)">SIG–09 · Hexagonal</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="eyebrow" style="font-size:9px;color:rgba(220,222,255,.5);margin-bottom:16px">Структура победы</div>
+    <div style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-3px;color:#DCDEFF;text-transform:uppercase;margin-bottom:24px">
+      СЕТЬ<br>КОН<br>ТАКТОВ
+    </div>
+    <p style="font-size:13px;color:rgba(220,222,255,.5);line-height:1.8;max-width:360px;margin-bottom:28px">
+      Каждая ячейка — точка контакта с аудиторией. Строим гексагональные сети охвата.
+    </p>
+    <div style="display:flex;gap:28px;border-top:1px solid rgba(220,222,255,.15);padding-top:18px">
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">−38%</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">×2.4</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Конверсия</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     POSTER 10 — NOISE / HALFTONE DOTS
+     ═══════════════════════════════════════════════ -->
+<div class="poster" id="p10">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#060FBF"/>
+  <!-- halftone dot field — larger dots top-left fading to smaller -->
+  <g fill="#DCDEFF">
+    <!-- row 1 big -->
+    <circle cx="60"  cy="60"  r="18" opacity=".7"/>
+    <circle cx="120" cy="60"  r="15" opacity=".6"/>
+    <circle cx="180" cy="60"  r="12" opacity=".5"/>
+    <circle cx="240" cy="60"  r="10" opacity=".4"/>
+    <circle cx="300" cy="60"  r="8"  opacity=".3"/>
+    <circle cx="360" cy="60"  r="6"  opacity=".2"/>
+    <circle cx="420" cy="60"  r="4"  opacity=".15"/>
+    <circle cx="480" cy="60"  r="3"  opacity=".1"/>
+    <circle cx="540" cy="60"  r="2"  opacity=".07"/>
+    <!-- row 2 -->
+    <circle cx="60"  cy="120" r="16" opacity=".65"/>
+    <circle cx="120" cy="120" r="13" opacity=".55"/>
+    <circle cx="180" cy="120" r="10" opacity=".45"/>
+    <circle cx="240" cy="120" r="8"  opacity=".35"/>
+    <circle cx="300" cy="120" r="6"  opacity=".25"/>
+    <circle cx="360" cy="120" r="5"  opacity=".18"/>
+    <circle cx="420" cy="120" r="3"  opacity=".12"/>
+    <!-- row 3 -->
+    <circle cx="60"  cy="180" r="14" opacity=".6"/>
+    <circle cx="120" cy="180" r="11" opacity=".5"/>
+    <circle cx="180" cy="180" r="9"  opacity=".4"/>
+    <circle cx="240" cy="180" r="7"  opacity=".3"/>
+    <circle cx="300" cy="180" r="5"  opacity=".22"/>
+    <circle cx="360" cy="180" r="4"  opacity=".14"/>
+    <!-- row 4 -->
+    <circle cx="60"  cy="240" r="12" opacity=".55"/>
+    <circle cx="120" cy="240" r="9"  opacity=".45"/>
+    <circle cx="180" cy="240" r="7"  opacity=".35"/>
+    <circle cx="240" cy="240" r="5"  opacity=".25"/>
+    <circle cx="300" cy="240" r="4"  opacity=".18"/>
+    <!-- row 5 -->
+    <circle cx="60"  cy="300" r="10" opacity=".5"/>
+    <circle cx="120" cy="300" r="7"  opacity=".4"/>
+    <circle cx="180" cy="300" r="5"  opacity=".3"/>
+    <circle cx="240" cy="300" r="4"  opacity=".2"/>
+    <!-- row 6 -->
+    <circle cx="60"  cy="360" r="8"  opacity=".4"/>
+    <circle cx="120" cy="360" r="6"  opacity=".3"/>
+    <circle cx="180" cy="360" r="4"  opacity=".22"/>
+    <!-- row 7 -->
+    <circle cx="60"  cy="420" r="6"  opacity=".3"/>
+    <circle cx="120" cy="420" r="4"  opacity=".22"/>
+    <!-- row 8 -->
+    <circle cx="60"  cy="480" r="4"  opacity=".2"/>
+  </g>
+  <!-- large filled circle top-right -->
+  <circle cx="680" cy="180" r="200" fill="#DCDEFF" opacity=".12"/>
+  <circle cx="680" cy="180" r="120" fill="#DCDEFF" opacity=".1"/>
+  <circle cx="680" cy="180" r="56"  fill="#DCDEFF" opacity=".18"/>
+  <circle cx="680" cy="180" r="20"  fill="#DCDEFF" opacity=".5"/>
+  <!-- bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#DCDEFF"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#DCDEFF"/>
+</svg>
+<div class="layer" style="padding:36px 52px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:16px;color:#DCDEFF">SIGNAL</span>
+    <span class="mono-sm" style="color:rgba(220,222,255,.4)">SIG–10 · Halftone</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="eyebrow" style="font-size:9px;color:rgba(220,222,255,.5);margin-bottom:16px">Точность попадания</div>
+    <div style="font-weight:900;font-size:92px;line-height:.88;letter-spacing:-3px;color:#DCDEFF;text-transform:uppercase;margin-bottom:24px">
+      ТОЧ<br>КА<br>ВХОДА
+    </div>
+    <p style="font-size:13px;color:rgba(220,222,255,.5);line-height:1.8;max-width:360px;margin-bottom:28px">
+      Тысячи точек данных — одно точное попадание в аудиторию. Работаем с first-party данными.
+    </p>
+    <div style="display:flex;gap:28px;border-top:1px solid rgba(220,222,255,.15);padding-top:18px">
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">−38%</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">×2.4</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Конверсия</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">50+</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Проектов</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     POSTER 11 — TRIANGLES / FACETS
+     ═══════════════════════════════════════════════ -->
+<div class="poster" id="p11">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#0D1ECC"/>
+  <!-- large triangle top -->
+  <polygon points="400,0 800,560 0,560" fill="#DCDEFF" opacity=".07"/>
+  <polygon points="400,0 800,560 0,560" fill="none" stroke="#DCDEFF" stroke-width="1.5" opacity=".2"/>
+  <!-- inner triangle -->
+  <polygon points="400,80 720,520 80,520" fill="#DCDEFF" opacity=".05"/>
+  <polygon points="400,80 720,520 80,520" fill="none" stroke="#DCDEFF" stroke-width="1" opacity=".14"/>
+  <!-- small triangles scattered -->
+  <polygon points="100,200 140,270 60,270" fill="none" stroke="#DCDEFF" stroke-width="1" opacity=".25"/>
+  <polygon points="680,160 720,230 640,230" fill="#DCDEFF" opacity=".2"/>
+  <polygon points="680,160 720,230 640,230" fill="none" stroke="#DCDEFF" stroke-width="1" opacity=".3"/>
+  <!-- bottom pointing triangle -->
+  <polygon points="400,1100 0,560 800,560" fill="#DCDEFF" opacity=".04"/>
+  <polygon points="400,1100 0,560 800,560" fill="none" stroke="#DCDEFF" stroke-width="1" opacity=".1"/>
+  <!-- top tip circle -->
+  <circle cx="400" cy="0" r="8" fill="#DCDEFF" opacity=".7"/>
+  <!-- bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#DCDEFF"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#DCDEFF"/>
+</svg>
+<div class="layer" style="padding:36px 52px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:16px;color:#DCDEFF">SIGNAL</span>
+    <span class="mono-sm" style="color:rgba(220,222,255,.4)">SIG–11 · Facets</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="eyebrow" style="font-size:9px;color:rgba(220,222,255,.5);margin-bottom:16px">Острота стратегии</div>
+    <div style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-3px;color:#DCDEFF;text-transform:uppercase;margin-bottom:24px">
+      ВЕК<br>ТОР<br>РОСТА
+    </div>
+    <p style="font-size:13px;color:rgba(220,222,255,.5);line-height:1.8;max-width:360px;margin-bottom:28px">
+      Каждая грань — отдельный канал. Из разных направлений — в одну точку цели.
+    </p>
+    <div style="display:flex;gap:28px;border-top:1px solid rgba(220,222,255,.15);padding-top:18px">
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">−38%</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">×2.4</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Конверсия</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     POSTER 12 — PLUS/CROSS GRID
+     ═══════════════════════════════════════════════ -->
+<div class="poster" id="p12">
+<svg class="bg" viewBox="0 0 800 1100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1100" fill="#0214E0"/>
+  <!-- grid of plus signs -->
+  <g stroke="#DCDEFF" stroke-width="1.5" stroke-linecap="round">
+    <!-- row 1 -->
+    <line x1="80"  y1="60"  x2="80"  y2="100" opacity=".4"/><line x1="60"  y1="80"  x2="100" y2="80"  opacity=".4"/>
+    <line x1="160" y1="60"  x2="160" y2="100" opacity=".2"/><line x1="140" y1="80"  x2="180" y2="80"  opacity=".2"/>
+    <line x1="240" y1="60"  x2="240" y2="100" opacity=".35"/><line x1="220" y1="80"  x2="260" y2="80"  opacity=".35"/>
+    <line x1="320" y1="60"  x2="320" y2="100" opacity=".15"/><line x1="300" y1="80"  x2="340" y2="80"  opacity=".15"/>
+    <line x1="400" y1="60"  x2="400" y2="100" opacity=".4"/><line x1="380" y1="80"  x2="420" y2="80"  opacity=".4"/>
+    <line x1="480" y1="60"  x2="480" y2="100" opacity=".2"/><line x1="460" y1="80"  x2="500" y2="80"  opacity=".2"/>
+    <line x1="560" y1="60"  x2="560" y2="100" opacity=".3"/><line x1="540" y1="80"  x2="580" y2="80"  opacity=".3"/>
+    <line x1="640" y1="60"  x2="640" y2="100" opacity=".18"/><line x1="620" y1="80"  x2="660" y2="80"  opacity=".18"/>
+    <line x1="720" y1="60"  x2="720" y2="100" opacity=".35"/><line x1="700" y1="80"  x2="740" y2="80"  opacity=".35"/>
+    <!-- row 2 -->
+    <line x1="80"  y1="180" x2="80"  y2="220" opacity=".2"/><line x1="60"  y1="200" x2="100" y2="200" opacity=".2"/>
+    <line x1="240" y1="180" x2="240" y2="220" opacity=".4"/><line x1="220" y1="200" x2="260" y2="200" opacity=".4"/>
+    <line x1="400" y1="180" x2="400" y2="220" opacity=".25"/><line x1="380" y1="200" x2="420" y2="200" opacity=".25"/>
+    <line x1="560" y1="180" x2="560" y2="220" opacity=".4"/><line x1="540" y1="200" x2="580" y2="200" opacity=".4"/>
+    <line x1="720" y1="180" x2="720" y2="220" opacity=".2"/><line x1="700" y1="200" x2="740" y2="200" opacity=".2"/>
+    <!-- rows 3-5 -->
+    <line x1="80"  y1="300" x2="80"  y2="340" opacity=".35"/><line x1="60"  y1="320" x2="100" y2="320" opacity=".35"/>
+    <line x1="160" y1="300" x2="160" y2="340" opacity=".15"/><line x1="140" y1="320" x2="180" y2="320" opacity=".15"/>
+    <line x1="320" y1="300" x2="320" y2="340" opacity=".3"/><line x1="300" y1="320" x2="340" y2="320" opacity=".3"/>
+    <line x1="480" y1="300" x2="480" y2="340" opacity=".4"/><line x1="460" y1="320" x2="500" y2="320" opacity=".4"/>
+    <line x1="640" y1="300" x2="640" y2="340" opacity=".2"/><line x1="620" y1="320" x2="660" y2="320" opacity=".2"/>
+    <!-- large plus center -->
+    <line x1="400" y1="380" x2="400" y2="540" stroke-width="3" opacity=".5"/>
+    <line x1="320" y1="460" x2="480" y2="460" stroke-width="3" opacity=".5"/>
+  </g>
+  <!-- center circle at large plus -->
+  <circle cx="400" cy="460" r="24" fill="#DCDEFF" opacity=".15"/>
+  <circle cx="400" cy="460" r="8"  fill="#DCDEFF" opacity=".5"/>
+  <!-- bars -->
+  <rect x="0" y="0" width="800" height="4" fill="#DCDEFF"/>
+  <rect x="0" y="1096" width="800" height="4" fill="#DCDEFF"/>
+</svg>
+<div class="layer" style="padding:36px 52px;display:flex;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <span class="logo" style="font-size:16px;color:#DCDEFF">SIGNAL</span>
+    <span class="mono-sm" style="color:rgba(220,222,255,.4)">SIG–12 · Cross Grid</span>
+  </div>
+  <div style="margin-top:auto">
+    <div class="eyebrow" style="font-size:9px;color:rgba(220,222,255,.5);margin-bottom:16px">Плюс к каждой метрике</div>
+    <div style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-3px;color:#DCDEFF;text-transform:uppercase;margin-bottom:24px">
+      ПЛЮ<br>СОМ<br>К РО<br>СТУ
+    </div>
+    <p style="font-size:13px;color:rgba(220,222,255,.5);line-height:1.8;max-width:360px;margin-bottom:28px">
+      К каждому показателю — плюс. Строим рекламу, которая прибавляет, а не тратит.
+    </p>
+    <div style="display:flex;gap:28px;border-top:1px solid rgba(220,222,255,.15);padding-top:18px">
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">−38%</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">CPL</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">×2.4</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Конверсия</div></div>
+      <div><div style="font-weight:900;font-size:30px;color:#DCDEFF;letter-spacing:-1px">50+</div><div class="mono-sm" style="color:rgba(220,222,255,.38)">Проектов</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>SIGNAL — Bold Type</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: #080808;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.poster {
+  width: 800px;
+  height: 1100px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.mono { font-family:'Martian Mono',monospace; }
+</style>
+</head>
+<body>
+
+
+<!-- ══════════════════════════════════════════════
+     01 — FULL BLEED STACKED, white on black
+     ══════════════════════════════════════════════ -->
+<div class="poster" style="background:#0A0A0A">
+  <!-- top accent bar -->
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#F5C800"></div>
+  <!-- bottom accent bar -->
+  <div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:#F5C800"></div>
+  <!-- HUGE stacked type fills entire poster -->
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 44px">
+    <div style="font-weight:900;font-size:172px;line-height:.82;letter-spacing:-8px;color:#E8E6E0;text-transform:uppercase;margin-bottom:0">
+      РЕКЛА
+    </div>
+    <div style="font-weight:900;font-size:172px;line-height:.82;letter-spacing:-8px;color:#F5C800;text-transform:uppercase;margin-bottom:0">
+      МА БЕЗ
+    </div>
+    <div style="font-weight:900;font-size:172px;line-height:.82;letter-spacing:-8px;color:#E8E6E0;text-transform:uppercase">
+      ШУМА.
+    </div>
+  </div>
+  <!-- logo top-left -->
+  <div style="position:absolute;top:24px;left:44px;font-weight:900;font-size:13px;letter-spacing:.3em;color:#F5C800">SIGNAL</div>
+  <!-- meta top-right -->
+  <div class="mono" style="position:absolute;top:28px;right:44px;font-size:8.5px;color:rgba(232,230,224,.3);letter-spacing:.14em;text-transform:uppercase">SIG–01 · Full Bleed</div>
+  <!-- bottom meta strip -->
+  <div style="position:absolute;bottom:20px;left:44px;right:44px;display:flex;justify-content:space-between;align-items:center">
+    <div class="mono" style="font-size:8.5px;color:rgba(232,230,224,.3);letter-spacing:.12em;text-transform:uppercase">Цифровое рекламное агентство</div>
+    <div class="mono" style="font-size:8.5px;color:rgba(232,230,224,.3);letter-spacing:.12em">signal.agency</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     02 — SPLIT: half black / half white, mirrored
+     ══════════════════════════════════════════════ -->
+<div class="poster">
+  <!-- left half black -->
+  <div style="position:absolute;top:0;left:0;width:400px;bottom:0;background:#111111"></div>
+  <!-- right half white -->
+  <div style="position:absolute;top:0;right:0;width:400px;bottom:0;background:#F2F0EB"></div>
+  <!-- top bars -->
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#E8430A"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:#E8430A"></div>
+  <!-- giant text overflowing the split — left side white text -->
+  <div style="position:absolute;top:140px;left:32px;right:32px">
+    <div style="font-weight:900;font-size:132px;line-height:.85;letter-spacing:-5px;text-transform:uppercase;position:relative">
+      <span style="color:#F2F0EB;position:relative;z-index:2">НЕ</span><br>
+      <span style="color:#F2F0EB;position:relative;z-index:2">ОХ</span><span style="color:#111111;position:relative;z-index:2">ВА</span><br>
+      <span style="color:#111111;position:relative;z-index:2">ТЫ</span>
+    </div>
+    <!-- divider rule -->
+    <div style="height:3px;background:#E8430A;margin:28px 0;width:80px"></div>
+    <div style="font-weight:900;font-size:132px;line-height:.85;letter-spacing:-5px;text-transform:uppercase">
+      <span style="color:#F2F0EB">ВЫ</span><span style="color:#111111">РУЧ</span><br>
+      <span style="color:#111111">КА.</span>
+    </div>
+  </div>
+  <!-- logo -->
+  <div style="position:absolute;top:44px;left:32px;font-weight:900;font-size:13px;letter-spacing:.3em;color:#F2F0EB">SIG</div>
+  <div style="position:absolute;top:44px;right:32px;font-weight:900;font-size:13px;letter-spacing:.3em;color:#111;text-align:right">NAL</div>
+  <!-- bottom tags -->
+  <div class="mono" style="position:absolute;bottom:20px;left:32px;font-size:8px;color:rgba(242,240,235,.5);letter-spacing:.12em;text-transform:uppercase">Данные · Стратегия</div>
+  <div class="mono" style="position:absolute;bottom:20px;right:32px;font-size:8px;color:#666;letter-spacing:.12em;text-transform:uppercase">Результат · 2025</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     03 — OUTLINE TYPE + FILLED, alternating
+     ══════════════════════════════════════════════ -->
+<div class="poster" style="background:#0C1EBB">
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#F2F0EB"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:#F2F0EB"></div>
+  <!-- logo -->
+  <div style="position:absolute;top:28px;left:44px;font-weight:900;font-size:13px;letter-spacing:.3em;color:rgba(242,240,235,.9)">SIGNAL</div>
+  <div class="mono" style="position:absolute;top:32px;right:44px;font-size:8.5px;color:rgba(242,240,235,.3);letter-spacing:.14em;text-transform:uppercase">SIG–03 · Outline</div>
+  <!-- alternating outline / filled type -->
+  <div style="position:absolute;top:110px;left:36px;right:36px">
+    <!-- outlined -->
+    <div style="font-weight:900;font-size:148px;line-height:.85;letter-spacing:-6px;text-transform:uppercase;
+                -webkit-text-stroke:2px #F2F0EB;color:transparent">
+      РОСТ
+    </div>
+    <!-- filled -->
+    <div style="font-weight:900;font-size:148px;line-height:.85;letter-spacing:-6px;text-transform:uppercase;color:#F2F0EB">
+      НА
+    </div>
+    <!-- outlined -->
+    <div style="font-weight:900;font-size:148px;line-height:.85;letter-spacing:-6px;text-transform:uppercase;
+                -webkit-text-stroke:2px rgba(242,240,235,.5);color:transparent">
+      ДАН
+    </div>
+    <!-- filled accent -->
+    <div style="font-weight:900;font-size:148px;line-height:.85;letter-spacing:-6px;text-transform:uppercase;color:#F5C800">
+      НЫХ
+    </div>
+  </div>
+  <!-- bottom strip -->
+  <div style="position:absolute;bottom:24px;left:44px;right:44px;display:flex;justify-content:space-between;align-items:flex-end">
+    <div>
+      <div class="mono" style="font-size:9px;color:rgba(242,240,235,.4);letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px">Цифровое агентство</div>
+      <div style="font-size:13px;color:rgba(242,240,235,.55);line-height:1.7;max-width:280px">Каждый рубль бюджета работает и возвращается выручкой.</div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-weight:900;font-size:28px;color:#F5C800;letter-spacing:-1px">−38%</div>
+      <div class="mono" style="font-size:8px;color:rgba(242,240,235,.35);letter-spacing:.1em;text-transform:uppercase">CPL</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     04 — VERTICAL ROTATED TYPE + HORIZONTAL
+     ══════════════════════════════════════════════ -->
+<div class="poster" style="background:#F2F0EB">
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#111"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:#111"></div>
+  <!-- left vertical giant rotated word -->
+  <div style="position:absolute;top:0;bottom:0;left:-20px;width:160px;display:flex;align-items:center;justify-content:center">
+    <div style="font-weight:900;font-size:148px;letter-spacing:-5px;color:rgba(0,0,0,.07);text-transform:uppercase;
+                transform:rotate(-90deg);white-space:nowrap;transform-origin:center center">
+      SIGNAL
+    </div>
+  </div>
+  <!-- main vertical rule -->
+  <div style="position:absolute;top:0;bottom:0;left:148px;width:3px;background:#111"></div>
+  <!-- logo -->
+  <div style="position:absolute;top:28px;left:164px;font-weight:900;font-size:13px;letter-spacing:.3em;color:#111">SIGNAL</div>
+  <div class="mono" style="position:absolute;top:32px;right:44px;font-size:8.5px;color:#999;letter-spacing:.14em;text-transform:uppercase">SIG–04 · Vertical</div>
+  <!-- right content -->
+  <div style="position:absolute;top:100px;left:164px;right:40px">
+    <div class="mono" style="font-size:9px;color:#E8430A;letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px">Мы не про бумагу</div>
+    <div style="font-weight:900;font-size:116px;line-height:.85;letter-spacing:-4px;color:#111;text-transform:uppercase">
+      ПРО<br>ДЕ<span style="color:#E8430A">ЛО</span>
+    </div>
+    <div style="height:3px;background:#E8430A;width:64px;margin:24px 0"></div>
+    <div style="font-weight:900;font-size:116px;line-height:.85;letter-spacing:-4px;color:#111;text-transform:uppercase">
+      ↗↗↗
+    </div>
+  </div>
+  <!-- bottom -->
+  <div style="position:absolute;bottom:24px;left:164px;right:44px;display:flex;justify-content:space-between">
+    <div class="mono" style="font-size:8px;color:#999;letter-spacing:.1em;text-transform:uppercase">signal.agency</div>
+    <div style="display:flex;gap:20px">
+      <div><div style="font-weight:900;font-size:22px;color:#E8430A;letter-spacing:-0.5px">−38%</div><div class="mono" style="font-size:7px;color:#999;letter-spacing:.1em;text-transform:uppercase">CPL</div></div>
+      <div><div style="font-weight:900;font-size:22px;color:#E8430A;letter-spacing:-0.5px">×2.4</div><div class="mono" style="font-size:7px;color:#999;letter-spacing:.1em;text-transform:uppercase">CR</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     05 — NEWSPAPER / EDITORIAL GRID
+     ══════════════════════════════════════════════ -->
+<div class="poster" style="background:#ECEAE4">
+  <!-- thin rules grid -->
+  <div style="position:absolute;top:88px;left:0;right:0;height:1px;background:#111"></div>
+  <div style="position:absolute;top:89px;left:0;right:0;height:3px;background:#111"></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#111"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:#111"></div>
+  <!-- vertical columns rules -->
+  <div style="position:absolute;top:92px;bottom:0;left:266px;width:1px;background:rgba(0,0,0,.12)"></div>
+  <div style="position:absolute;top:92px;bottom:0;left:533px;width:1px;background:rgba(0,0,0,.12)"></div>
+  <!-- header bar content -->
+  <div style="position:absolute;top:0;left:0;right:0;height:88px;display:flex;align-items:center;padding:0 32px;justify-content:space-between">
+    <div class="mono" style="font-size:8px;color:#999;letter-spacing:.14em;text-transform:uppercase">Цифровое агентство · Москва</div>
+    <div style="font-weight:900;font-size:24px;letter-spacing:.2em;color:#111">SIGNAL</div>
+    <div class="mono" style="font-size:8px;color:#999;letter-spacing:.14em;text-transform:uppercase">SIG–05 · Newspaper</div>
+  </div>
+  <!-- MASSIVE headline spanning full width -->
+  <div style="position:absolute;top:108px;left:24px;right:24px">
+    <div style="font-weight:900;font-size:138px;line-height:.85;letter-spacing:-6px;color:#111;text-transform:uppercase">
+      ДАННЫЕ<br>ВАЖНЕЕ<br>МНЕНИЙ
+    </div>
+  </div>
+  <!-- three column body below -->
+  <div style="position:absolute;top:592px;left:0;right:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
+    <div style="padding:20px 28px;border-right:1px solid rgba(0,0,0,.12)">
+      <div class="mono" style="font-size:8px;color:#E8430A;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px">Контекст</div>
+      <div style="font-weight:700;font-size:14px;color:#111;line-height:1.4;margin-bottom:8px">Яндекс.Директ и РСЯ</div>
+      <div style="font-size:12px;color:#666;line-height:1.7">Оптимизируем под KPI бизнеса, не агентства.</div>
+    </div>
+    <div style="padding:20px 28px;border-right:1px solid rgba(0,0,0,.12)">
+      <div class="mono" style="font-size:8px;color:#E8430A;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px">Таргет</div>
+      <div style="font-weight:700;font-size:14px;color:#111;line-height:1.4;margin-bottom:8px">VK · Telegram · MyTarget</div>
+      <div style="font-size:12px;color:#666;line-height:1.7">Точные аудитории, A/B-тесты, масштабирование.</div>
+    </div>
+    <div style="padding:20px 28px">
+      <div class="mono" style="font-size:8px;color:#E8430A;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px">Аналитика</div>
+      <div style="font-weight:700;font-size:14px;color:#111;line-height:1.4;margin-bottom:8px">Roistat · Метрика · GA4</div>
+      <div style="font-size:12px;color:#666;line-height:1.7">От клика до сделки — всё видим, всё объясняем.</div>
+    </div>
+  </div>
+  <!-- rule after columns -->
+  <div style="position:absolute;top:780px;left:0;right:0;height:1px;background:rgba(0,0,0,.15)"></div>
+  <!-- stats row -->
+  <div style="position:absolute;top:790px;left:0;right:0;display:flex">
+    <div style="flex:1;padding:20px 28px;border-right:1px solid rgba(0,0,0,.12)">
+      <div style="font-weight:900;font-size:48px;color:#111;letter-spacing:-2px;line-height:1">−38%</div>
+      <div class="mono" style="font-size:8px;color:#999;letter-spacing:.1em;text-transform:uppercase;margin-top:4px">Стоимость лида</div>
+    </div>
+    <div style="flex:1;padding:20px 28px;border-right:1px solid rgba(0,0,0,.12)">
+      <div style="font-weight:900;font-size:48px;color:#111;letter-spacing:-2px;line-height:1">×2.4</div>
+      <div class="mono" style="font-size:8px;color:#999;letter-spacing:.1em;text-transform:uppercase;margin-top:4px">Конверсия</div>
+    </div>
+    <div style="flex:1;padding:20px 28px">
+      <div style="font-weight:900;font-size:48px;color:#111;letter-spacing:-2px;line-height:1">50+</div>
+      <div class="mono" style="font-size:8px;color:#999;letter-spacing:.1em;text-transform:uppercase;margin-top:4px">Проектов</div>
+    </div>
+  </div>
+  <!-- bottom rule + footer -->
+  <div style="position:absolute;bottom:0;left:0;right:0;height:60px;border-top:3px solid #111;display:flex;align-items:center;padding:0 28px;justify-content:space-between">
+    <div class="mono" style="font-size:8px;color:#999;letter-spacing:.1em;text-transform:uppercase">© 2025 SIGNAL Digital Agency</div>
+    <div class="mono" style="font-size:8px;color:#999;letter-spacing:.1em;text-transform:uppercase">Сигнал важнее шума</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     06 — OVERSIZED SINGLE WORD, CROPPED
+     ══════════════════════════════════════════════ -->
+<div class="poster" style="background:#111111">
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#E8430A"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:#E8430A"></div>
+  <!-- Single word massively oversized, crops off edges -->
+  <div style="position:absolute;top:-30px;left:-20px;right:-20px;
+              font-weight:900;font-size:260px;line-height:.85;letter-spacing:-10px;
+              color:rgba(232,230,224,.06);text-transform:uppercase;user-select:none">
+    SIGNAL
+  </div>
+  <!-- second word -->
+  <div style="position:absolute;top:220px;left:-20px;right:-20px;
+              font-weight:900;font-size:260px;line-height:.85;letter-spacing:-10px;
+              color:rgba(232,230,224,.06);text-transform:uppercase;user-select:none">
+    GROWTH
+  </div>
+  <!-- actual content -->
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;padding:36px 44px">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-weight:900;font-size:13px;letter-spacing:.3em;color:#F2F0EB">SIGNAL</span>
+      <span class="mono" style="font-size:8.5px;color:rgba(242,240,235,.3);letter-spacing:.14em;text-transform:uppercase">SIG–06 · Oversized</span>
+    </div>
+    <div style="margin-top:auto;margin-bottom:auto">
+      <div class="mono" style="font-size:9px;color:#E8430A;letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px">// Не шум — сигнал</div>
+      <div style="font-weight:900;font-size:128px;line-height:.85;letter-spacing:-5px;color:#F2F0EB;text-transform:uppercase">
+        МЫ<br>↗<br>РА<span style="color:#E8430A">СТИ</span><br>ТЕ
+      </div>
+    </div>
+    <div>
+      <div style="height:1px;background:rgba(242,240,235,.1);margin-bottom:16px"></div>
+      <div style="display:flex;gap:32px">
+        <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.3);letter-spacing:.1em;text-transform:uppercase">CPL</div></div>
+        <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.3);letter-spacing:.1em;text-transform:uppercase">CR</div></div>
+        <div><div style="font-weight:900;font-size:28px;color:#E8430A;letter-spacing:-1px">50+</div><div class="mono" style="font-size:8px;color:rgba(242,240,235,.3);letter-spacing:.1em;text-transform:uppercase">Клиентов</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     07 — TIGHT KERNING, full white, compressed
+     ══════════════════════════════════════════════ -->
+<div class="poster" style="background:#F5F3EE">
+  <div style="position:absolute;top:0;left:0;right:0;height:6px;background:#111"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:6px;background:#111"></div>
+  <!-- logo row -->
+  <div style="position:absolute;top:24px;left:40px;right:40px;display:flex;justify-content:space-between;align-items:center">
+    <span style="font-weight:900;font-size:13px;letter-spacing:.3em;color:#111">SIGNAL</span>
+    <span class="mono" style="font-size:8.5px;color:#999;letter-spacing:.14em;text-transform:uppercase">SIG–07 · Compressed</span>
+  </div>
+  <!-- ultra tight stacked words -->
+  <div style="position:absolute;top:80px;left:32px;right:32px">
+    <div style="font-weight:900;font-size:144px;line-height:.82;letter-spacing:-8px;color:#111;text-transform:uppercase">
+      СИГ
+    </div>
+    <div style="font-weight:900;font-size:144px;line-height:.82;letter-spacing:-8px;color:#111;text-transform:uppercase">
+      НАЛ
+    </div>
+    <!-- rule -->
+    <div style="height:4px;background:#111;margin:16px 0 16px"></div>
+    <div style="font-weight:900;font-size:144px;line-height:.82;letter-spacing:-8px;color:#111;text-transform:uppercase">
+      ДА
+    </div>
+    <div style="font-weight:900;font-size:144px;line-height:.82;letter-spacing:-8px;
+                -webkit-text-stroke:3px #111;color:transparent;text-transform:uppercase">
+      НЫЕ
+    </div>
+    <!-- rule -->
+    <div style="height:4px;background:#111;margin:16px 0 16px"></div>
+    <div style="font-weight:900;font-size:144px;line-height:.82;letter-spacing:-8px;color:#E8430A;text-transform:uppercase">
+      РОСТ
+    </div>
+  </div>
+  <!-- bottom -->
+  <div style="position:absolute;bottom:24px;left:40px;right:40px;display:flex;justify-content:space-between">
+    <div class="mono" style="font-size:8px;color:#999;letter-spacing:.1em;text-transform:uppercase">Цифровое агентство · 2025</div>
+    <div class="mono" style="font-size:8px;color:#999;letter-spacing:.1em;text-transform:uppercase">signal.agency</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     08 — TYPE AS TEXTURE, repeating grid
+     ══════════════════════════════════════════════ -->
+<div class="poster" style="background:#0A0A0A">
+  <!-- repeating text grid as background texture -->
+  <div style="position:absolute;inset:0;overflow:hidden;opacity:.06">
+    <div style="font-weight:900;font-size:28px;letter-spacing:2px;color:#F2F0EB;text-transform:uppercase;line-height:1.2;white-space:nowrap">
+      SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH<br>
+      ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL<br>
+      РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ<br>
+      SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH<br>
+      ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL<br>
+      РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ<br>
+      SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH<br>
+      ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL<br>
+      РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ<br>
+      SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH<br>
+      ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL<br>
+      РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ РОСТ СИГНАЛ DATA GROWTH SIGNAL ДАННЫЕ<br>
+    </div>
+  </div>
+  <!-- big gradient overlay -->
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,.95) 60%)"></div>
+  <!-- accent top bar -->
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#F5C800"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:#F5C800"></div>
+  <!-- main content bottom -->
+  <div style="position:absolute;bottom:36px;left:44px;right:44px">
+    <div style="font-weight:900;font-size:13px;letter-spacing:.3em;color:rgba(232,230,224,.5);margin-bottom:24px">SIGNAL</div>
+    <div style="font-weight:900;font-size:112px;line-height:.87;letter-spacing:-4px;color:#E8E6E0;text-transform:uppercase;margin-bottom:24px">
+      ШУМИМ<br>ДАННЫМИ<br>МОЛЧИМ<br><span style="color:#F5C800">ОХВАТОМ</span>
+    </div>
+    <div style="height:1px;background:rgba(232,230,224,.12);margin-bottom:16px"></div>
+    <div style="display:flex;gap:32px">
+      <div><div style="font-weight:900;font-size:26px;color:#F5C800;letter-spacing:-1px">−38%</div><div class="mono" style="font-size:8px;color:rgba(232,230,224,.3);letter-spacing:.1em;text-transform:uppercase">CPL</div></div>
+      <div><div style="font-weight:900;font-size:26px;color:#F5C800;letter-spacing:-1px">×2.4</div><div class="mono" style="font-size:8px;color:rgba(232,230,224,.3);letter-spacing:.1em;text-transform:uppercase">CR</div></div>
+      <div><div style="font-weight:900;font-size:26px;color:#F5C800;letter-spacing:-1px">50+</div><div class="mono" style="font-size:8px;color:rgba(232,230,224,.3);letter-spacing:.1em;text-transform:uppercase">Клиентов</div></div>
+    </div>
+  </div>
+  <div class="mono" style="position:absolute;top:28px;right:44px;font-size:8.5px;color:rgba(232,230,224,.25);letter-spacing:.14em;text-transform:uppercase">SIG–08 · Texture</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     09 — CENTRED MANIFESTO, clean white
+     ══════════════════════════════════════════════ -->
+<div class="poster" style="background:#FFFFFF">
+  <div style="position:absolute;top:0;left:0;right:0;height:3px;background:#111"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:#111"></div>
+  <!-- centered everything -->
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 40px;text-align:center">
+    <div class="mono" style="font-size:9px;color:#E8430A;letter-spacing:.22em;text-transform:uppercase;margin-bottom:32px">SIGNAL · Манифест</div>
+    <!-- centered giant text -->
+    <div style="font-weight:900;font-size:108px;line-height:.88;letter-spacing:-4px;color:#111;text-transform:uppercase;margin-bottom:28px">
+      БОЛЬШИН<br>СТВО<br>ПРОДАЮТ<br><span style="color:rgba(0,0,0,.18)">ОХВАТЫ.</span>
+    </div>
+    <div style="height:3px;background:#111;width:80px;margin:8px auto 28px"></div>
+    <div style="font-weight:900;font-size:108px;line-height:.88;letter-spacing:-4px;color:#E8430A;text-transform:uppercase">
+      МЫ<br>ПРОДАЁМ<br>РОСТ.
+    </div>
+    <!-- bottom meta -->
+    <div style="margin-top:40px">
+      <div style="font-weight:900;font-size:16px;letter-spacing:.28em;color:#111;margin-bottom:6px">SIGNAL</div>
+      <div class="mono" style="font-size:8.5px;color:#999;letter-spacing:.14em;text-transform:uppercase">Цифровое рекламное агентство</div>
+    </div>
+  </div>
+  <div class="mono" style="position:absolute;top:24px;right:36px;font-size:8.5px;color:#ccc;letter-spacing:.14em;text-transform:uppercase">SIG–09 · Manifesto</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     10 — MARQUEE / TICKER ROWS
+     ══════════════════════════════════════════════ -->
+<div class="poster" style="background:#111111">
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#F5C800"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:#F5C800"></div>
+  <!-- logo -->
+  <div style="position:absolute;top:24px;left:44px;font-weight:900;font-size:13px;letter-spacing:.3em;color:rgba(232,230,224,.9)">SIGNAL</div>
+  <div class="mono" style="position:absolute;top:28px;right:44px;font-size:8.5px;color:rgba(232,230,224,.25);letter-spacing:.14em;text-transform:uppercase">SIG–10 · Ticker</div>
+  <!-- ticker rows -->
+  <div style="position:absolute;top:80px;left:0;right:0;overflow:hidden">
+    <!-- row 1 — filled -->
+    <div style="background:#F5C800;padding:16px 0;white-space:nowrap;overflow:hidden">
+      <span style="font-weight:900;font-size:56px;letter-spacing:-1px;color:#111;text-transform:uppercase">
+        КОНТЕКСТ · ТАРГЕТ · АНАЛИТИКА · СТРАТЕГИЯ · КОНТЕКСТ · ТАРГЕТ · АНАЛИТИКА ·
+      </span>
+    </div>
+    <!-- row 2 — outline on dark -->
+    <div style="padding:14px 0;white-space:nowrap;overflow:hidden;background:transparent">
+      <span style="font-weight:900;font-size:56px;letter-spacing:-1px;text-transform:uppercase;
+                  -webkit-text-stroke:1.5px rgba(232,230,224,.3);color:transparent">
+        DATA · GROWTH · ROI · CPL · ROAS · SIGNAL · DATA · GROWTH · ROI · CPL · ROAS ·
+      </span>
+    </div>
+    <!-- row 3 — filled white -->
+    <div style="padding:14px 0;white-space:nowrap;overflow:hidden">
+      <span style="font-weight:900;font-size:56px;letter-spacing:-1px;color:rgba(232,230,224,.12);text-transform:uppercase">
+        ЯНДЕКС · VK · TELEGRAM · МЕТРИКА · ЯНДЕКС · VK · TELEGRAM · МЕТРИКА ·
+      </span>
+    </div>
+    <!-- row 4 — orange outline -->
+    <div style="padding:14px 0;white-space:nowrap;overflow:hidden">
+      <span style="font-weight:900;font-size:56px;letter-spacing:-1px;text-transform:uppercase;
+                  -webkit-text-stroke:1.5px rgba(245,200,0,.4);color:transparent">
+        РОСТ · ДАННЫЕ · РЕЗУЛЬТАТ · ПРОЗРАЧНОСТЬ · РОСТ · ДАННЫЕ · РЕЗУЛЬТАТ ·
+      </span>
+    </div>
+    <!-- row 5 — filled yellow -->
+    <div style="background:transparent;padding:14px 0;white-space:nowrap;overflow:hidden">
+      <span style="font-weight:900;font-size:56px;letter-spacing:-1px;color:rgba(245,200,0,.08);text-transform:uppercase">
+        SIGNAL · 2025 · SIGNAL · 2025 · SIGNAL · 2025 · SIGNAL · 2025 · SIGNAL · 2025 ·
+      </span>
+    </div>
+  </div>
+  <!-- bottom big text -->
+  <div style="position:absolute;bottom:36px;left:44px;right:44px">
+    <div style="font-weight:900;font-size:88px;line-height:.88;letter-spacing:-3px;color:#E8E6E0;text-transform:uppercase;margin-bottom:20px">
+      СИГНАЛ<br><span style="color:#F5C800">ВАЖНЕЕ</span><br>ШУМА.
+    </div>
+    <div style="height:1px;background:rgba(232,230,224,.1);margin-bottom:14px"></div>
+    <div style="display:flex;gap:28px">
+      <div><div style="font-weight:900;font-size:24px;color:#F5C800;letter-spacing:-0.5px">−38%</div><div class="mono" style="font-size:8px;color:rgba(232,230,224,.3);letter-spacing:.1em;text-transform:uppercase">CPL</div></div>
+      <div><div style="font-weight:900;font-size:24px;color:#F5C800;letter-spacing:-0.5px">×2.4</div><div class="mono" style="font-size:8px;color:rgba(232,230,224,.3);letter-spacing:.1em;text-transform:uppercase">CR</div></div>
+      <div><div style="font-weight:900;font-size:24px;color:#F5C800;letter-spacing:-0.5px">50+</div><div class="mono" style="font-size:8px;color:rgba(232,230,224,.3);letter-spacing:.1em;text-transform:uppercase">Проектов</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     11 — GRID OF WORDS, data table style
+     ══════════════════════════════════════════════ -->
+<div class="poster" style="background:#F2F0EB">
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#111"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:#111"></div>
+  <!-- header -->
+  <div style="position:absolute;top:0;left:0;right:0;height:72px;background:#111;display:flex;align-items:center;padding:0 40px;justify-content:space-between">
+    <span style="font-weight:900;font-size:14px;letter-spacing:.28em;color:#F2F0EB">SIGNAL</span>
+    <span class="mono" style="font-size:8.5px;color:rgba(242,240,235,.35);letter-spacing:.14em;text-transform:uppercase">SIG–11 · Data Grid</span>
+  </div>
+  <!-- word grid — table of terms with varying sizes -->
+  <div style="position:absolute;top:72px;left:0;right:0;padding:0">
+    <!-- row 1 large -->
+    <div style="display:flex;border-bottom:1px solid rgba(0,0,0,.08)">
+      <div style="flex:1.5;padding:18px 32px;border-right:1px solid rgba(0,0,0,.08)">
+        <div style="font-weight:900;font-size:64px;line-height:.9;letter-spacing:-2px;color:#111;text-transform:uppercase">ДАННЫЕ</div>
+      </div>
+      <div style="flex:1;padding:18px 24px;background:#E8430A">
+        <div style="font-weight:900;font-size:64px;line-height:.9;letter-spacing:-2px;color:#F2F0EB;text-transform:uppercase">РОСТ</div>
+      </div>
+    </div>
+    <!-- row 2 -->
+    <div style="display:flex;border-bottom:1px solid rgba(0,0,0,.08)">
+      <div style="flex:1;padding:18px 32px;border-right:1px solid rgba(0,0,0,.08);background:#111">
+        <div style="font-weight:900;font-size:56px;line-height:.9;letter-spacing:-2px;color:#F2F0EB;text-transform:uppercase">ТОЧНО</div>
+      </div>
+      <div style="flex:1;padding:18px 24px;border-right:1px solid rgba(0,0,0,.08)">
+        <div style="font-weight:900;font-size:56px;line-height:.9;letter-spacing:-2px;color:#111;text-transform:uppercase">ЧЕСТНО</div>
+      </div>
+      <div style="flex:.7;padding:18px 20px">
+        <div style="font-weight:900;font-size:44px;line-height:.9;letter-spacing:-1.5px;
+                    -webkit-text-stroke:2px #111;color:transparent;text-transform:uppercase">ROI</div>
+      </div>
+    </div>
+    <!-- row 3 -->
+    <div style="display:flex;border-bottom:1px solid rgba(0,0,0,.08)">
+      <div style="flex:1;padding:16px 32px;border-right:1px solid rgba(0,0,0,.08)">
+        <div style="font-weight:900;font-size:44px;line-height:.9;letter-spacing:-1.5px;color:rgba(0,0,0,.2);text-transform:uppercase">ОХВАТ</div>
+      </div>
+      <div style="flex:1.3;padding:16px 24px;background:#E8430A">
+        <div style="font-weight:900;font-size:44px;line-height:.9;letter-spacing:-1.5px;color:#F2F0EB;text-transform:uppercase">РЕЗУЛЬТАТ</div>
+      </div>
+    </div>
+    <!-- row 4 -->
+    <div style="display:flex;border-bottom:1px solid rgba(0,0,0,.08)">
+      <div style="flex:1;padding:16px 32px;border-right:1px solid rgba(0,0,0,.08)">
+        <div style="font-weight:900;font-size:36px;line-height:.9;letter-spacing:-1px;color:#111;text-transform:uppercase">ЯНДЕКС</div>
+      </div>
+      <div style="flex:1;padding:16px 24px;border-right:1px solid rgba(0,0,0,.08)">
+        <div style="font-weight:900;font-size:36px;line-height:.9;letter-spacing:-1px;color:#111;text-transform:uppercase">VK ADS</div>
+      </div>
+      <div style="flex:1;padding:16px 20px">
+        <div style="font-weight:900;font-size:36px;line-height:.9;letter-spacing:-1px;color:#111;text-transform:uppercase">TGADS</div>
+      </div>
+    </div>
+    <!-- row 5 stats -->
+    <div style="display:flex">
+      <div style="flex:1;padding:20px 32px;border-right:1px solid rgba(0,0,0,.08)">
+        <div style="font-weight:900;font-size:48px;letter-spacing:-2px;color:#E8430A;line-height:1">−38%</div>
+        <div class="mono" style="font-size:8px;color:#999;letter-spacing:.1em;text-transform:uppercase;margin-top:4px">CPL средний</div>
+      </div>
+      <div style="flex:1;padding:20px 24px;border-right:1px solid rgba(0,0,0,.08)">
+        <div style="font-weight:900;font-size:48px;letter-spacing:-2px;color:#E8430A;line-height:1">×2.4</div>
+        <div class="mono" style="font-size:8px;color:#999;letter-spacing:.1em;text-transform:uppercase;margin-top:4px">Конверсия</div>
+      </div>
+      <div style="flex:1;padding:20px 20px">
+        <div style="font-weight:900;font-size:48px;letter-spacing:-2px;color:#E8430A;line-height:1">50+</div>
+        <div class="mono" style="font-size:8px;color:#999;letter-spacing:.1em;text-transform:uppercase;margin-top:4px">Проектов</div>
+      </div>
+    </div>
+  </div>
+  <!-- bottom -->
+  <div style="position:absolute;bottom:12px;left:40px;right:40px;display:flex;justify-content:space-between">
+    <div class="mono" style="font-size:8px;color:#999;letter-spacing:.1em;text-transform:uppercase">signal.agency</div>
+    <div class="mono" style="font-size:8px;color:#999;letter-spacing:.1em;text-transform:uppercase">Сигнал важнее шума</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     12 — DIAGONAL TYPE / SLANTED
+     ══════════════════════════════════════════════ -->
+<div class="poster" style="background:#0A0A0A;overflow:hidden">
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#F5C800"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:4px;background:#F5C800"></div>
+  <!-- diagonal huge type runs across poster at angle -->
+  <div style="position:absolute;top:-80px;left:-60px;right:-60px;transform:rotate(-12deg);transform-origin:center center;user-select:none">
+    <div style="font-weight:900;font-size:160px;line-height:.88;letter-spacing:-6px;color:rgba(245,200,0,.07);text-transform:uppercase;white-space:nowrap">
+      СИГНАЛ
+    </div>
+    <div style="font-weight:900;font-size:160px;line-height:.88;letter-spacing:-6px;color:rgba(232,230,224,.04);text-transform:uppercase;white-space:nowrap">
+      ДАННЫЕ
+    </div>
+    <div style="font-weight:900;font-size:160px;line-height:.88;letter-spacing:-6px;color:rgba(245,200,0,.06);text-transform:uppercase;white-space:nowrap">
+      РОСТ
+    </div>
+    <div style="font-weight:900;font-size:160px;line-height:.88;letter-spacing:-6px;color:rgba(232,230,224,.04);text-transform:uppercase;white-space:nowrap">
+      СИГНАЛ
+    </div>
+    <div style="font-weight:900;font-size:160px;line-height:.88;letter-spacing:-6px;color:rgba(245,200,0,.07);text-transform:uppercase;white-space:nowrap">
+      ДАННЫЕ
+    </div>
+  </div>
+  <!-- main upright content layer -->
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;padding:36px 44px">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-weight:900;font-size:13px;letter-spacing:.3em;color:rgba(232,230,224,.9)">SIGNAL</span>
+      <span class="mono" style="font-size:8.5px;color:rgba(232,230,224,.25);letter-spacing:.14em;text-transform:uppercase">SIG–12 · Diagonal</span>
+    </div>
+    <div style="margin-top:auto">
+      <div class="mono" style="font-size:9px;color:#F5C800;letter-spacing:.22em;text-transform:uppercase;margin-bottom:18px">// Архитектура роста</div>
+      <!-- main headline stays straight -->
+      <div style="font-weight:900;font-size:120px;line-height:.87;letter-spacing:-4px;color:#E8E6E0;text-transform:uppercase;margin-bottom:8px">
+        НЕТ
+      </div>
+      <div style="font-weight:900;font-size:120px;line-height:.87;letter-spacing:-4px;
+                  -webkit-text-stroke:2px rgba(232,230,224,.35);color:transparent;text-transform:uppercase;margin-bottom:8px">
+        ШУМУ
+      </div>
+      <div style="font-weight:900;font-size:120px;line-height:.87;letter-spacing:-4px;color:#F5C800;text-transform:uppercase">
+        СИГНАЛ
+      </div>
+      <div style="height:2px;background:rgba(232,230,224,.12);margin:24px 0 16px"></div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end">
+        <div style="display:flex;gap:28px">
+          <div><div style="font-weight:900;font-size:26px;color:#F5C800;letter-spacing:-0.5px">−38%</div><div class="mono" style="font-size:8px;color:rgba(232,230,224,.3);letter-spacing:.1em;text-transform:uppercase">CPL</div></div>
+          <div><div style="font-weight:900;font-size:26px;color:#F5C800;letter-spacing:-0.5px">×2.4</div><div class="mono" style="font-size:8px;color:rgba(232,230,224,.3);letter-spacing:.1em;text-transform:uppercase">CR</div></div>
+          <div><div style="font-weight:900;font-size:26px;color:#F5C800;letter-spacing:-0.5px">50+</div><div class="mono" style="font-size:8px;color:rgba(232,230,224,.3);letter-spacing:.1em;text-transform:uppercase">Клиентов</div></div>
+        </div>
+        <div class="mono" style="font-size:8px;color:rgba(232,230,224,.25);letter-spacing:.1em;text-transform:uppercase">signal.agency</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
+
+
