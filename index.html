@@ -2,13 +2,13 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>SIGNAL — Услуги</title>
+<title>SIGNAL — Кейсы</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { width:1440px; background:#0A0A0A; font-family:'Montserrat',sans-serif; color:#E8E6E0; }
 :root {
-  --s1:#141414; --s2:#1E1E1E; --s3:#272727;
+  --s1:#141414; --s2:#1E1E1E;
   --border:rgba(232,230,224,.07); --border2:rgba(232,230,224,.13);
   --text:#E8E6E0; --muted:rgba(232,230,224,.45); --hint:rgba(232,230,224,.2);
   --accent:#F5C800; --mono:'Martian Mono',monospace;
@@ -27,102 +27,99 @@ nav {
 .page-hero {
   padding:80px 64px 64px;
   border-bottom:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:flex-end;
   position:relative; overflow:hidden;
 }
 .page-hero::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--accent); }
+.ph-left {}
 .ph-tag { font-family:var(--mono); font-size:10px; color:var(--accent); letter-spacing:.22em; text-transform:uppercase; display:flex; align-items:center; gap:10px; margin-bottom:24px; }
 .ph-tag::before { content:''; width:28px; height:1px; background:var(--accent); }
-.ph-h1 { font-weight:900; font-size:80px; line-height:.92; letter-spacing:-2px; text-transform:uppercase; color:var(--text); max-width:700px; margin-bottom:24px; }
-.ph-desc { font-size:16px; color:var(--muted); line-height:1.75; max-width:480px; }
+.ph-h1 { font-weight:900; font-size:80px; line-height:.92; letter-spacing:-2px; text-transform:uppercase; color:var(--text); }
+.ph-desc { font-size:14px; color:var(--muted); line-height:1.75; max-width:320px; text-align:right; }
 
-/* SERVICES LIST — accordion style */
-.services-list { border-bottom:1px solid var(--border); }
-
-.srv-item {
-  border-top:1px solid var(--border);
-  overflow:hidden;
+/* FILTERS */
+.filters {
+  padding:28px 64px;
+  border-bottom:1px solid var(--border);
+  display:flex; gap:8px; flex-wrap:wrap;
 }
-.srv-item.open { background:var(--s1); }
-
-.srv-header {
-  padding:36px 64px;
-  display:grid;
-  grid-template-columns:60px 1fr auto 200px;
-  align-items:center;
-  gap:32px;
-  cursor:pointer;
+.filter-pill {
+  font-family:var(--mono); font-size:9px; letter-spacing:.1em; text-transform:uppercase;
+  padding:7px 14px; border-radius:20px; border:1px solid var(--border2);
+  color:var(--muted); cursor:pointer; transition:.15s;
 }
-.srv-num { font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:.15em; opacity:.6; }
-.srv-title { font-weight:700; font-size:28px; color:var(--text); letter-spacing:-0.5px; }
-.srv-tag {
-  font-family:var(--mono); font-size:9px; color:var(--muted);
-  border:1px solid var(--border2); padding:6px 12px; border-radius:2px;
-  letter-spacing:.1em; text-transform:uppercase; white-space:nowrap;
-}
-.srv-arrow { font-size:20px; color:var(--accent); justify-self:end; }
-.srv-item.open .srv-arrow { transform:rotate(45deg); }
+.filter-pill.active { background:var(--accent); color:#000; border-color:var(--accent); }
 
-.srv-body {
-  display:none; padding:0 64px 48px;
-}
-.srv-item.open .srv-body { display:grid; grid-template-columns:1fr 1fr 320px; gap:48px; }
+/* CASES GRID */
+.cases-grid { padding:48px 64px 96px; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
 
-.sb-desc { font-size:15px; color:var(--muted); line-height:1.8; }
-
-.sb-includes h4 {
-  font-family:var(--mono); font-size:9px; color:var(--accent);
-  letter-spacing:.16em; text-transform:uppercase; margin-bottom:16px;
-}
-.sb-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
-.sb-list li {
-  font-size:13px; color:var(--muted); display:flex; align-items:flex-start; gap:10px; line-height:1.5;
-}
-.sb-list li::before { content:'—'; color:var(--accent); flex-shrink:0; }
-
-.sb-result {
-  background:var(--s2); border:1px solid var(--border);
-  padding:28px; border-radius:4px; display:flex; flex-direction:column; gap:20px;
-}
-.sb-result h4 { font-family:var(--mono); font-size:9px; color:var(--accent); letter-spacing:.16em; text-transform:uppercase; }
-.sb-metric { display:flex; flex-direction:column; gap:4px; }
-.sb-metric-val { font-weight:900; font-size:36px; color:var(--accent); letter-spacing:-1px; line-height:1; }
-.sb-metric-label { font-family:var(--mono); font-size:9px; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; }
-
-/* PROCESS */
-.process-section { padding:96px 64px; }
-.ps-tag { font-family:var(--mono); font-size:10px; color:var(--accent); letter-spacing:.22em; text-transform:uppercase; display:flex; align-items:center; gap:10px; margin-bottom:56px; }
-.ps-tag::before { content:''; width:28px; height:1px; background:var(--accent); }
-.process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
-.step {
-  background:var(--s1); padding:40px 32px;
-  display:flex; flex-direction:column; gap:16px;
-  border-right:1px solid var(--border);
-  position:relative; overflow:hidden;
-}
-.step:last-child { border-right:none; }
-.step::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--s3); }
-.step.active::before { background:var(--accent); }
-.step-num { font-family:var(--mono); font-size:32px; font-weight:600; color:rgba(245,200,0,.08); line-height:1; }
-.step-title { font-weight:700; font-size:17px; color:var(--text); }
-.step-desc { font-size:13px; color:var(--muted); line-height:1.7; }
-
-/* FAQ */
-.faq-section { padding:0 64px 96px; }
-.faq-item { border-top:1px solid var(--border); padding:28px 0; display:grid; grid-template-columns:1fr auto; gap:32px; align-items:start; }
-.faq-q { font-weight:600; font-size:18px; color:var(--text); }
-.faq-a { font-size:14px; color:var(--muted); line-height:1.75; max-width:600px; }
-.faq-plus { font-size:22px; color:var(--accent); flex-shrink:0; margin-top:2px; }
-
-/* CTA */
-.cta-block {
-  margin:0 64px 64px;
+.case-card {
   background:var(--s1); border:1px solid var(--border);
-  padding:64px; display:flex; justify-content:space-between; align-items:center;
-  border-radius:4px;
+  border-radius:4px; overflow:hidden;
+  display:flex; flex-direction:column;
+  transition: border-color .2s;
 }
-.cta-h2 { font-weight:900; font-size:44px; letter-spacing:-1px; text-transform:uppercase; color:var(--text); margin-bottom:12px; }
-.cta-desc { font-size:14px; color:var(--muted); }
-.btn-primary { font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; background:var(--accent); color:#000; padding:16px 32px; border-radius:2px; text-decoration:none; }
+.case-card:hover { border-color:var(--border2); }
+
+.case-card.featured {
+  grid-column:1/-1;
+  flex-direction:row;
+}
+
+.cc-visual {
+  height:240px; background:var(--s2);
+  position:relative; overflow:hidden;
+  flex-shrink:0;
+}
+.case-card.featured .cc-visual { width:480px; height:auto; }
+
+/* Visual pattern inside */
+.vis-pattern {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+}
+.vis-num {
+  font-weight:900; font-size:160px; color:rgba(245,200,0,.05);
+  line-height:1; letter-spacing:-5px; user-select:none;
+}
+.vis-bar-chart {
+  position:absolute; bottom:24px; left:24px; right:24px;
+  display:flex; align-items:flex-end; gap:4px; height:80px;
+}
+.vis-bar { flex:1; background:rgba(245,200,0,.15); border-radius:2px 2px 0 0; border-top:1px solid rgba(245,200,0,.3); }
+.vis-bar.hi { background:rgba(245,200,0,.4); border-top-color:var(--accent); }
+
+.cc-body { padding:32px; display:flex; flex-direction:column; gap:16px; flex:1; }
+
+.cc-tags { display:flex; gap:6px; flex-wrap:wrap; }
+.cc-tag {
+  font-family:var(--mono); font-size:8px; letter-spacing:.1em; text-transform:uppercase;
+  padding:4px 8px; border:1px solid var(--border2); border-radius:2px; color:var(--muted);
+}
+.cc-tag.accent { border-color:rgba(245,200,0,.3); color:var(--accent); }
+
+.cc-title { font-weight:700; font-size:22px; color:var(--text); line-height:1.2; letter-spacing:-0.3px; }
+.case-card.featured .cc-title { font-size:32px; }
+
+.cc-desc { font-size:13px; color:var(--muted); line-height:1.7; }
+
+.cc-metrics { display:flex; gap:24px; padding-top:8px; border-top:1px solid var(--border); margin-top:auto; }
+.cc-metric { display:flex; flex-direction:column; gap:4px; }
+.cc-m-val { font-weight:900; font-size:26px; color:var(--accent); line-height:1; letter-spacing:-0.5px; }
+.case-card.featured .cc-m-val { font-size:36px; }
+.cc-m-label { font-family:var(--mono); font-size:8px; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; }
+
+.cc-link {
+  font-family:var(--mono); font-size:9px; color:var(--accent);
+  letter-spacing:.1em; text-transform:uppercase;
+  display:flex; align-items:center; gap:6px; margin-top:4px;
+  text-decoration:none;
+}
+.cc-link::after { content:'→'; }
+
+/* BAR heights */
+.b1{height:30%} .b2{height:45%} .b3{height:38%} .b4{height:60%} .b5{height:52%}
+.b6{height:70%} .b7{height:65%} .b8{height:80%} .b9{height:72%} .b10{height:90%}
 </style>
 </head>
 <body>
@@ -131,8 +128,8 @@ nav {
   <div class="nav-logo">SIGNAL</div>
   <div class="nav-links">
     <a class="nav-link" href="#">Главная</a>
-    <a class="nav-link active" href="#">Услуги</a>
-    <a class="nav-link" href="#">Кейсы</a>
+    <a class="nav-link" href="#">Услуги</a>
+    <a class="nav-link active" href="#">Кейсы</a>
     <a class="nav-link" href="#">О нас</a>
     <a class="nav-link" href="#">Блог</a>
   </div>
@@ -140,137 +137,88 @@ nav {
 </nav>
 
 <section class="page-hero">
-  <div class="ph-tag">Услуги</div>
-  <div class="ph-h1">ЧТО МЫ<br>ДЕЛАЕМ</div>
-  <div class="ph-desc">4 направления — одна цель: ваша реклама должна приносить выручку, а не просто метрики.</div>
+  <div class="ph-left">
+    <div class="ph-tag">Кейсы</div>
+    <div class="ph-h1">РЕАЛЬНЫЕ<br>РЕЗУЛЬТАТЫ</div>
+  </div>
+  <div class="ph-desc">6+ кейсов из разных ниш.<br>Цифры, которые проверяемы.</div>
 </section>
 
-<!-- SERVICES ACCORDION -->
-<div class="services-list">
+<div class="filters">
+  <div class="filter-pill active">Все</div>
+  <div class="filter-pill">E-commerce</div>
+  <div class="filter-pill">B2B</div>
+  <div class="filter-pill">Услуги</div>
+  <div class="filter-pill">FMCG</div>
+  <div class="filter-pill">Контекст</div>
+  <div class="filter-pill">Таргет</div>
+  <div class="filter-pill">Аналитика</div>
+</div>
 
-  <div class="srv-item open">
-    <div class="srv-header">
-      <div class="srv-num">01</div>
-      <div class="srv-title">Контекстная реклама</div>
-      <div class="srv-tag">Яндекс.Директ · РСЯ</div>
-      <div class="srv-arrow">+</div>
+<div class="cases-grid">
+
+  <!-- FEATURED -->
+  <div class="case-card featured">
+    <div class="cc-visual">
+      <div class="vis-pattern"><div class="vis-num">01</div></div>
+      <div class="vis-bar-chart">
+        <div class="vis-bar b1"></div><div class="vis-bar b2"></div><div class="vis-bar b3"></div>
+        <div class="vis-bar b4"></div><div class="vis-bar b5"></div><div class="vis-bar b6"></div>
+        <div class="vis-bar b7"></div><div class="vis-bar b8"></div><div class="vis-bar b9 hi"></div>
+        <div class="vis-bar b10 hi"></div>
+      </div>
     </div>
-    <div class="srv-body">
-      <div class="sb-desc">
-        Настраиваем и ведём кампании в Яндекс.Директ и Рекламной сети Яндекса. Каждая кампания оптимизируется под бизнес-KPI: стоимость лида, ROAS, количество транзакций — не CTR и показы.
+    <div class="cc-body">
+      <div class="cc-tags">
+        <span class="cc-tag accent">E-commerce</span>
+        <span class="cc-tag">Контекст</span>
+        <span class="cc-tag">Аналитика</span>
       </div>
-      <div class="sb-includes">
-        <h4>Что входит</h4>
-        <ul class="sb-list">
-          <li>Аудит текущих кампаний и конкурентов</li>
-          <li>Сбор семантики и минус-слов</li>
-          <li>Настройка структуры кампаний</li>
-          <li>A/B-тесты объявлений</li>
-          <li>Еженедельная оптимизация ставок</li>
-          <li>Ежемесячный отчёт с выводами</li>
-        </ul>
+      <div class="cc-title">Интернет-магазин одежды:<br>−38% CPL за 60 дней</div>
+      <div class="cc-desc">60% бюджета уходило на нерелевантные запросы. Перестроили структуру кампаний, внедрили сквозную аналитику от клика до покупки.</div>
+      <div class="cc-metrics">
+        <div class="cc-metric"><div class="cc-m-val">−38%</div><div class="cc-m-label">Стоимость лида</div></div>
+        <div class="cc-metric"><div class="cc-m-val">×2.1</div><div class="cc-m-label">Конверсия</div></div>
+        <div class="cc-metric"><div class="cc-m-val">280%</div><div class="cc-m-label">ROI кампании</div></div>
       </div>
-      <div class="sb-result">
-        <h4>Средний результат</h4>
-        <div class="sb-metric">
-          <div class="sb-metric-val">−38%</div>
-          <div class="sb-metric-label">Стоимость лида</div>
-        </div>
-        <div class="sb-metric">
-          <div class="sb-metric-val">×2.4</div>
-          <div class="sb-metric-label">Конверсия</div>
-        </div>
-      </div>
+      <a class="cc-link" href="#">Читать кейс полностью</a>
     </div>
   </div>
 
-  <div class="srv-item">
-    <div class="srv-header">
-      <div class="srv-num">02</div>
-      <div class="srv-title">Таргетированная реклама</div>
-      <div class="srv-tag">VK · Telegram · MyTarget</div>
-      <div class="srv-arrow">+</div>
+  <!-- CASE 2 -->
+  <div class="case-card">
+    <div class="cc-visual">
+      <div class="vis-pattern"><div class="vis-num">02</div></div>
     </div>
-    <div class="srv-body"></div>
+    <div class="cc-body">
+      <div class="cc-tags"><span class="cc-tag accent">B2B SaaS</span><span class="cc-tag">Таргет</span></div>
+      <div class="cc-title">SaaS-платформа: ×2.4 лидов без роста бюджета</div>
+      <div class="cc-desc">Перешли с широких аудиторий на lookalike и ретаргет по сегментам воронки.</div>
+      <div class="cc-metrics">
+        <div class="cc-metric"><div class="cc-m-val">×2.4</div><div class="cc-m-label">Лидов в мес</div></div>
+        <div class="cc-metric"><div class="cc-m-val">−22%</div><div class="cc-m-label">CPL</div></div>
+      </div>
+      <a class="cc-link" href="#">Читать кейс</a>
+    </div>
   </div>
 
-  <div class="srv-item">
-    <div class="srv-header">
-      <div class="srv-num">03</div>
-      <div class="srv-title">Сквозная аналитика</div>
-      <div class="srv-tag">Roistat · Метрика · GA4</div>
-      <div class="srv-arrow">+</div>
+  <!-- CASE 3 -->
+  <div class="case-card">
+    <div class="cc-visual">
+      <div class="vis-pattern"><div class="vis-num">03</div></div>
     </div>
-    <div class="srv-body"></div>
-  </div>
-
-  <div class="srv-item">
-    <div class="srv-header">
-      <div class="srv-num">04</div>
-      <div class="srv-title">Стратегия и консалтинг</div>
-      <div class="srv-tag">Аудит · Стратегия · Разовые</div>
-      <div class="srv-arrow">+</div>
+    <div class="cc-body">
+      <div class="cc-tags"><span class="cc-tag accent">Услуги</span><span class="cc-tag">Контекст</span></div>
+      <div class="cc-title">Стоматология: +320 первичных записей за квартал</div>
+      <div class="cc-desc">Запустили геотаргетинг с сегментацией по услугам. Каждая группа — отдельная посадочная.</div>
+      <div class="cc-metrics">
+        <div class="cc-metric"><div class="cc-m-val">+320</div><div class="cc-m-label">Записей</div></div>
+        <div class="cc-metric"><div class="cc-m-val">−41%</div><div class="cc-m-label">CPL</div></div>
+      </div>
+      <a class="cc-link" href="#">Читать кейс</a>
     </div>
-    <div class="srv-body"></div>
   </div>
 
 </div>
-
-<!-- PROCESS -->
-<section class="process-section">
-  <div class="ps-tag">Как мы работаем</div>
-  <div class="process-steps">
-    <div class="step active">
-      <div class="step-num">01</div>
-      <div class="step-title">Бриф и аудит</div>
-      <div class="step-desc">Изучаем бизнес, анализируем текущую рекламу и конкурентов. Формируем понимание задачи.</div>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <div class="step-title">Стратегия</div>
-      <div class="step-desc">Разрабатываем медиаплан с прогнозами CPL и ROAS. Согласовываем гипотезы.</div>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <div class="step-title">Запуск</div>
-      <div class="step-desc">Настраиваем аналитику, создаём кампании, запускаем первые A/B-тесты.</div>
-    </div>
-    <div class="step">
-      <div class="step-num">04</div>
-      <div class="step-title">Оптимизация</div>
-      <div class="step-desc">Еженедельный анализ, корректировки, отчёты с конкретными выводами и следующими шагами.</div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq-section">
-  <div class="faq-item">
-    <div><div class="faq-q">Сколько стоит ведение рекламы?</div><div class="faq-a" style="margin-top:12px">Стоимость зависит от объёма задач и рекламного бюджета. Минимальный порог — от 50 000 ₽/мес. Точную стоимость рассчитываем после брифа — это бесплатно.</div></div>
-    <div class="faq-plus">+</div>
-  </div>
-  <div class="faq-item">
-    <div><div class="faq-q">Как быстро будет результат?</div><div class="faq-a" style="margin-top:12px">Первые данные для оптимизации — через 2 недели. Устойчивый результат — через 4–8 недель. Всё зависит от ниши и объёма бюджета.</div></div>
-    <div class="faq-plus">+</div>
-  </div>
-  <div class="faq-item">
-    <div><div class="faq-q">Как вы отчитываетесь?</div><div class="faq-a" style="margin-top:12px">Еженедельные короткие отчёты + ежемесячный детальный разбор. Всегда есть доступ к живому дашборду — видите данные в реальном времени.</div></div>
-    <div class="faq-plus">+</div>
-  </div>
-  <div class="faq-item">
-    <div><div class="faq-q">Можно ли совместить несколько услуг?</div></div>
-    <div class="faq-plus">+</div>
-  </div>
-</section>
-
-<!-- CTA -->
-<div class="cta-block">
-  <div>
-    <div class="cta-h2">Не знаете,<br>с чего начать?</div>
-    <div class="cta-desc">Бесплатный аудит рекламы — за 3 рабочих дня</div>
-  </div>
-  <a class="btn-primary" href="#">Получить аудит →</a>
-</div>
-
 </body>
 </html>
