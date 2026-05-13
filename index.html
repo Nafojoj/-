@@ -2,278 +2,127 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>SIGNAL — Главная</title>
+<title>SIGNAL — Услуги</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-body { width:1440px; min-height:900px; background:#0A0A0A; font-family:'Montserrat',sans-serif; color:#E8E6E0; overflow-x:hidden; }
-
-/* ── TOKENS ── */
+body { width:1440px; background:#0A0A0A; font-family:'Montserrat',sans-serif; color:#E8E6E0; }
 :root {
-  --bg:       #0A0A0A;
-  --s1:       #141414;
-  --s2:       #1E1E1E;
-  --s3:       #272727;
-  --border:   rgba(232,230,224,.07);
-  --border2:  rgba(232,230,224,.13);
-  --text:     #E8E6E0;
-  --muted:    rgba(232,230,224,.45);
-  --hint:     rgba(232,230,224,.2);
-  --accent:   #F5C800;
-  --mono:     'Martian Mono', monospace;
+  --s1:#141414; --s2:#1E1E1E; --s3:#272727;
+  --border:rgba(232,230,224,.07); --border2:rgba(232,230,224,.13);
+  --text:#E8E6E0; --muted:rgba(232,230,224,.45); --hint:rgba(232,230,224,.2);
+  --accent:#F5C800; --mono:'Martian Mono',monospace;
 }
-
-/* ── NAV ── */
 nav {
-  position: fixed; top:0; left:0; right:0; z-index:100;
-  height: 64px;
-  background: rgba(10,10,10,.92);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(12px);
-  display: flex; align-items: center;
-  padding: 0 64px;
-  gap: 0;
+  height:64px; background:rgba(10,10,10,.95); border-bottom:1px solid var(--border);
+  display:flex; align-items:center; padding:0 64px;
 }
-.nav-logo {
-  font-weight:900; font-size:16px; letter-spacing:.3em; color:var(--accent);
-  margin-right: auto;
-}
-.nav-links {
-  display:flex; gap:36px; margin-right:48px;
-}
-.nav-link {
-  font-family: var(--mono); font-size:10px; color:var(--muted);
-  letter-spacing:.1em; text-transform:uppercase; text-decoration:none;
-  transition: color .2s;
-}
-.nav-link:hover { color:var(--text); }
+.nav-logo { font-weight:900; font-size:16px; letter-spacing:.3em; color:var(--accent); margin-right:auto; }
+.nav-links { display:flex; gap:36px; margin-right:48px; }
+.nav-link { font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; text-decoration:none; }
 .nav-link.active { color:var(--accent); }
-.nav-cta {
-  font-family: var(--mono); font-size:10px; font-weight:600;
-  letter-spacing:.12em; text-transform:uppercase;
-  background:var(--accent); color:#000;
-  padding: 10px 20px; border-radius:2px; text-decoration:none;
-}
+.nav-cta { font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; background:var(--accent); color:#000; padding:10px 20px; border-radius:2px; text-decoration:none; }
 
-/* ── HERO ── */
-.hero {
-  min-height: 100vh;
-  padding: 160px 64px 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: relative;
-  overflow: hidden;
-}
-
-/* dot grid bg */
-.hero::before {
-  content:'';
-  position:absolute; inset:0;
-  background-image: radial-gradient(rgba(245,200,0,.07) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events:none;
-}
-
-/* yellow top line */
-.hero::after {
-  content:'';
-  position:absolute; top:0; left:0; right:0;
-  height:3px; background:var(--accent);
-}
-
-.hero-tag {
-  font-family: var(--mono); font-size:10px; color:var(--accent);
-  letter-spacing:.22em; text-transform:uppercase;
-  display:flex; align-items:center; gap:10px;
-  margin-bottom:28px;
-}
-.hero-tag::before { content:''; width:28px; height:1px; background:var(--accent); }
-
-.hero-h1 {
-  font-weight:900; font-size:108px; line-height:.9;
-  letter-spacing:-3px; text-transform:uppercase;
-  color:var(--text); margin-bottom:36px;
-  max-width:900px;
-}
-.hero-h1 .yellow { color:var(--accent); }
-
-.hero-bottom {
-  display:flex; align-items:flex-end; justify-content:space-between;
-}
-.hero-desc {
-  font-size:16px; color:var(--muted); line-height:1.75; max-width:420px;
-}
-.hero-ctas {
-  display:flex; gap:12px; flex-shrink:0;
-}
-.btn-primary {
-  font-family:var(--mono); font-size:11px; font-weight:600;
-  letter-spacing:.1em; text-transform:uppercase;
-  background:var(--accent); color:#000;
-  padding:14px 28px; border-radius:2px; text-decoration:none;
-}
-.btn-ghost {
-  font-family:var(--mono); font-size:11px; font-weight:600;
-  letter-spacing:.1em; text-transform:uppercase;
-  background:transparent; color:var(--muted);
-  padding:14px 28px; border-radius:2px; text-decoration:none;
-  border:1px solid var(--border2);
-}
-
-/* Big number bg */
-.hero-bignumber {
-  position:absolute; bottom:-60px; right:40px;
-  font-weight:900; font-size:400px; line-height:1;
-  color:rgba(245,200,0,.03); letter-spacing:-15px;
-  pointer-events:none; user-select:none;
-}
-
-/* ── STATS BAR ── */
-.stats-bar {
-  display:flex;
-  border-top:1px solid var(--border);
+/* PAGE HERO */
+.page-hero {
+  padding:80px 64px 64px;
   border-bottom:1px solid var(--border);
-  background:var(--s1);
-}
-.stat-item {
-  flex:1; padding:28px 40px;
-  border-right:1px solid var(--border);
-  display:flex; flex-direction:column; gap:6px;
-}
-.stat-item:last-child { border-right:none; }
-.stat-val {
-  font-weight:900; font-size:40px; color:var(--accent);
-  line-height:1; letter-spacing:-1px;
-}
-.stat-label {
-  font-family:var(--mono); font-size:9px; color:var(--muted);
-  text-transform:uppercase; letter-spacing:.14em; line-height:1.5;
-}
-
-/* ── SERVICES ── */
-.section { padding:96px 64px; }
-.section-tag {
-  font-family:var(--mono); font-size:10px; color:var(--accent);
-  letter-spacing:.22em; text-transform:uppercase;
-  display:flex; align-items:center; gap:10px; margin-bottom:48px;
-}
-.section-tag::before { content:''; width:28px; height:1px; background:var(--accent); }
-
-.services-grid {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
-  background:var(--border); border:1px solid var(--border);
-}
-.service-card {
-  background:var(--s1); padding:40px 36px 36px;
-  display:flex; flex-direction:column; gap:20px;
-  transition: background .2s;
-}
-.service-card:hover { background:var(--s2); }
-.sc-num {
-  font-family:var(--mono); font-size:10px; color:var(--accent);
-  letter-spacing:.15em; opacity:.6;
-}
-.sc-icon {
-  width:40px; height:40px; border:1px solid var(--border2);
-  border-radius:4px; display:flex; align-items:center; justify-content:center;
-}
-.sc-icon svg { width:18px; height:18px; fill:none; stroke:var(--muted); stroke-width:1.5; }
-.sc-title {
-  font-weight:700; font-size:18px; color:var(--text); line-height:1.2;
-}
-.sc-desc {
-  font-size:13px; color:var(--muted); line-height:1.7; flex:1;
-}
-.sc-link {
-  font-family:var(--mono); font-size:9px; color:var(--accent);
-  letter-spacing:.1em; text-transform:uppercase;
-  display:flex; align-items:center; gap:6px;
-}
-.sc-link::after { content:'→'; }
-.sc-bar { height:2px; background:var(--accent); width:0; transition:width .3s; }
-.service-card:hover .sc-bar { width:100%; }
-
-/* ── CASE ── */
-.case-section { padding:0 64px 96px; }
-.case-card {
-  background:var(--s1); border:1px solid var(--border);
-  border-radius:4px; overflow:hidden;
-  display:grid; grid-template-columns:1fr 400px;
-}
-.case-left { padding:56px; display:flex; flex-direction:column; gap:28px; }
-.case-tag {
-  font-family:var(--mono); font-size:9px; color:var(--accent);
-  letter-spacing:.18em; text-transform:uppercase; opacity:.7;
-}
-.case-title { font-weight:900; font-size:44px; color:var(--text); line-height:1; letter-spacing:-1px; }
-.case-desc { font-size:14px; color:var(--muted); line-height:1.75; max-width:400px; }
-.case-metrics { display:flex; gap:36px; }
-.cm { display:flex; flex-direction:column; gap:5px; }
-.cm-val { font-weight:900; font-size:36px; color:var(--accent); line-height:1; letter-spacing:-1px; }
-.cm-label { font-family:var(--mono); font-size:8px; color:var(--muted); letter-spacing:.12em; text-transform:uppercase; }
-.case-right {
-  background:var(--s2); border-left:1px solid var(--border);
-  display:flex; align-items:center; justify-content:center; padding:40px;
   position:relative; overflow:hidden;
 }
-/* fake chart */
-.chart { width:100%; display:flex; flex-direction:column; gap:12px; }
-.chart-title { font-family:var(--mono); font-size:9px; color:var(--muted); letter-spacing:.14em; text-transform:uppercase; margin-bottom:8px; }
-.bar-row { display:flex; align-items:center; gap:10px; }
-.bar-month { font-family:var(--mono); font-size:8px; color:var(--hint); width:22px; flex-shrink:0; }
-.bar-track { flex:1; height:6px; background:rgba(245,200,0,.1); border-radius:2px; overflow:hidden; }
-.bar-fill { height:100%; background:var(--accent); border-radius:2px; }
+.page-hero::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--accent); }
+.ph-tag { font-family:var(--mono); font-size:10px; color:var(--accent); letter-spacing:.22em; text-transform:uppercase; display:flex; align-items:center; gap:10px; margin-bottom:24px; }
+.ph-tag::before { content:''; width:28px; height:1px; background:var(--accent); }
+.ph-h1 { font-weight:900; font-size:80px; line-height:.92; letter-spacing:-2px; text-transform:uppercase; color:var(--text); max-width:700px; margin-bottom:24px; }
+.ph-desc { font-size:16px; color:var(--muted); line-height:1.75; max-width:480px; }
 
-/* ── MANIFESTO ── */
-.manifesto {
-  background:var(--s1); border-top:1px solid var(--border); border-bottom:1px solid var(--border);
-  padding:80px 64px;
-  display:flex; align-items:center; gap:64px;
-}
-.m-accent { width:4px; height:80px; background:var(--accent); flex-shrink:0; border-radius:2px; }
-.m-text {
-  font-weight:700; font-size:36px; color:var(--text);
-  line-height:1.3; letter-spacing:-0.5px; max-width:700px;
-}
-.m-text span { color:var(--muted); font-weight:400; }
+/* SERVICES LIST — accordion style */
+.services-list { border-bottom:1px solid var(--border); }
 
-/* ── CTA SECTION ── */
-.cta-section {
-  padding:96px 64px;
-  display:flex; align-items:center; justify-content:space-between;
-}
-.cta-left { max-width:540px; }
-.cta-h2 { font-weight:900; font-size:52px; color:var(--text); line-height:1; letter-spacing:-1.5px; text-transform:uppercase; margin-bottom:16px; }
-.cta-desc { font-size:14px; color:var(--muted); line-height:1.75; }
-.cta-form { display:flex; gap:0; flex-shrink:0; }
-.cta-input {
-  font-family:var(--mono); font-size:11px;
-  background:var(--s1); border:1px solid var(--border2);
-  border-right:none; color:var(--text);
-  padding:14px 20px; width:260px; border-radius:2px 0 0 2px;
-  outline:none;
-}
-.cta-input::placeholder { color:var(--hint); }
-.cta-btn {
-  font-family:var(--mono); font-size:11px; font-weight:600;
-  letter-spacing:.1em; text-transform:uppercase;
-  background:var(--accent); color:#000;
-  padding:14px 24px; border:none; border-radius:0 2px 2px 0; cursor:pointer;
-}
-
-/* ── FOOTER ── */
-footer {
+.srv-item {
   border-top:1px solid var(--border);
-  padding:48px 64px 36px;
-  display:flex; justify-content:space-between; align-items:flex-end;
+  overflow:hidden;
 }
-.f-logo { font-weight:900; font-size:14px; letter-spacing:.3em; color:var(--accent); margin-bottom:8px; }
-.f-sub { font-family:var(--mono); font-size:9px; color:var(--hint); letter-spacing:.1em; text-transform:uppercase; }
-.f-links { display:flex; gap:24px; }
-.f-link { font-family:var(--mono); font-size:9px; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; text-decoration:none; }
-.f-bottom { border-top:1px solid var(--border); padding-top:20px; margin-top:32px; display:flex; justify-content:space-between; }
-.f-legal { font-family:var(--mono); font-size:8px; color:var(--hint); letter-spacing:.08em; }
+.srv-item.open { background:var(--s1); }
+
+.srv-header {
+  padding:36px 64px;
+  display:grid;
+  grid-template-columns:60px 1fr auto 200px;
+  align-items:center;
+  gap:32px;
+  cursor:pointer;
+}
+.srv-num { font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:.15em; opacity:.6; }
+.srv-title { font-weight:700; font-size:28px; color:var(--text); letter-spacing:-0.5px; }
+.srv-tag {
+  font-family:var(--mono); font-size:9px; color:var(--muted);
+  border:1px solid var(--border2); padding:6px 12px; border-radius:2px;
+  letter-spacing:.1em; text-transform:uppercase; white-space:nowrap;
+}
+.srv-arrow { font-size:20px; color:var(--accent); justify-self:end; }
+.srv-item.open .srv-arrow { transform:rotate(45deg); }
+
+.srv-body {
+  display:none; padding:0 64px 48px;
+}
+.srv-item.open .srv-body { display:grid; grid-template-columns:1fr 1fr 320px; gap:48px; }
+
+.sb-desc { font-size:15px; color:var(--muted); line-height:1.8; }
+
+.sb-includes h4 {
+  font-family:var(--mono); font-size:9px; color:var(--accent);
+  letter-spacing:.16em; text-transform:uppercase; margin-bottom:16px;
+}
+.sb-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.sb-list li {
+  font-size:13px; color:var(--muted); display:flex; align-items:flex-start; gap:10px; line-height:1.5;
+}
+.sb-list li::before { content:'—'; color:var(--accent); flex-shrink:0; }
+
+.sb-result {
+  background:var(--s2); border:1px solid var(--border);
+  padding:28px; border-radius:4px; display:flex; flex-direction:column; gap:20px;
+}
+.sb-result h4 { font-family:var(--mono); font-size:9px; color:var(--accent); letter-spacing:.16em; text-transform:uppercase; }
+.sb-metric { display:flex; flex-direction:column; gap:4px; }
+.sb-metric-val { font-weight:900; font-size:36px; color:var(--accent); letter-spacing:-1px; line-height:1; }
+.sb-metric-label { font-family:var(--mono); font-size:9px; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; }
+
+/* PROCESS */
+.process-section { padding:96px 64px; }
+.ps-tag { font-family:var(--mono); font-size:10px; color:var(--accent); letter-spacing:.22em; text-transform:uppercase; display:flex; align-items:center; gap:10px; margin-bottom:56px; }
+.ps-tag::before { content:''; width:28px; height:1px; background:var(--accent); }
+.process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
+.step {
+  background:var(--s1); padding:40px 32px;
+  display:flex; flex-direction:column; gap:16px;
+  border-right:1px solid var(--border);
+  position:relative; overflow:hidden;
+}
+.step:last-child { border-right:none; }
+.step::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--s3); }
+.step.active::before { background:var(--accent); }
+.step-num { font-family:var(--mono); font-size:32px; font-weight:600; color:rgba(245,200,0,.08); line-height:1; }
+.step-title { font-weight:700; font-size:17px; color:var(--text); }
+.step-desc { font-size:13px; color:var(--muted); line-height:1.7; }
+
+/* FAQ */
+.faq-section { padding:0 64px 96px; }
+.faq-item { border-top:1px solid var(--border); padding:28px 0; display:grid; grid-template-columns:1fr auto; gap:32px; align-items:start; }
+.faq-q { font-weight:600; font-size:18px; color:var(--text); }
+.faq-a { font-size:14px; color:var(--muted); line-height:1.75; max-width:600px; }
+.faq-plus { font-size:22px; color:var(--accent); flex-shrink:0; margin-top:2px; }
+
+/* CTA */
+.cta-block {
+  margin:0 64px 64px;
+  background:var(--s1); border:1px solid var(--border);
+  padding:64px; display:flex; justify-content:space-between; align-items:center;
+  border-radius:4px;
+}
+.cta-h2 { font-weight:900; font-size:44px; letter-spacing:-1px; text-transform:uppercase; color:var(--text); margin-bottom:12px; }
+.cta-desc { font-size:14px; color:var(--muted); }
+.btn-primary { font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; background:var(--accent); color:#000; padding:16px 32px; border-radius:2px; text-decoration:none; }
 </style>
 </head>
 <body>
@@ -281,8 +130,8 @@ footer {
 <nav>
   <div class="nav-logo">SIGNAL</div>
   <div class="nav-links">
-    <a class="nav-link active" href="#">Главная</a>
-    <a class="nav-link" href="#">Услуги</a>
+    <a class="nav-link" href="#">Главная</a>
+    <a class="nav-link active" href="#">Услуги</a>
     <a class="nav-link" href="#">Кейсы</a>
     <a class="nav-link" href="#">О нас</a>
     <a class="nav-link" href="#">Блог</a>
@@ -290,161 +139,138 @@ footer {
   <a class="nav-cta" href="#">Обсудить задачу</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bignumber">01</div>
-  <div class="hero-tag">Цифровое рекламное агентство · Москва · 2025</div>
-  <div class="hero-h1">
-    РАСТИ<br>НА <span class="yellow">ДАН</span><br><span class="yellow">НЫХ</span>
-  </div>
-  <div class="hero-bottom">
-    <div class="hero-desc">
-      Запускаем рекламу, которая строится на аналитике,<br>
-      а не на обещаниях. Говорим языком выручки.
-    </div>
-    <div class="hero-ctas">
-      <a class="btn-primary" href="#">Обсудить задачу</a>
-      <a class="btn-ghost" href="#">Смотреть кейсы</a>
-    </div>
-  </div>
+<section class="page-hero">
+  <div class="ph-tag">Услуги</div>
+  <div class="ph-h1">ЧТО МЫ<br>ДЕЛАЕМ</div>
+  <div class="ph-desc">4 направления — одна цель: ваша реклама должна приносить выручку, а не просто метрики.</div>
 </section>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat-item">
-    <div class="stat-val">−38%</div>
-    <div class="stat-label">Средний CPL<br>по клиентам</div>
+<!-- SERVICES ACCORDION -->
+<div class="services-list">
+
+  <div class="srv-item open">
+    <div class="srv-header">
+      <div class="srv-num">01</div>
+      <div class="srv-title">Контекстная реклама</div>
+      <div class="srv-tag">Яндекс.Директ · РСЯ</div>
+      <div class="srv-arrow">+</div>
+    </div>
+    <div class="srv-body">
+      <div class="sb-desc">
+        Настраиваем и ведём кампании в Яндекс.Директ и Рекламной сети Яндекса. Каждая кампания оптимизируется под бизнес-KPI: стоимость лида, ROAS, количество транзакций — не CTR и показы.
+      </div>
+      <div class="sb-includes">
+        <h4>Что входит</h4>
+        <ul class="sb-list">
+          <li>Аудит текущих кампаний и конкурентов</li>
+          <li>Сбор семантики и минус-слов</li>
+          <li>Настройка структуры кампаний</li>
+          <li>A/B-тесты объявлений</li>
+          <li>Еженедельная оптимизация ставок</li>
+          <li>Ежемесячный отчёт с выводами</li>
+        </ul>
+      </div>
+      <div class="sb-result">
+        <h4>Средний результат</h4>
+        <div class="sb-metric">
+          <div class="sb-metric-val">−38%</div>
+          <div class="sb-metric-label">Стоимость лида</div>
+        </div>
+        <div class="sb-metric">
+          <div class="sb-metric-val">×2.4</div>
+          <div class="sb-metric-label">Конверсия</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="stat-item">
-    <div class="stat-val">×2.4</div>
-    <div class="stat-label">Рост конверсий<br>в среднем</div>
+
+  <div class="srv-item">
+    <div class="srv-header">
+      <div class="srv-num">02</div>
+      <div class="srv-title">Таргетированная реклама</div>
+      <div class="srv-tag">VK · Telegram · MyTarget</div>
+      <div class="srv-arrow">+</div>
+    </div>
+    <div class="srv-body"></div>
   </div>
-  <div class="stat-item">
-    <div class="stat-val">50+</div>
-    <div class="stat-label">Проектов<br>запущено</div>
+
+  <div class="srv-item">
+    <div class="srv-header">
+      <div class="srv-num">03</div>
+      <div class="srv-title">Сквозная аналитика</div>
+      <div class="srv-tag">Roistat · Метрика · GA4</div>
+      <div class="srv-arrow">+</div>
+    </div>
+    <div class="srv-body"></div>
   </div>
-  <div class="stat-item">
-    <div class="stat-val">100%</div>
-    <div class="stat-label">Прозрачность<br>отчётности</div>
+
+  <div class="srv-item">
+    <div class="srv-header">
+      <div class="srv-num">04</div>
+      <div class="srv-title">Стратегия и консалтинг</div>
+      <div class="srv-tag">Аудит · Стратегия · Разовые</div>
+      <div class="srv-arrow">+</div>
+    </div>
+    <div class="srv-body"></div>
   </div>
+
 </div>
 
-<!-- SERVICES -->
-<section class="section">
-  <div class="section-tag">Что мы делаем</div>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="sc-bar"></div>
-      <div class="sc-num">01</div>
-      <div class="sc-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
-      </div>
-      <div class="sc-title">Контекстная реклама</div>
-      <div class="sc-desc">Яндекс.Директ и РСЯ. Настраиваем, ведём и оптимизируем кампании под KPI бизнеса, а не агентства.</div>
-      <div class="sc-link">Подробнее</div>
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="ps-tag">Как мы работаем</div>
+  <div class="process-steps">
+    <div class="step active">
+      <div class="step-num">01</div>
+      <div class="step-title">Бриф и аудит</div>
+      <div class="step-desc">Изучаем бизнес, анализируем текущую рекламу и конкурентов. Формируем понимание задачи.</div>
     </div>
-    <div class="service-card">
-      <div class="sc-bar"></div>
-      <div class="sc-num">02</div>
-      <div class="sc-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
-      </div>
-      <div class="sc-title">Таргетированная реклама</div>
-      <div class="sc-desc">VK Ads, Telegram Ads, MyTarget. Точные аудитории, A/B-тесты, масштабирование без потери эффективности.</div>
-      <div class="sc-link">Подробнее</div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Стратегия</div>
+      <div class="step-desc">Разрабатываем медиаплан с прогнозами CPL и ROAS. Согласовываем гипотезы.</div>
     </div>
-    <div class="service-card">
-      <div class="sc-bar"></div>
-      <div class="sc-num">03</div>
-      <div class="sc-icon">
-        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      </div>
-      <div class="sc-title">Сквозная аналитика</div>
-      <div class="sc-desc">Roistat, Метрика, GA4. Видим путь клиента от клика до сделки. Отчёты, которые помогают решать, а не просто смотреть.</div>
-      <div class="sc-link">Подробнее</div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Запуск</div>
+      <div class="step-desc">Настраиваем аналитику, создаём кампании, запускаем первые A/B-тесты.</div>
     </div>
-    <div class="service-card">
-      <div class="sc-bar"></div>
-      <div class="sc-num">04</div>
-      <div class="sc-icon">
-        <svg viewBox="0 0 24 24"><path d="M2 20h20M6 20V10M10 20V4M14 20V8M18 20V14"/></svg>
-      </div>
-      <div class="sc-title">Стратегия и консалтинг</div>
-      <div class="sc-desc">Аудит текущей рекламы, стратегия продвижения, разовые консультации. Всё — с расчётом ROI на выходе.</div>
-      <div class="sc-link">Подробнее</div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Оптимизация</div>
+      <div class="step-desc">Еженедельный анализ, корректировки, отчёты с конкретными выводами и следующими шагами.</div>
     </div>
   </div>
 </section>
 
-<!-- CASE -->
-<section class="case-section">
-  <div class="case-card">
-    <div class="case-left">
-      <div class="case-tag">Свежий кейс · E-commerce</div>
-      <div class="case-title">Снизили<br>CPL на 38%<br>за 60 дней</div>
-      <div class="case-desc">Интернет-магазин одежды. Аудит показал: 60% бюджета уходило на нерелевантные запросы. Перестроили структуру кампаний, внедрили сквозную аналитику.</div>
-      <div class="case-metrics">
-        <div class="cm"><div class="cm-val">−38%</div><div class="cm-label">Стоимость лида</div></div>
-        <div class="cm"><div class="cm-val">×2.1</div><div class="cm-label">Конверсия</div></div>
-        <div class="cm"><div class="cm-val">280%</div><div class="cm-label">ROI кампании</div></div>
-      </div>
-      <a class="btn-primary" href="#" style="width:fit-content">Читать кейс</a>
-    </div>
-    <div class="case-right">
-      <div class="chart">
-        <div class="chart-title">Динамика CPL · 12 недель</div>
-        <div class="bar-row"><div class="bar-month">Нед 1</div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
-        <div class="bar-row"><div class="bar-month">Нед 2</div><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
-        <div class="bar-row"><div class="bar-month">Нед 3</div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
-        <div class="bar-row"><div class="bar-month">Нед 4</div><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div>
-        <div class="bar-row"><div class="bar-month">Нед 5</div><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
-        <div class="bar-row"><div class="bar-month">Нед 6</div><div class="bar-track"><div class="bar-fill" style="width:65%"></div></div></div>
-        <div class="bar-row"><div class="bar-month">Нед 7</div><div class="bar-track"><div class="bar-fill" style="width:60%"></div></div></div>
-        <div class="bar-row"><div class="bar-month">Нед 8</div><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div></div>
-        <div class="bar-row"><div class="bar-month">Нед 9</div><div class="bar-track"><div class="bar-fill" style="width:52%"></div></div></div>
-        <div class="bar-row"><div class="bar-month">Нед 10</div><div class="bar-track"><div class="bar-fill" style="width:50%"></div></div></div>
-        <div class="bar-row"><div class="bar-month">Нед 11</div><div class="bar-track"><div class="bar-fill" style="width:64%"></div></div></div>
-        <div class="bar-row"><div class="bar-month">Нед 12</div><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div></div>
-      </div>
-    </div>
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-item">
+    <div><div class="faq-q">Сколько стоит ведение рекламы?</div><div class="faq-a" style="margin-top:12px">Стоимость зависит от объёма задач и рекламного бюджета. Минимальный порог — от 50 000 ₽/мес. Точную стоимость рассчитываем после брифа — это бесплатно.</div></div>
+    <div class="faq-plus">+</div>
+  </div>
+  <div class="faq-item">
+    <div><div class="faq-q">Как быстро будет результат?</div><div class="faq-a" style="margin-top:12px">Первые данные для оптимизации — через 2 недели. Устойчивый результат — через 4–8 недель. Всё зависит от ниши и объёма бюджета.</div></div>
+    <div class="faq-plus">+</div>
+  </div>
+  <div class="faq-item">
+    <div><div class="faq-q">Как вы отчитываетесь?</div><div class="faq-a" style="margin-top:12px">Еженедельные короткие отчёты + ежемесячный детальный разбор. Всегда есть доступ к живому дашборду — видите данные в реальном времени.</div></div>
+    <div class="faq-plus">+</div>
+  </div>
+  <div class="faq-item">
+    <div><div class="faq-q">Можно ли совместить несколько услуг?</div></div>
+    <div class="faq-plus">+</div>
   </div>
 </section>
-
-<!-- MANIFESTO -->
-<div class="manifesto">
-  <div class="m-accent"></div>
-  <div class="m-text">
-    <span>Большинство агентств продают охваты.</span><br>
-    Мы продаём рост вашего бизнеса.
-  </div>
-</div>
 
 <!-- CTA -->
-<section class="cta-section">
-  <div class="cta-left">
-    <div class="cta-h2">Готовы<br>к росту?</div>
-    <div class="cta-desc">Оставьте email — ответим в течение рабочего дня.</div>
-  </div>
-  <div class="cta-form">
-    <input class="cta-input" type="email" placeholder="ваш@email.ru">
-    <button class="cta-btn">Начать →</button>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
+<div class="cta-block">
   <div>
-    <div class="f-logo">SIGNAL</div>
-    <div class="f-sub">Digital Performance Agency · Москва</div>
+    <div class="cta-h2">Не знаете,<br>с чего начать?</div>
+    <div class="cta-desc">Бесплатный аудит рекламы — за 3 рабочих дня</div>
   </div>
-  <div class="f-links">
-    <a class="f-link" href="#">Услуги</a>
-    <a class="f-link" href="#">Кейсы</a>
-    <a class="f-link" href="#">О нас</a>
-    <a class="f-link" href="#">Блог</a>
-    <a class="f-link" href="#">Контакты</a>
-  </div>
-</footer>
+  <a class="btn-primary" href="#">Получить аудит →</a>
+</div>
 
 </body>
 </html>
