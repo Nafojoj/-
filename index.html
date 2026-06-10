@@ -1,224 +1,3196 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>SIGNAL — Кейсы</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { width:1440px; background:#0A0A0A; font-family:'Montserrat',sans-serif; color:#E8E6E0; }
-:root {
-  --s1:#141414; --s2:#1E1E1E;
-  --border:rgba(232,230,224,.07); --border2:rgba(232,230,224,.13);
-  --text:#E8E6E0; --muted:rgba(232,230,224,.45); --hint:rgba(232,230,224,.2);
-  --accent:#F5C800; --mono:'Martian Mono',monospace;
-}
-nav {
-  height:64px; background:rgba(10,10,10,.95); border-bottom:1px solid var(--border);
-  display:flex; align-items:center; padding:0 64px;
-}
-.nav-logo { font-weight:900; font-size:16px; letter-spacing:.3em; color:var(--accent); margin-right:auto; }
-.nav-links { display:flex; gap:36px; margin-right:48px; }
-.nav-link { font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; text-decoration:none; }
-.nav-link.active { color:var(--accent); }
-.nav-cta { font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; background:var(--accent); color:#000; padding:10px 20px; border-radius:2px; text-decoration:none; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNAL — Агентство цифровой рекламы</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap');
 
-/* PAGE HERO */
-.page-hero {
-  padding:80px 64px 64px;
-  border-bottom:1px solid var(--border);
-  display:flex; justify-content:space-between; align-items:flex-end;
-  position:relative; overflow:hidden;
-}
-.page-hero::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--accent); }
-.ph-left {}
-.ph-tag { font-family:var(--mono); font-size:10px; color:var(--accent); letter-spacing:.22em; text-transform:uppercase; display:flex; align-items:center; gap:10px; margin-bottom:24px; }
-.ph-tag::before { content:''; width:28px; height:1px; background:var(--accent); }
-.ph-h1 { font-weight:900; font-size:80px; line-height:.92; letter-spacing:-2px; text-transform:uppercase; color:var(--text); }
-.ph-desc { font-size:14px; color:var(--muted); line-height:1.75; max-width:320px; text-align:right; }
+        :root {
+            --bg-color: #f4f4ec;
+            --text-color: #111111;
+            --accent-blue: #3b5bdb;
+            --accent-green: #c0ff59;
+            --accent-pink: #ff8cd4;
+            --accent-orange: #ff5722;
+            --accent-purple: #cc59ff;
+            --white: #ffffff;
+            --border-radius: 20px;
+            --border-dark: 2.5px solid #111111;
+            --shadow-hard: 6px 6px 0 #111111;
+            --shadow-hard-hover: 10px 10px 0 #111111;
+        }
 
-/* FILTERS */
-.filters {
-  padding:28px 64px;
-  border-bottom:1px solid var(--border);
-  display:flex; gap:8px; flex-wrap:wrap;
-}
-.filter-pill {
-  font-family:var(--mono); font-size:9px; letter-spacing:.1em; text-transform:uppercase;
-  padding:7px 14px; border-radius:20px; border:1px solid var(--border2);
-  color:var(--muted); cursor:pointer; transition:.15s;
-}
-.filter-pill.active { background:var(--accent); color:#000; border-color:var(--accent); }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-/* CASES GRID */
-.cases-grid { padding:48px 64px 96px; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
 
-.case-card {
-  background:var(--s1); border:1px solid var(--border);
-  border-radius:4px; overflow:hidden;
-  display:flex; flex-direction:column;
-  transition: border-color .2s;
-}
-.case-card:hover { border-color:var(--border2); }
+        /* Навигация */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: var(--border-dark);
+            background: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-.case-card.featured {
-  grid-column:1/-1;
-  flex-direction:row;
-}
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
 
-.cc-visual {
-  height:240px; background:var(--s2);
-  position:relative; overflow:hidden;
-  flex-shrink:0;
-}
-.case-card.featured .cc-visual { width:480px; height:auto; }
+        nav {
+            display: flex;
+            gap: 24px;
+        }
 
-/* Visual pattern inside */
-.vis-pattern {
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-}
-.vis-num {
-  font-weight:900; font-size:160px; color:rgba(245,200,0,.05);
-  line-height:1; letter-spacing:-5px; user-select:none;
-}
-.vis-bar-chart {
-  position:absolute; bottom:24px; left:24px; right:24px;
-  display:flex; align-items:flex-end; gap:4px; height:80px;
-}
-.vis-bar { flex:1; background:rgba(245,200,0,.15); border-radius:2px 2px 0 0; border-top:1px solid rgba(245,200,0,.3); }
-.vis-bar.hi { background:rgba(245,200,0,.4); border-top-color:var(--accent); }
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
 
-.cc-body { padding:32px; display:flex; flex-direction:column; gap:16px; flex:1; }
+        nav a:hover, nav a.active {
+            color: var(--accent-orange);
+        }
 
-.cc-tags { display:flex; gap:6px; flex-wrap:wrap; }
-.cc-tag {
-  font-family:var(--mono); font-size:8px; letter-spacing:.1em; text-transform:uppercase;
-  padding:4px 8px; border:1px solid var(--border2); border-radius:2px; color:var(--muted);
-}
-.cc-tag.accent { border-color:rgba(245,200,0,.3); color:var(--accent); }
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: var(--white);
+            padding: 12px 24px;
+            border: var(--border-dark);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 4px 4px 0 var(--text-color);
+            transition: all 0.2s;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+        }
 
-.cc-title { font-weight:700; font-size:22px; color:var(--text); line-height:1.2; letter-spacing:-0.3px; }
-.case-card.featured .cc-title { font-size:32px; }
+        .btn-primary:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--text-color);
+        }
 
-.cc-desc { font-size:13px; color:var(--muted); line-height:1.7; }
+        /* Hero секция */
+        .hero {
+            padding: 100px 40px 80px;
+            background: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1.5" fill="%23111111" fill-opacity="0.1"/></svg>');
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-bottom: var(--border-dark);
+        }
 
-.cc-metrics { display:flex; gap:24px; padding-top:8px; border-top:1px solid var(--border); margin-top:auto; }
-.cc-metric { display:flex; flex-direction:column; gap:4px; }
-.cc-m-val { font-weight:900; font-size:26px; color:var(--accent); line-height:1; letter-spacing:-0.5px; }
-.case-card.featured .cc-m-val { font-size:36px; }
-.cc-m-label { font-family:var(--mono); font-size:8px; color:var(--muted); letter-spacing:.1em; text-transform:uppercase; }
+        .hero-badge {
+            background: var(--accent-green);
+            padding: 6px 16px;
+            border: var(--border-dark);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            box-shadow: 3px 3px 0 var(--text-color);
+            transform: rotate(-2deg);
+        }
 
-.cc-link {
-  font-family:var(--mono); font-size:9px; color:var(--accent);
-  letter-spacing:.1em; text-transform:uppercase;
-  display:flex; align-items:center; gap:6px; margin-top:4px;
-  text-decoration:none;
-}
-.cc-link::after { content:'→'; }
+        .hero h1 {
+            font-size: clamp(48px, 9vw, 130px);
+            font-weight: 800;
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            margin-bottom: 32px;
+            max-width: 1200px;
+        }
+        
+        .highlight-text {
+            color: var(--bg-color);
+            -webkit-text-stroke: 3px var(--text-color);
+            position: relative;
+            display: inline-block;
+        }
 
-/* BAR heights */
-.b1{height:30%} .b2{height:45%} .b3{height:38%} .b4{height:60%} .b5{height:52%}
-.b6{height:70%} .b7{height:65%} .b8{height:80%} .b9{height:72%} .b10{height:90%}
-</style>
+        .hero p {
+            font-size: 24px;
+            font-weight: 600;
+            max-width: 700px;
+            margin-bottom: 48px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-large {
+            font-size: 18px;
+            padding: 20px 40px;
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--text-color);
+            padding: 20px 40px;
+            border: var(--border-dark);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 18px;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 4px 4px 0 var(--text-color);
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--text-color);
+            background: var(--accent-pink);
+        }
+
+        /* Бегущая строка (Marquee) */
+        .marquee-wrapper {
+            background: var(--text-color);
+            color: var(--white);
+            padding: 20px 0;
+            overflow: hidden;
+            border-bottom: var(--border-dark);
+            display: flex;
+            white-space: nowrap;
+        }
+
+        .marquee {
+            display: inline-block;
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee span {
+            margin: 0 40px;
+            color: var(--accent-green);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Быстрый доступ к услугам */
+        .quick-services {
+            padding: 80px 40px;
+            background: var(--white);
+            border-bottom: var(--border-dark);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--bg-color);
+            border: var(--border-dark);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow-hard);
+            transition: transform 0.2s;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 280px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hard-hover);
+        }
+
+        .service-card h3 {
+            font-size: 32px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .card-icon {
+            font-size: 48px;
+            align-self: flex-end;
+            background: var(--white);
+            border: 2px solid var(--text-color);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-card:nth-child(1) .card-icon { background: var(--accent-orange); }
+        .service-card:nth-child(2) .card-icon { background: var(--accent-blue); color: var(--white); }
+        .service-card:nth-child(3) .card-icon { background: var(--accent-pink); }
+        .service-card:nth-child(4) .card-icon { background: var(--accent-green); }
+
+        /* Клиенты / Логотипы */
+        .clients-section {
+            padding: 80px 40px;
+            text-align: center;
+        }
+        
+        .clients-section h2 {
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .logo-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            opacity: 0.8;
+            filter: grayscale(100%);
+            transition: all 0.3s;
+        }
+
+        .logo-grid:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .client-logo {
+            font-size: 32px;
+            font-weight: 800;
+            text-transform: uppercase;
+            border: 2px solid var(--text-color);
+            padding: 12px 24px;
+            border-radius: 12px;
+            background: var(--white);
+        }
+
+        /* Футер (упрощенный для главной) */
+        footer {
+            padding: 60px 40px;
+            background: var(--accent-blue);
+            color: var(--white);
+            border-top: var(--border-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 32px;
+        }
+        
+        footer .logo {
+            color: var(--white);
+            font-size: 48px;
+        }
+
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            nav { display: none; }
+            .hero { padding: 60px 20px; }
+            .hero h1 { font-size: 48px; }
+            .hero p { font-size: 18px; }
+            .quick-services, .clients-section, footer { padding: 40px 20px; }
+            .service-card h3 { font-size: 24px; }
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">SIGNAL</div>
-  <div class="nav-links">
-    <a class="nav-link" href="#">Главная</a>
-    <a class="nav-link" href="#">Услуги</a>
-    <a class="nav-link active" href="#">Кейсы</a>
-    <a class="nav-link" href="#">О нас</a>
-    <a class="nav-link" href="#">Блог</a>
-  </div>
-  <a class="nav-cta" href="#">Обсудить задачу</a>
-</nav>
+    <header>
+        <a href="#" class="logo">SIGNAL</a>
+        <nav>
+            <a href="#" class="active">Главная</a>
+            <a href="#">Услуги</a>
+            <a href="#">Кейсы</a>
+            <a href="#">О нас</a>
+            <a href="#">Блог</a>
+        </nav>
+        <a href="#" class="btn-primary">Обсудить задачу</a>
+    </header>
 
-<section class="page-hero">
-  <div class="ph-left">
-    <div class="ph-tag">Кейсы</div>
-    <div class="ph-h1">РЕАЛЬНЫЕ<br>РЕЗУЛЬТАТЫ</div>
-  </div>
-  <div class="ph-desc">6+ кейсов из разных ниш.<br>Цифры, которые проверяемы.</div>
-</section>
+    <section class="hero">
+        <div class="hero-badge">Digital-агентство</div>
+        <h1>Делаем трафик <br><span class="highlight-text">понятным</span></h1>
+        <p>Приводим клиентов из Яндекс.Директ, VK и Telegram. Считаем каждый вложенный рубль с помощью сквозной аналитики и отвечаем за результат.</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn-primary btn-large">Начать проект →</a>
+            <a href="#" class="btn-secondary">Смотреть кейсы</a>
+        </div>
+    </section>
 
-<div class="filters">
-  <div class="filter-pill active">Все</div>
-  <div class="filter-pill">E-commerce</div>
-  <div class="filter-pill">B2B</div>
-  <div class="filter-pill">Услуги</div>
-  <div class="filter-pill">FMCG</div>
-  <div class="filter-pill">Контекст</div>
-  <div class="filter-pill">Таргет</div>
-  <div class="filter-pill">Аналитика</div>
-</div>
-
-<div class="cases-grid">
-
-  <!-- FEATURED -->
-  <div class="case-card featured">
-    <div class="cc-visual">
-      <div class="vis-pattern"><div class="vis-num">01</div></div>
-      <div class="vis-bar-chart">
-        <div class="vis-bar b1"></div><div class="vis-bar b2"></div><div class="vis-bar b3"></div>
-        <div class="vis-bar b4"></div><div class="vis-bar b5"></div><div class="vis-bar b6"></div>
-        <div class="vis-bar b7"></div><div class="vis-bar b8"></div><div class="vis-bar b9 hi"></div>
-        <div class="vis-bar b10 hi"></div>
-      </div>
+    <div class="marquee-wrapper">
+        <div class="marquee">
+            Контекстная реклама <span>★</span> Таргетированная реклама <span>★</span> Сквозная аналитика <span>★</span> Стратегия <span>★</span> Контекстная реклама <span>★</span> Таргетированная реклама <span>★</span> Сквозная аналитика <span>★</span> Стратегия <span>★</span>
+        </div>
     </div>
-    <div class="cc-body">
-      <div class="cc-tags">
-        <span class="cc-tag accent">E-commerce</span>
-        <span class="cc-tag">Контекст</span>
-        <span class="cc-tag">Аналитика</span>
-      </div>
-      <div class="cc-title">Интернет-магазин одежды:<br>−38% CPL за 60 дней</div>
-      <div class="cc-desc">60% бюджета уходило на нерелевантные запросы. Перестроили структуру кампаний, внедрили сквозную аналитику от клика до покупки.</div>
-      <div class="cc-metrics">
-        <div class="cc-metric"><div class="cc-m-val">−38%</div><div class="cc-m-label">Стоимость лида</div></div>
-        <div class="cc-metric"><div class="cc-m-val">×2.1</div><div class="cc-m-label">Конверсия</div></div>
-        <div class="cc-metric"><div class="cc-m-val">280%</div><div class="cc-m-label">ROI кампании</div></div>
-      </div>
-      <a class="cc-link" href="#">Читать кейс полностью</a>
-    </div>
-  </div>
 
-  <!-- CASE 2 -->
-  <div class="case-card">
-    <div class="cc-visual">
-      <div class="vis-pattern"><div class="vis-num">02</div></div>
-    </div>
-    <div class="cc-body">
-      <div class="cc-tags"><span class="cc-tag accent">B2B SaaS</span><span class="cc-tag">Таргет</span></div>
-      <div class="cc-title">SaaS-платформа: ×2.4 лидов без роста бюджета</div>
-      <div class="cc-desc">Перешли с широких аудиторий на lookalike и ретаргет по сегментам воронки.</div>
-      <div class="cc-metrics">
-        <div class="cc-metric"><div class="cc-m-val">×2.4</div><div class="cc-m-label">Лидов в мес</div></div>
-        <div class="cc-metric"><div class="cc-m-val">−22%</div><div class="cc-m-label">CPL</div></div>
-      </div>
-      <a class="cc-link" href="#">Читать кейс</a>
-    </div>
-  </div>
+    <section class="quick-services">
+        <div class="section-header">
+            <h2 class="section-title">Что мы<br>умеем</h2>
+            <a href="#" class="btn-secondary">Все услуги</a>
+        </div>
+        
+        <div class="services-grid">
+            <a href="#" class="service-card">
+                <div>
+                    <h3>Контекст</h3>
+                    <p>Яндекс.Директ и РСЯ. Настраиваем так, чтобы заявки стоили дешевле, а конверсия в продажу росла.</p>
+                </div>
+                <div class="card-icon">🎯</div>
+            </a>
+            <a href="#" class="service-card">
+                <div>
+                    <h3>Таргет</h3>
+                    <p>VK, Telegram, MyTarget. Находим ваших клиентов там, где они проводят свободное время.</p>
+                </div>
+                <div class="card-icon">📱</div>
+            </a>
+            <a href="#" class="service-card">
+                <div>
+                    <h3>Аналитика</h3>
+                    <p>Roistat, Метрика, GA4. Объединяем рекламу и CRM, чтобы видеть реальный ROI с каждого канала.</p>
+                </div>
+                <div class="card-icon">📊</div>
+            </a>
+            <a href="#" class="service-card">
+                <div>
+                    <h3>Стратегия</h3>
+                    <p>Аудит конкурентов и медиапланирование. Составляем пошаговый план захвата рынка.</p>
+                </div>
+                <div class="card-icon">🗺️</div>
+            </a>
+        </div>
+    </section>
 
-  <!-- CASE 3 -->
-  <div class="case-card">
-    <div class="cc-visual">
-      <div class="vis-pattern"><div class="vis-num">03</div></div>
-    </div>
-    <div class="cc-body">
-      <div class="cc-tags"><span class="cc-tag accent">Услуги</span><span class="cc-tag">Контекст</span></div>
-      <div class="cc-title">Стоматология: +320 первичных записей за квартал</div>
-      <div class="cc-desc">Запустили геотаргетинг с сегментацией по услугам. Каждая группа — отдельная посадочная.</div>
-      <div class="cc-metrics">
-        <div class="cc-metric"><div class="cc-m-val">+320</div><div class="cc-m-label">Записей</div></div>
-        <div class="cc-metric"><div class="cc-m-val">−41%</div><div class="cc-m-label">CPL</div></div>
-      </div>
-      <a class="cc-link" href="#">Читать кейс</a>
-    </div>
-  </div>
+    <section class="clients-section">
+        <h2>Нам доверяют крутые ребята</h2>
+        <div class="logo-grid">
+            <div class="client-logo">Brand.A</div>
+            <div class="client-logo">TechStore</div>
+            <div class="client-logo">SaaS Group</div>
+            <div class="client-logo">MedClinic</div>
+            <div class="client-logo">EcoShop</div>
+        </div>
+    </section>
 
-</div>
+    <footer>
+        <div class="logo">SIGNAL</div>
+        <p style="font-size: 24px; font-weight: 800; max-width: 500px; margin: 0 auto;">Готовы перевернуть игру в вашей нише?</p>
+        <a href="#" class="btn-primary" style="background: var(--accent-green); color: var(--text-color); font-size: 18px; padding: 16px 40px;">Оставить заявку</a>
+    </footer>
+
 </body>
 </html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNAL — Обсудить задачу</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap');
+
+        :root {
+            --bg-color: #f4f4ec;
+            --text-color: #111111;
+            --accent-blue: #3b5bdb;
+            --accent-green: #c0ff59;
+            --accent-pink: #ff8cd4;
+            --accent-orange: #ff5722;
+            --accent-purple: #cc59ff;
+            --white: #ffffff;
+            --border-radius: 20px;
+            --border-dark: 2.5px solid #111111;
+            --shadow-hard: 6px 6px 0 #111111;
+            --shadow-hard-hover: 10px 10px 0 #111111;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.4;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Навигация */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: var(--border-dark);
+            background: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-orange);
+        }
+
+        .btn-close {
+            background-color: var(--text-color);
+            color: var(--white);
+            width: 48px;
+            height: 48px;
+            border: var(--border-dark);
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 24px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 3px 3px 0 var(--accent-orange);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-close:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 var(--accent-orange);
+            background-color: var(--accent-orange);
+            color: var(--text-color);
+            border-color: var(--text-color);
+        }
+
+        /* Контент страницы */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            flex-grow: 1;
+        }
+
+        /* Левая часть - Текст */
+        .contact-info {
+            padding: 80px 40px;
+            background: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1.5" fill="%23111111" fill-opacity="0.1"/></svg>');
+            border-right: var(--border-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-info h1 {
+            font-size: clamp(48px, 6vw, 80px);
+            font-weight: 800;
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .contact-info p {
+            font-size: 20px;
+            font-weight: 600;
+            color: #444;
+            max-width: 400px;
+            margin-bottom: 40px;
+        }
+
+        .direct-contacts {
+            margin-top: auto;
+        }
+
+        .direct-title {
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            color: #666;
+        }
+
+        .direct-link {
+            display: block;
+            font-size: 24px;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--text-color);
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .direct-link:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Правая часть - Форма */
+        .contact-form-wrapper {
+            padding: 80px 60px;
+            background: var(--white);
+        }
+
+        .custom-form {
+            max-width: 600px;
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+        }
+
+        .form-section-title {
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .step-num {
+            background: var(--accent-green);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid var(--text-color);
+            font-size: 14px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            width: 100%;
+            padding: 16px 20px;
+            border: var(--border-dark);
+            border-radius: 16px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 600;
+            background: var(--bg-color);
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .input-box:focus {
+            background: var(--white);
+            box-shadow: 4px 4px 0 var(--accent-blue);
+            transform: translate(-2px, -2px);
+        }
+
+        textarea.input-box {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Чекбоксы в виде тегов */
+        .services-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tag-checkbox {
+            display: none;
+        }
+
+        .tag-label {
+            padding: 12px 20px;
+            border: var(--border-dark);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.15s;
+            background: var(--bg-color);
+        }
+
+        .tag-checkbox:checked + .tag-label {
+            background: var(--text-color);
+            color: var(--white);
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--accent-pink);
+        }
+
+        /* Радио-кнопки бюджета */
+        .budget-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .budget-radio {
+            display: none;
+        }
+
+        .budget-label {
+            padding: 16px 12px;
+            border: var(--border-dark);
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 800;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.15s;
+            background: var(--bg-color);
+        }
+
+        .budget-radio:checked + .budget-label {
+            background: var(--accent-orange);
+            color: var(--white);
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0 var(--text-color);
+        }
+
+        .btn-submit {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            padding: 20px 40px;
+            border: var(--border-dark);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 18px;
+            text-transform: uppercase;
+            box-shadow: 6px 6px 0 var(--text-color);
+            transition: all 0.2s;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0 var(--text-color);
+            background-color: var(--accent-green);
+            color: var(--text-color);
+        }
+
+        @media (max-width: 1024px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+            .contact-info {
+                border-right: none;
+                border-bottom: var(--border-dark);
+                padding: 60px 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 16px 20px; }
+            nav { display: none; }
+            .contact-info, .contact-form-wrapper { padding: 40px 20px; }
+            .contact-info h1 { font-size: 40px; }
+            .form-row { grid-template-columns: 1fr; }
+            .budget-options { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">SIGNAL</a>
+        <nav>
+            <a href="#">Главная</a>
+            <a href="#">Услуги</a>
+            <a href="#">Кейсы</a>
+            <a href="#">О нас</a>
+            <a href="#">Блог</a>
+        </nav>
+        <a href="#" class="btn-close" title="Вернуться назад">✕</a>
+    </header>
+
+    <div class="contact-layout">
+        <!-- Левая часть -->
+        <div class="contact-info">
+            <div>
+                <h1>Хватит<br>терять<br>лиды</h1>
+                <p>Заполните короткий бриф. Мы изучим вашу нишу, проанализируем конкурентов и вернемся с конкретным планом действий.</p>
+            </div>
+            
+            <div class="direct-contacts">
+                <div class="direct-title">Или напишите напрямую:</div>
+                <a href="#" class="direct-link">@signal_agency</a>
+                <a href="mailto:hello@signal.agency" class="direct-link">hello@signal.agency</a>
+            </div>
+        </div>
+
+        <!-- Правая часть с формой -->
+        <div class="contact-form-wrapper">
+            <form class="custom-form" onsubmit="event.preventDefault(); alert('Бриф успешно отправлен! Мы свяжемся с вами в течение дня.');">
+                
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span class="step-num">1</span>
+                        О вас
+                    </div>
+                    <div class="form-row">
+                        <input type="text" class="input-box" placeholder="Ваше имя" required>
+                        <input type="text" class="input-box" placeholder="Название компании">
+                    </div>
+                    <div class="form-row">
+                        <input type="text" class="input-box" placeholder="Телефон или Telegram" required>
+                        <input type="url" class="input-box" placeholder="Ссылка на сайт (если есть)">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span class="step-num">2</span>
+                        Что вас интересует?
+                    </div>
+                    <div class="services-tags">
+                        <input type="checkbox" id="srv1" class="tag-checkbox">
+                        <label for="srv1" class="tag-label">Контекстная реклама</label>
+
+                        <input type="checkbox" id="srv2" class="tag-checkbox">
+                        <label for="srv2" class="tag-label">Таргет</label>
+
+                        <input type="checkbox" id="srv3" class="tag-checkbox">
+                        <label for="srv3" class="tag-label">SEO / Органика</label>
+
+                        <input type="checkbox" id="srv4" class="tag-checkbox">
+                        <label for="srv4" class="tag-label">Сквозная аналитика</label>
+
+                        <input type="checkbox" id="srv5" class="tag-checkbox">
+                        <label for="srv5" class="tag-label">Консультация / Аудит</label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span class="step-num">3</span>
+                        Примерный бюджет в месяц
+                    </div>
+                    <div class="budget-options">
+                        <input type="radio" name="budget" id="bg1" class="budget-radio" checked>
+                        <label for="bg1" class="budget-label">До 100 тыс. ₽</label>
+
+                        <input type="radio" name="budget" id="bg2" class="budget-radio">
+                        <label for="bg2" class="budget-label">100 - 300 тыс. ₽</label>
+
+                        <input type="radio" name="budget" id="bg3" class="budget-radio">
+                        <label for="bg3" class="budget-label">От 300 тыс. ₽</label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <span class="step-num">4</span>
+                        Пару слов о задаче
+                    </div>
+                    <textarea class="input-box" placeholder="Расскажите, кто ваши клиенты, какие сейчас результаты и к чему хотите прийти..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Отправить бриф ⚡️</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNAL — Блог и медиа</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap');
+
+        :root {
+            --bg-color: #f4f4ec;
+            --text-color: #111111;
+            --accent-blue: #3b5bdb;
+            --accent-green: #c0ff59;
+            --accent-pink: #ff8cd4;
+            --accent-orange: #ff5722;
+            --accent-purple: #cc59ff;
+            --white: #ffffff;
+            --border-radius: 20px;
+            --border-dark: 2.5px solid #111111;
+            --shadow-hard: 6px 6px 0 #111111;
+            --shadow-hard-hover: 10px 10px 0 #111111;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        /* Навигация */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: var(--border-dark);
+            background: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-orange);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: var(--white);
+            padding: 12px 24px;
+            border: var(--border-dark);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 4px 4px 0 var(--text-color);
+            transition: all 0.2s;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--text-color);
+        }
+
+        /* Hero секция */
+        .hero {
+            padding: 80px 40px 40px;
+            background: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1.5" fill="%23111111" fill-opacity="0.1"/></svg>');
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: var(--white);
+            padding: 4px 12px;
+            border: var(--border-dark);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            transform: rotate(-1.5deg);
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 96px);
+            font-weight: 800;
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            max-width: 1100px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-weight: 600;
+            max-width: 600px;
+            color: #444;
+        }
+
+        /* Темы / Фильтры */
+        .categories-bar {
+            padding: 20px 40px 40px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .cat-btn {
+            background: var(--white);
+            border: var(--border-dark);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 3px 3px 0 var(--text-color);
+            transition: all 0.15s;
+        }
+
+        .cat-btn:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 5px 5px 0 var(--text-color);
+        }
+
+        .cat-btn.active {
+            background: var(--accent-orange);
+            color: var(--white);
+        }
+
+        /* Сетка Блога */
+        .blog-section {
+            padding: 0 40px 80px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .articles-container {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        /* Карточка статьи (Лонгрид-формат) */
+        .article-card {
+            background: var(--white);
+            border: var(--border-dark);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-hard);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hard-hover);
+        }
+
+        .article-cover {
+            height: 240px;
+            background: var(--accent-green);
+            border-bottom: var(--border-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: relative;
+        }
+        .article-card:nth-child(2) .article-cover { background: var(--accent-pink); }
+        .article-card:nth-child(3) .article-cover { background: var(--accent-purple); }
+
+        .article-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 32px;
+            background: var(--text-color);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .article-content {
+            padding: 40px;
+        }
+
+        .article-meta {
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .article-title {
+            font-size: 32px;
+            font-weight: 800;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .article-title a {
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .article-title a:hover {
+            color: var(--accent-blue);
+        }
+
+        .article-excerpt {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 24px;
+        }
+
+        .btn-read {
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-read::after {
+            content: '→';
+            transition: transform 0.2s;
+        }
+        .btn-read:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* Сайдбар */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .sidebar-widget {
+            background: var(--white);
+            border: var(--border-dark);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            box-shadow: var(--shadow-hard);
+        }
+
+        .sidebar-widget.newsletter {
+            background: var(--text-color);
+            color: var(--white);
+            box-shadow: 6px 6px 0 var(--accent-green);
+        }
+
+        .widget-title {
+            font-size: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed var(--text-color);
+            padding-bottom: 10px;
+        }
+        .newsletter .widget-title {
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .sidebar-widget p {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .input-mini {
+            width: 100%;
+            padding: 12px;
+            border: var(--border-dark);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--bg-color);
+            margin-bottom: 12px;
+            outline: none;
+        }
+
+        .btn-mini {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        /* Популярные теги */
+        .pop-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .pop-tag {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            border: 2px solid var(--text-color);
+            background: var(--bg-color);
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+        .pop-tag:hover {
+            background: var(--accent-pink);
+        }
+
+        /* Футер */
+        footer {
+            padding: 40px;
+            background: var(--white);
+            border-top: var(--border-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copyright {
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            nav { display: none; }
+            .hero, .categories-bar, .blog-section { padding: 40px 20px; }
+            .sidebar { grid-template-columns: 1fr; }
+            .article-content { padding: 24px; }
+            .article-title { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">SIGNAL</a>
+        <nav>
+            <a href="#">Главная</a>
+            <a href="#">Услуги</a>
+            <a href="#">Кейсы</a>
+            <a href="#">О нас</a>
+            <a href="#" class="active">Блог</a>
+        </nav>
+        <a href="#" class="btn-primary">Обсудить задачу</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-label">Наше медиа</div>
+        <h1>Полезный<br>контент</h1>
+        <p>Пишем про рекламу, аналитику и трафик без сложной терминологии. Только личный опыт, инсайды и разборы рабочих механик.</p>
+    </section>
+
+    <!-- Переключатель категорий -->
+    <div class="categories-bar">
+        <button class="cat-btn active">Все статьи</button>
+        <button class="cat-btn">Контекст</button>
+        <button class="cat-btn">Таргет</button>
+        <button class="cat-btn">Аналитика</button>
+        <button class="cat-btn">Лайфхаки</button>
+    </div>
+
+    <section class="blog-section">
+        <div class="blog-grid">
+            
+            <!-- Основная лента статей -->
+            <div class="articles-container">
+                
+                <!-- Статья 1 -->
+                <article class="article-card">
+                    <div class="article-cover">
+                        💸
+                        <span class="article-badge">Гайд</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">9 июня, 2026 • 5 мин чтения</div>
+                        <h2 class="article-title"><a href="#">Как очистить контекст от мусорного трафика и сохранить 30% бюджета</a></h2>
+                        <p class="article-excerpt">Пошаговое руководство по работе с минус-словами и операторами в Яндекс.Директ. Рассказываем, как выявить нецелевые площадки в РСЯ и вовремя отключить неэффективные объявления.</p>
+                        <a href="#" class="btn-read">Читать далее</a>
+                    </div>
+                </article>
+
+                <!-- Статья 2 -->
+                <article class="article-card">
+                    <div class="article-cover">
+                        🎯
+                        <span class="article-badge">Кейсы</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">4 июня, 2026 • 8 мин чтения</div>
+                        <h2 class="article-title"><a href="#">Тестируем гипотезы в таргете: почему широкие аудитории иногда работают лучше lookalike</a></h2>
+                        <p class="article-excerpt">Разбираем парадокс современных алгоритмов VK и MyTarget. На конкретных примерах показываем, когда стоит довериться автоматическому поиску, а когда — жестко зажимать сегменты.</p>
+                        <a href="#" class="btn-read">Читать далее</a>
+                    </div>
+                </article>
+
+                <!-- Статья 3 -->
+                <article class="article-card">
+                    <div class="article-cover">
+                        📊
+                        <span class="article-badge">Мнение</span>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">28 мая, 2026 • 4 мин чтения</div>
+                        <h2 class="article-title"><a href="#">Зачем малому бизнесу сквозная аналитика, если есть обычная Метрика</a></h2>
+                        <p class="article-excerpt">Объясняем на пальцах разницу между веб-аналитикой и сквозной системой. Показываем реальную цепочку касаний клиента от клика до повторной покупки в CRM.</p>
+                        <a href="#" class="btn-read">Читать далее</a>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Сайдбар -->
+            <div class="sidebar">
+                
+                <!-- Виджет подписки -->
+                <div class="sidebar-widget newsletter">
+                    <h3 class="widget-title" style="color: var(--accent-green);">Инсайды в Telegram</h3>
+                    <p>Раз в неделю присылаем одну мощную связку или разбор обновления рекламных кабинетов. Никакого спама.</p>
+                    <form onsubmit="event.preventDefault(); alert('Спасибо за подписку!');">
+                        <input type="text" class="input-mini" placeholder="@username или Email" required>
+                        <button type="submit" class="btn-primary btn-mini" style="background: var(--accent-green); color: var(--text-color);">Подписаться</button>
+                    </form>
+                </div>
+
+                <!-- Виджет тегов -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Популярные темы</h3>
+                    <div class="pop-tags">
+                        <a href="#" class="pop-tag">#Директ</a>
+                        <a href="#" class="pop-tag">#РСЯ</a>
+                        <a href="#" class="pop-tag">#Лидогенерация</a>
+                        <a href="#" class="pop-tag">#Roistat</a>
+                        <a href="#" class="pop-tag">#CPL</a>
+                        <a href="#" class="pop-tag">#Конверсия</a>
+                        <a href="#" class="pop-tag">#Маркетинг</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <a href="#" class="logo">SIGNAL</a>
+        <div class="copyright">© 2026 SIGNAL AGENCY. ALL RIGHTS RESERVED.</div>
+    </footer>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNAL — О нас и нашей философии</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap');
+
+        :root {
+            --bg-color: #f4f4ec;
+            --text-color: #111111;
+            --accent-blue: #3b5bdb;
+            --accent-green: #c0ff59;
+            --accent-pink: #ff8cd4;
+            --accent-orange: #ff5722;
+            --accent-purple: #cc59ff;
+            --white: #ffffff;
+            --border-radius: 20px;
+            --border-dark: 2.5px solid #111111;
+            --shadow-hard: 6px 6px 0 #111111;
+            --shadow-hard-hover: 10px 10px 0 #111111;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        /* Навигация */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: var(--border-dark);
+            background: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-orange);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: var(--white);
+            padding: 12px 24px;
+            border: var(--border-dark);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 4px 4px 0 var(--text-color);
+            transition: all 0.2s;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--text-color);
+        }
+
+        /* Hero секция */
+        .hero {
+            padding: 80px 40px 60px;
+            border-bottom: var(--border-dark);
+            background: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1.5" fill="%23111111" fill-opacity="0.1"/></svg>');
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: var(--accent-purple);
+            color: var(--white);
+            padding: 4px 12px;
+            border: var(--border-dark);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            transform: rotate(1deg);
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 96px);
+            font-weight: 800;
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            max-width: 1100px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-weight: 600;
+            max-width: 600px;
+            color: #444;
+        }
+
+        /* Блок Манифеста / Принципов */
+        .manifesto-section {
+            padding: 80px 40px;
+            background: var(--white);
+            border-bottom: var(--border-dark);
+        }
+
+        .section-title {
+            font-size: 44px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 48px;
+            display: inline-block;
+            background: var(--accent-green);
+            padding: 0 16px;
+            border: var(--border-dark);
+            transform: rotate(-1deg);
+        }
+
+        .manifesto-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .manifesto-card {
+            border: var(--border-dark);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            background: var(--bg-color);
+            box-shadow: var(--shadow-hard);
+        }
+
+        .manifesto-card h3 {
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .manifesto-card p {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Команда */
+        .team-section {
+            padding: 80px 40px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .team-card {
+            background: var(--white);
+            border: var(--border-dark);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-hard);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hard-hover);
+        }
+
+        .team-avatar {
+            height: 200px;
+            background: var(--accent-blue);
+            border-bottom: var(--border-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            user-select: none;
+        }
+        .team-card:nth-child(2) .team-avatar { background: var(--accent-pink); }
+        .team-card:nth-child(3) .team-avatar { background: var(--accent-orange); }
+        .team-card:nth-child(4) .team-avatar { background: var(--accent-green); }
+
+        .team-info {
+            padding: 24px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .team-name {
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .team-fact {
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--bg-color);
+            padding: 8px 12px;
+            border-radius: 12px;
+            border: 1.5px solid var(--text-color);
+        }
+
+        /* Факты в цифрах */
+        .facts-section {
+            padding: 60px 40px 80px;
+            border-bottom: var(--border-dark);
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .fact-box {
+            background: var(--text-color);
+            color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 6px 6px 0 var(--accent-green);
+        }
+        .fact-box:nth-child(2) { box-shadow: 6px 6px 0 var(--accent-pink); }
+        .fact-box:nth-child(3) { box-shadow: 6px 6px 0 var(--accent-blue); }
+        .fact-box:nth-child(4) { box-shadow: 6px 6px 0 var(--accent-orange); }
+
+        .fact-num {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .fact-box:nth-child(1) .fact-num { color: var(--accent-green); }
+        .fact-box:nth-child(2) .fact-num { color: var(--accent-pink); }
+        .fact-box:nth-child(3) .fact-num { color: var(--accent-blue); }
+        .fact-box:nth-child(4) .fact-num { color: var(--accent-orange); }
+
+        .fact-text {
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        /* Форма контактов */
+        .contact-section {
+            padding: 80px 40px;
+            background: var(--accent-pink);
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+        }
+
+        .contact-left h2 {
+            font-size: 56px;
+            font-weight: 800;
+            text-transform: uppercase;
+            line-height: 0.95;
+            margin-bottom: 24px;
+        }
+
+        .contact-left p {
+            font-size: 18px;
+            font-weight: 600;
+            max-width: 400px;
+            margin-bottom: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            background: var(--white);
+            border: var(--border-dark);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-color);
+            box-shadow: 4px 4px 0 var(--text-color);
+            transition: all 0.15s;
+        }
+
+        .social-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--text-color);
+        }
+
+        .contact-form {
+            background: var(--white);
+            border: var(--border-dark);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow-hard);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            border: var(--border-dark);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 600;
+            background: var(--bg-color);
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            background: var(--white);
+            border-color: var(--accent-blue);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .manifesto-grid, .team-grid, .facts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            nav { display: none; }
+            .hero, .manifesto-section, .team-section, .facts-section, .contact-section { padding: 40px 20px; }
+            .manifesto-grid, .team-grid, .facts-grid { grid-template-columns: 1fr; }
+            .contact-left h2 { font-size: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">SIGNAL</a>
+        <nav>
+            <a href="#">Главная</a>
+            <a href="#">Услуги</a>
+            <a href="#">Кейсы</a>
+            <a href="#" class="active">О нас</a>
+            <a href="#">Блог</a>
+        </nav>
+        <a href="#" class="btn-primary">Обсудить задачу</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-label">Кто мы такие</div>
+        <h1>Команда<br>без душноты<br>и пафоса</h1>
+        <p>Мы — SIGNAL. Агентство цифровой рекламы, которое ставит здравый смысл и прозрачные цифры выше сложных корпоративных презентаций.</p>
+    </section>
+
+    <!-- Манифест / Принципы -->
+    <section class="manifesto-section">
+        <h2 class="section-title">Наши принципы</h2>
+        <div class="manifesto-grid">
+            <div class="manifesto-card">
+                <h3><span>🧠</span> Здравый смысл</h3>
+                <p>Не предлагаем инструменты ради инструментов. Если вашему бизнесу не нужен Telegram Ads, мы прямо об этом скажем и сохраним ваш бюджет.</p>
+            </div>
+            <div class="manifesto-card">
+                <h3><span>📊</span> Ясность</h3>
+                <p>Переводим сложные метрики (CTR, CPA, ROAS) на понятный язык выручки, прибыли и реальных клиентов. Никакой магии, только математика.</p>
+            </div>
+            <div class="manifesto-card">
+                <h3><span>🏃‍♂️</span> Скорость</h3>
+                <p>Мир меняется быстро, реклама — еще быстрее. Тестируем гипотезы за дни, а не недели. Быстро находим рабочие связки и масштабируем их.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Факты в цифрах -->
+    <section class="facts-section">
+        <div class="facts-grid">
+            <div class="fact-box">
+                <div class="fact-num">2026</div>
+                <div class="fact-text">Год основания</div>
+            </div>
+            <div class="fact-box">
+                <div class="fact-num">150+</div>
+                <div class="fact-text">Успешных запусков</div>
+            </div>
+            <div class="fact-box">
+                <div class="fact-num">0 ₽</div>
+                <div class="fact-text">Слитого впустую бюджета</div>
+            </div>
+            <div class="fact-box">
+                <div class="fact-num">24/7</div>
+                <div class="fact-text">Прозрачные дашборды</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Команда -->
+    <section class="team-section">
+        <h2 class="section-title" style="background: var(--accent-orange);">Команда</h2>
+        <div class="team-grid">
+            
+            <div class="team-card">
+                <div class="team-avatar">🕶️</div>
+                <div class="team-info">
+                    <div>
+                        <div class="team-name">Вадим Ли</div>
+                        <div class="team-role">CEO / Стратег</div>
+                    </div>
+                    <div class="team-fact">Считает ROI быстрее калькулятора</div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar">🎯</div>
+                <div class="team-info">
+                    <div>
+                        <div class="team-name">Аня К.</div>
+                        <div class="team-role">Head of Context</div>
+                    </div>
+                    <div class="team-fact">Знает про Яндекс.Директ абсолютно всё</div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar">👾</div>
+                <div class="team-info">
+                    <div>
+                        <div class="team-name">Макс Р.</div>
+                        <div class="team-role">Таргетолог</div>
+                    </div>
+                    <div class="team-fact">Находит целевую аудиторию даже в космосе</div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-avatar">📊</div>
+                <div class="team-info">
+                    <div>
+                        <div class="team-name">Игорь Д.</div>
+                        <div class="team-role">Дата-аналитик</div>
+                    </div>
+                    <div class="team-fact">Умеет дружить Roistat с любой CRM</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Контакты / Форма -->
+    <section class="contact-section">
+        <div class="contact-left">
+            <h2>Давайте<br>сделаем<br>проект!</h2>
+            <p>Напишите нам, и мы разберем вашу задачу на бесплатной вводной консультации.</p>
+            
+            <div class="social-links">
+                <a href="#" class="social-btn">Telegram</a>
+                <a href="#" class="social-btn">WhatsApp</a>
+                <a href="#" class="social-btn">hello@signal.agency</a>
+            </div>
+        </div>
+        
+        <div>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Форма отправлена! Скоро свяжемся.');">
+                <div class="form-group">
+                    <label for="name">Как вас зовут?</label>
+                    <input type="text" id="name" placeholder="Иван" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Телефон или Telegram</label>
+                    <input type="text" id="contact" placeholder="@username или +7..." required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Расскажите коротко о задаче</label>
+                    <textarea id="message" rows="4" placeholder="Нужен аудит контекста / хотим запустить таргет..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary btn-submit">Отправить заявку →</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNAL — Что мы делаем</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap');
+
+        :root {
+            --bg-color: #f4f4ec; /* Чуть более теплый светлый фон */
+            --text-color: #111111;
+            --accent-blue: #3b5bdb;
+            --accent-green: #c0ff59; /* Кислотный зеленый */
+            --accent-pink: #ff8cd4;
+            --accent-orange: #ff5722;
+            --white: #ffffff;
+            --border-radius: 16px;
+            --border-dark: 2.5px solid #111111;
+            --shadow-hard: 6px 6px 0 #111111;
+            --shadow-hard-hover: 10px 10px 0 #111111;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        /* Навигация */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: var(--border-dark);
+            background: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-orange);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: var(--white);
+            padding: 12px 24px;
+            border: var(--border-dark);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 4px 4px 0 var(--text-color);
+            transition: all 0.2s;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--text-color);
+        }
+
+        /* Стикеры */
+        .sticker {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 50px;
+            border: var(--border-dark);
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            background: var(--white);
+            box-shadow: 3px 3px 0 var(--text-color);
+            white-space: nowrap;
+        }
+        .sticker.green { background-color: var(--accent-green); }
+        .sticker.pink { background-color: var(--accent-pink); }
+        .sticker.blue { background-color: var(--accent-blue); color: var(--white); }
+
+        /* Hero */
+        .hero {
+            padding: 80px 40px 60px;
+            border-bottom: var(--border-dark);
+            background: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1.5" fill="%23111111" fill-opacity="0.1"/></svg>');
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: var(--accent-pink);
+            padding: 4px 12px;
+            border: var(--border-dark);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            transform: rotate(-2deg);
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 110px);
+            font-weight: 800;
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 32px;
+            max-width: 1200px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-weight: 600;
+            max-width: 600px;
+            padding: 20px;
+            background: var(--white);
+            border: var(--border-dark);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-hard);
+        }
+
+        /* Список услуг (Аккордеон-стайл, но раскрытый) */
+        .services-list {
+            padding: 40px;
+            background: var(--bg-color);
+        }
+
+        .service-row {
+            background: var(--white);
+            border: var(--border-dark);
+            border-radius: var(--border-radius);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-hard);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        
+        .service-row:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hard-hover);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 32px 40px;
+            border-bottom: var(--border-dark);
+            background: var(--white);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .service-title-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .service-num {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .service-row:nth-child(1) .service-num { color: var(--accent-orange); }
+        .service-row:nth-child(2) .service-num { color: var(--accent-pink); }
+        .service-row:nth-child(3) .service-num { color: var(--accent-blue); }
+        .service-row:nth-child(4) .service-num { color: var(--accent-green); }
+
+        .service-title {
+            font-size: 32px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .service-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .service-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr 300px;
+            gap: 40px;
+            padding: 40px;
+            background: var(--bg-color);
+        }
+
+        .service-body h4 {
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            color: var(--accent-orange);
+        }
+
+        .service-body p, .service-body li {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .service-body ul {
+            list-style: none;
+        }
+
+        .service-body ul li::before {
+            content: '→';
+            margin-right: 8px;
+            color: var(--accent-blue);
+            font-weight: 800;
+        }
+
+        .result-card {
+            background: var(--text-color);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            border: 2px solid var(--text-color);
+            transform: rotate(2deg);
+        }
+
+        .result-card h5 {
+            color: var(--accent-green);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .result-stat {
+            margin-bottom: 16px;
+        }
+
+        .result-stat .value {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--accent-pink);
+        }
+
+        .result-stat .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 800;
+            opacity: 0.8;
+        }
+        
+        .result-stat:nth-child(3) .value { color: var(--accent-orange); }
+
+        /* Компактный вид для закрытых строк */
+        .service-row.collapsed .service-header { border-bottom: none; }
+        .service-row.collapsed .service-body { display: none; }
+
+        /* Как мы работаем */
+        .process-section {
+            padding: 80px 40px;
+            border-top: var(--border-dark);
+            background: var(--white);
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 48px;
+            display: inline-block;
+            background: var(--accent-green);
+            padding: 0 16px;
+            border: var(--border-dark);
+            transform: rotate(-1deg);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .process-card {
+            background: var(--bg-color);
+            border: var(--border-dark);
+            border-radius: var(--border-radius);
+            padding: 32px 24px;
+            box-shadow: var(--shadow-hard);
+            position: relative;
+        }
+
+        .process-num {
+            font-size: 64px;
+            font-weight: 800;
+            color: var(--accent-orange);
+            line-height: 0.8;
+            margin-bottom: 24px;
+            -webkit-text-stroke: 2px var(--text-color);
+            color: var(--white);
+        }
+
+        .process-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .process-card p {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 80px 40px;
+            border-top: var(--border-dark);
+        }
+
+        details {
+            background: var(--white);
+            border: var(--border-dark);
+            border-radius: var(--border-radius);
+            margin-bottom: 16px;
+            box-shadow: 4px 4px 0 var(--text-color);
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 24px 32px;
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        summary::-webkit-details-marker { display: none; }
+        
+        summary::after {
+            content: '+';
+            font-size: 32px;
+            line-height: 1;
+            transition: transform 0.2s;
+        }
+
+        details[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        details[open] summary {
+            border-bottom: var(--border-dark);
+            background: var(--accent-green);
+        }
+
+        .faq-content {
+            padding: 24px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            background: var(--bg-color);
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 80px 40px;
+            border-top: var(--border-dark);
+            background: var(--accent-blue);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--text-color);
+            padding: 60px 40px;
+            border: var(--border-dark);
+            border-radius: 24px;
+            box-shadow: 12px 12px 0 var(--white);
+            transform: rotate(-1deg);
+        }
+
+        .cta-section h2 {
+            font-size: clamp(32px, 5vw, 64px);
+            font-weight: 800;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .btn-large {
+            font-size: 20px;
+            padding: 20px 40px;
+            background: var(--accent-green);
+            color: var(--text-color);
+        }
+        
+        .btn-large:hover {
+            box-shadow: 8px 8px 0 var(--white);
+        }
+
+        @media (max-width: 1024px) {
+            .service-body {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            nav { display: none; }
+            .hero, .services-list, .process-section, .faq-section, .cta-section { padding: 40px 20px; }
+            .service-title { font-size: 24px; }
+            .process-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">SIGNAL</a>
+        <nav>
+            <a href="#">Главная</a>
+            <a href="#" class="active">Услуги</a>
+            <a href="#">Кейсы</a>
+            <a href="#">О нас</a>
+            <a href="#">Блог</a>
+        </nav>
+        <a href="#" class="btn-primary">Обсудить задачу</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-label">Услуги</div>
+        <h1>Что мы<br>делаем</h1>
+        <p>4 направления - одна цель: ваша реклама должна приносить выручку, а не просто метрики.</p>
+    </section>
+
+    <section class="services-list">
+        <!-- Раскрытая услуга -->
+        <div class="service-row">
+            <div class="service-header">
+                <div class="service-title-group">
+                    <span class="service-num">01</span>
+                    <h2 class="service-title">Контекстная реклама</h2>
+                </div>
+                <div class="service-tags">
+                    <div class="sticker">Яндекс.Директ</div>
+                    <div class="sticker">РСЯ</div>
+                </div>
+            </div>
+            <div class="service-body">
+                <div>
+                    <p>Настраиваем и ведём кампании в Яндекс.Директ и Рекламной сети Яндекса. Каждая кампания оптимизируется под бизнес-KPI: стоимость лида, ROAS, количество транзакций.</p>
+                </div>
+                <div>
+                    <h4>Что входит</h4>
+                    <ul>
+                        <li>Аудит текущих кампаний и конкурентов</li>
+                        <li>Сбор семантики и минус-слов</li>
+                        <li>Настройка структуры кампаний</li>
+                        <li>А/В-тесты объявлений</li>
+                        <li>Еженедельная оптимизация ставок</li>
+                        <li>Ежемесячный отчёт с выводами</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="result-card">
+                        <h5>Средний результат</h5>
+                        <div class="result-stat">
+                            <div class="value">-38%</div>
+                            <div class="label">Стоимость лида</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="value">×2.4</div>
+                            <div class="label">Конверсия</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Свернутые услуги -->
+        <div class="service-row collapsed">
+            <div class="service-header">
+                <div class="service-title-group">
+                    <span class="service-num">02</span>
+                    <h2 class="service-title">Таргетированная реклама</h2>
+                </div>
+                <div class="service-tags">
+                    <div class="sticker blue">VK</div>
+                    <div class="sticker blue">Telegram</div>
+                    <div class="sticker blue">MyTarget</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-row collapsed">
+            <div class="service-header">
+                <div class="service-title-group">
+                    <span class="service-num">03</span>
+                    <h2 class="service-title">Сквозная аналитика</h2>
+                </div>
+                <div class="service-tags">
+                    <div class="sticker pink">Roistat</div>
+                    <div class="sticker pink">Метрика</div>
+                    <div class="sticker pink">GA4</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-row collapsed">
+            <div class="service-header">
+                <div class="service-title-group">
+                    <span class="service-num">04</span>
+                    <h2 class="service-title">Стратегия и консалтинг</h2>
+                </div>
+                <div class="service-tags">
+                    <div class="sticker green">Аудит</div>
+                    <div class="sticker green">Стратегия</div>
+                    <div class="sticker green">Разовые</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <h2 class="section-title">Как мы работаем</h2>
+        <div class="process-grid">
+            <div class="process-card">
+                <div class="process-num">01</div>
+                <h3>Бриф и аудит</h3>
+                <p>Изучаем бизнес, анализируем текущую рекламу и конкурентов. Формируем понимание задачи.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-num">02</div>
+                <h3>Стратегия</h3>
+                <p>Разрабатываем медиаплан с прогнозами CPL и ROAS. Согласовываем гипотезы.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-num">03</div>
+                <h3>Запуск</h3>
+                <p>Настраиваем аналитику, создаём кампании, запускаем первые А/В-тесты.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-num">04</div>
+                <h3>Оптимизация</h3>
+                <p>Еженедельный анализ, корректировки, отчёты с конкретными выводами и следующими шагами.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <details>
+            <summary>Сколько стоит ведение рекламы?</summary>
+            <div class="faq-content">
+                Стоимость зависит от объёма задач и рекламного бюджета. Минимальный порог - от 50 000 ₽/мес. Точную стоимость рассчитываем после брифа - это бесплатно.
+            </div>
+        </details>
+        <details>
+            <summary>Как быстро будет результат?</summary>
+            <div class="faq-content">
+                Первые данные для оптимизации - через 2 недели. Устойчивый результат - через 4-8 недель. Всё зависит от ниши и объёма бюджета.
+            </div>
+        </details>
+        <details>
+            <summary>Как вы отчитываетесь?</summary>
+            <div class="faq-content">
+                Еженедельные короткие отчёты + ежемесячный детальный разбор. Всегда есть доступ к живому дашборду - видите данные в реальном времени.
+            </div>
+        </details>
+        <details>
+            <summary>Можно ли совместить несколько услуг?</summary>
+            <div class="faq-content">
+                Да, конечно. Мы часто комбинируем контекстную рекламу с таргетированной и выстраиваем единую систему сквозной аналитики для максимального эффекта.
+            </div>
+        </details>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Не знаете,<br>с чего начать?</h2>
+            <p>Бесплатный аудит рекламы — за 3 рабочих дня</p>
+            <a href="#" class="btn-primary btn-large">Получить аудит →</a>
+        </div>
+    </section>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNAL — Реальные результаты (Кейсы)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap');
+
+        :root {
+            --bg-color: #f4f4ec;
+            --text-color: #111111;
+            --accent-blue: #3b5bdb;
+            --accent-green: #c0ff59;
+            --accent-pink: #ff8cd4;
+            --accent-orange: #ff5722;
+            --accent-purple: #cc59ff;
+            --white: #ffffff;
+            --border-radius: 20px;
+            --border-dark: 2.5px solid #111111;
+            --shadow-hard: 6px 6px 0 #111111;
+            --shadow-hard-hover: 10px 10px 0 #111111;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        /* Навигация */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: var(--border-dark);
+            background: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-orange);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: var(--white);
+            padding: 12px 24px;
+            border: var(--border-dark);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 4px 4px 0 var(--text-color);
+            transition: all 0.2s;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--text-color);
+        }
+
+        /* Hero секция */
+        .hero {
+            padding: 80px 40px 40px;
+            background: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1.5" fill="%23111111" fill-opacity="0.1"/></svg>');
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: var(--accent-green);
+            padding: 4px 12px;
+            border: var(--border-dark);
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            transform: rotate(-1deg);
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 96px);
+            font-weight: 800;
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            max-width: 1100px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-weight: 600;
+            max-width: 500px;
+            color: #444;
+        }
+
+        /* Фильтры в стиле стикеров */
+        .filters-container {
+            padding: 20px 40px 40px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--white);
+            border: var(--border-dark);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 3px 3px 0 var(--text-color);
+            transition: all 0.15s;
+        }
+
+        .filter-btn:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 5px 5px 0 var(--text-color);
+        }
+
+        .filter-btn.active {
+            background: var(--text-color);
+            color: var(--white);
+            box-shadow: none;
+            transform: none;
+        }
+
+        /* Сетка Кейсов */
+        .cases-section {
+            padding: 0 40px 80px;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        /* Карточка кейса типа лонгрид (на всю ширину) */
+        .case-card-featured {
+            grid-column: span 2;
+            background: var(--white);
+            border: var(--border-dark);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-hard);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .case-card-featured:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hard-hover);
+        }
+
+        /* Обычная карточка в сетке */
+        .case-card {
+            background: var(--white);
+            border: var(--border-dark);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-hard);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hard-hover);
+        }
+
+        .case-info {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .case-meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border: 2px solid var(--text-color);
+            border-radius: 50px;
+            background: var(--bg-color);
+        }
+        .tag.cat-ecommerce { background: var(--accent-pink); }
+        .tag.cat-b2b { background: var(--accent-blue); color: var(--white); }
+        .tag.cat-services { background: var(--accent-purple); color: var(--white); }
+
+        .case-title {
+            font-size: 32px;
+            font-weight: 800;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .case-desc {
+            font-size: 16px;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 32px;
+        }
+
+        /* Блок с циферками/результатами */
+        .case-stats {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: var(--bg-color);
+            border: var(--border-dark);
+            border-radius: 12px;
+            padding: 16px 20px;
+            flex: 1;
+            min-width: 140px;
+            box-shadow: 3px 3px 0 var(--text-color);
+        }
+
+        .stat-val {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .case-card-featured .stat-box:nth-child(1) .stat-val { color: var(--accent-orange); }
+        .case-card-featured .stat-box:nth-child(2) .stat-val { color: var(--accent-blue); }
+        .case-card:nth-child(2) .stat-box .stat-val { color: var(--accent-purple); }
+        .case-card:nth-child(3) .stat-box .stat-val { color: var(--accent-orange); }
+
+        .stat-lbl {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #555;
+        }
+
+        .btn-text {
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+        }
+        .btn-text::after {
+            content: '→';
+            transition: transform 0.2s;
+        }
+        .btn-text:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* Правая декоративная / графическая сторона для главного кейса */
+        .case-visual {
+            background: var(--accent-blue);
+            border-left: var(--border-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Имитация графика в стиле необрутализма */
+        .graph-mockup {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            height: 180px;
+            background: var(--white);
+            border: var(--border-dark);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 6px 6px 0 var(--text-color);
+            transform: rotate(-2deg);
+            width: 100%;
+            max-width: 340px;
+        }
+
+        .graph-bar {
+            background: var(--accent-orange);
+            border: 2px solid var(--text-color);
+            width: 100%;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            animation: growUp 1s ease-out forwards;
+        }
+        .graph-bar:nth-child(1) { height: 30%; background: var(--accent-pink); }
+        .graph-bar:nth-child(2) { height: 45%; }
+        .graph-bar:nth-child(3) { height: 35%; background: var(--accent-green); }
+        .graph-bar:nth-child(4) { height: 70%; }
+        .graph-bar:nth-child(5) { height: 60%; background: var(--accent-pink); }
+        .graph-bar:nth-child(6) { height: 100%; background: var(--accent-green); }
+
+        /* Иконка или стикер во второй карточке */
+        .card-illustration {
+            height: 140px;
+            background: var(--accent-green);
+            border-bottom: var(--border-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            font-weight: 800;
+        }
+        .card-illustration.purple-bg {
+            background: var(--accent-purple);
+        }
+
+        /* Футер / СТА */
+        footer {
+            padding: 60px 40px;
+            background: var(--text-color);
+            color: var(--bg-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            border-top: var(--border-dark);
+        }
+
+        footer .logo {
+            color: var(--bg-color);
+        }
+
+        .footer-cta h2 {
+            font-size: 36px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .btn-footer {
+            background: var(--accent-green);
+            color: var(--text-color);
+        }
+
+        @media (max-width: 1024px) {
+            .case-card-featured {
+                grid-template-columns: 1fr;
+            }
+            .case-visual {
+                border-left: none;
+                border-top: var(--border-dark);
+                height: 260px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            nav { display: none; }
+            .hero, .filters-container, .cases-section, footer { padding: 40px 20px; }
+            .cases-grid { grid-template-columns: 1fr; }
+            .case-card-featured { grid-column: span 1; }
+            .case-info { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">SIGNAL</a>
+        <nav>
+            <a href="#">Главная</a>
+            <a href="#">Услуги</a>
+            <a href="#" class="active">Кейсы</a>
+            <a href="#">О нас</a>
+            <a href="#">Блог</a>
+        </nav>
+        <a href="#" class="btn-primary">Обсудить задачу</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-label">Кейсы</div>
+        <h1>Реальные<br>результаты</h1>
+        <p>6+ кейсов из разных ниш. Цифры, проверенные временем и прозрачной аналитикой.</p>
+    </section>
+
+    <!-- Фильтры категорий -->
+    <div class="filters-container">
+        <button class="filter-btn active">Все проекты</button>
+        <button class="filter-btn">E-commerce</button>
+        <button class="filter-btn">B2B / SaaS</button>
+        <button class="filter-btn">Услуги</button>
+        <button class="filter-btn">Контекст</button>
+        <button class="filter-btn">Таргет</button>
+        <button class="filter-btn">Аналитика</button>
+    </div>
+
+    <section class="cases-section">
+        <div class="cases-grid">
+            
+            <!-- КЕЙС 01 (Главный лонгрид) -->
+            <div class="case-card-featured">
+                <div class="case-info">
+                    <div>
+                        <div class="case-meta">
+                            <span class="tag cat-ecommerce">E-commerce</span>
+                            <span class="tag">Контекст</span>
+                            <span class="tag">Аналитика</span>
+                        </div>
+                        <h2 class="case-title">Интернет-магазин одежды</h2>
+                        <p class="case-desc">Аудит показал: 60% бюджета уходило на нерелевантные запросы. Полностью перестроили структуру кампаний, очистили семантику и внедрили сквозную аналитику.</p>
+                    </div>
+                    
+                    <div class="case-stats">
+                        <div class="stat-box">
+                            <div class="stat-val">-38%</div>
+                            <div class="stat-lbl">Стоимость лида (CPL)</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-val">×2.1</div>
+                            <div class="stat-lbl">Рост конверсии</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-val">280%</div>
+                            <div class="stat-lbl">Окупаемость (ROI)</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn-text">Читать кейс полностью</a>
+                </div>
+                
+                <div class="case-visual">
+                    <!-- График в стиле необрутализма -->
+                    <div class="graph-mockup">
+                        <div class="graph-bar"></div>
+                        <div class="graph-bar"></div>
+                        <div class="graph-bar"></div>
+                        <div class="graph-bar"></div>
+                        <div class="graph-bar"></div>
+                        <div class="graph-bar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- КЕЙС 02 -->
+            <div class="case-card">
+                <div class="card-illustration">
+                    ⚡️
+                </div>
+                <div class="case-info">
+                    <div>
+                        <div class="case-meta">
+                            <span class="tag cat-b2b">B2B / SaaS</span>
+                            <span class="tag">Таргет</span>
+                        </div>
+                        <h2 class="case-title">SaaS-платформа</h2>
+                        <p class="case-desc">Перешли с широких аудиторий на точечный lookalike и настроили умный ретаргетинг по сегментам воронки без увеличения бюджета.</p>
+                    </div>
+                    
+                    <div class="case-stats">
+                        <div class="stat-box">
+                            <div class="stat-val">+2.4</div>
+                            <div class="stat-lbl">Больше лидов</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-val">-22%</div>
+                            <div class="stat-lbl">Цена регистрации</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn-text">Читать кейс</a>
+                </div>
+            </div>
+
+            <!-- КЕЙС 03 -->
+            <div class="case-card">
+                <div class="card-illustration purple-bg">
+                    🦷
+                </div>
+                <div class="case-info">
+                    <div>
+                        <div class="case-meta">
+                            <span class="tag cat-services">Услуги</span>
+                            <span class="tag">Контекст</span>
+                        </div>
+                        <h2 class="case-title">Сеть стоматологий</h2>
+                        <p class="case-desc">Запустили гиперлокальный геотаргетинг в радиусе 3 км от клиник. Каждая группа объявлений вела на уникальную посадочную страницу под конкретную услугу.</p>
+                    </div>
+                    
+                    <div class="case-stats">
+                        <div class="stat-box">
+                            <div class="stat-val">+320</div>
+                            <div class="stat-lbl">Первичных записей</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-val">-41%</div>
+                            <div class="stat-lbl">Снизили CPL</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn-text">Читать кейс</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">SIGNAL</div>
+        <div class="footer-cta">
+            <h2>Хотите такие же цифры?</h2>
+            <p>Обсудим ваш проект и посчитаем прогноз окупаемости.</p>
+        </div>
+        <a href="#" class="btn-primary btn-footer">Повторить результат →</a>
+    </footer>
+
+</body>
+</html>
+
+
+
+
